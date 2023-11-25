@@ -32,5 +32,9 @@ export const publicRoutes = [
     {
         path: LOGIN_Route,
         Component: Authorization
+    },
+    {
+        path: GOODS_Route,
+        Component: GoodsPage
     }
 ]

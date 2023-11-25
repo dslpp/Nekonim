@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Outfit";
+    src: url(fonts/Outfit.ttf) format('truetype');
+}
+.brandStyle{
+    font-family: "Outfit";
+    font-size: 1.5rem;
+    color: #B56576;
+    letter-spacing: 0.3em;
+    text-transform: uppercase; 
+}
+.brandStyle:hover{
+    color: #B56576;
+    
+}
+.NavbarText{
+    color: white;
+}
+.NavbarText:hover{
+    color:#B56576;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.login:hover{
+    color: #B56576;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+@media (max-width: 768px) {
+    .brandStyle {
+        font-size: 0.9rem; /* Новый размер шрифта для мобильных устройств */
+    }
+    .NavbarText{
+        display: none;
+    }
+}
