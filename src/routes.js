@@ -3,7 +3,8 @@ import Basket from "./pages/Basket"
 import GoodsPage from "./pages/GoodsPage"
 import Shop from "./pages/Shop"
 import Admin from "./pages/AdminPanel"
-import { ADMIN_Route, BASKET_Route, GOODS_Route, LOGIN_Route, REGISTRATION_Route, SHOP_Route } from "./utils/const"
+import Catalog from "./pages/Catalog"
+import { ADMIN_Route, BASKET_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, REGISTRATION_Route, SHOP_Route } from "./utils/const"
 
 //список страниц для авторизированных пользователей
 export const  authRoutes = [
@@ -32,6 +33,10 @@ export const publicRoutes = [
     {
         path: LOGIN_Route,
         Component: Authorization
+    },
+    {
+        path: CATALOG_Route,
+        Component: Catalog
     },
     {
         path: GOODS_Route,
