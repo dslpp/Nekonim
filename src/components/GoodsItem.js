@@ -9,13 +9,16 @@ const GoodsItem =({products})=> {
         return (
             <Col md={3    }>
                <Card className='Cards'>
-                   <Image width={150} height={150} src={products.img}/>
-                   <div>
+               <div className='image-wrapper'>
+                    <Image className='center-image' src={products.img} />
+                </div>
+                   <div className='label'>
                         <div>
                         {products.name}
+                        <hr></hr>
                         </div>
                         <div>
-                                <div>{products.price}</div>
+                                <div className='price'>{products.price} {products.currency} </div>
                         </div>
                         
                    </div>

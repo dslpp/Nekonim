@@ -1,6 +1,8 @@
 @font-face {
     font-family: "Outfit";
     src: url(fonts/Outfit.ttf) format('truetype');
+    font-family: "Ossem";
+    src: url(fonts/Ossem.ttf) format('truetype');
 }
 .brandStyle{
     font-family: "Outfit";
@@ -15,6 +17,9 @@
 }
 .NavbarText{
     color: white;
+    font-family: "Ossem";
+    padding-top: 1vw;
+  
 }
 .NavbarText:hover{
     color:#B56576;
@@ -25,6 +30,11 @@
     -o-transition: 0.5s;
 }
 
+.login{
+    color: white;
+    font-family: "Ossem";
+    padding-top: 1vw;
+}
 .login:hover{
     color: #B56576;
     transition: 0.5s;
@@ -40,9 +50,33 @@
   
 }
 .Cards{
-    width:50%;
+    width:100%;
      cursor:pointer;
+     font-family: "Ossem";
+     margin-bottom: 2vw;
+      
 
+}
+.label{
+    text-align: center;
+    
+}
+.price{
+    font-weight: bold;
+}
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vw;/* Установите высоту обертки */
+}
+.center-image {
+    width: 70%; /* Установите желаемую ширину изображения */
+    height: 100%; /* Установите желаемую высоту изображения */
+    max-width: 100%;
+    max-height: 100%;
+    padding-top: 1.5vw;
+ 
 }
 
 @media (max-width: 768px) {
@@ -56,9 +90,17 @@
         display:flex ;
         justify-content:center;
          align-items:center;
-        width:70%;
+         width:75%;
          cursor:pointer;
-         margin: 15% auto  auto;
+         margin: 3vw 12vw ;
     
+    }
+    .image-wrapper {
+        height: 60vw; /* Изменяем высоту обертки для iPhone X */
+    }
+    .center-image {
+        width: 55vw; /* Установите желаемую ширину изображения */
+       padding-top: 5vw;
+       padding-bottom: 5vw;
     }
 }

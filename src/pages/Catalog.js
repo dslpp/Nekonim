@@ -11,7 +11,7 @@ const Catalog =() => {
                 <Col md={3}>
                     <TypeBar/>
                 </Col>
-                <Col md={16}>
+                <Col md={9}>
                     <GoodsList/>
                 </Col>
             </Row>

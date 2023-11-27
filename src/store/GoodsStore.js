@@ -14,9 +14,12 @@ export default class GoodsStore  {
             {id: 9, name:'Мыльная'}
         ]
         this._products=[
-            { id: 1, typeId: 1, name: 'Название манги', price: 10.99, img: '../images/1.jpg'},
-            { id: 2, typeId: 1, name: 'Еще одна манга', price: 12.99, img: "/images/2.jpg"},
-            { id: 3, typeId: 2, name: 'Брелок с персонажем', price: 5.99, img: 'images/3.jpg'},
+            { id: 1, typeId: 1, name: 'Название манги', price: 10.99, currency: 'р.', img: '../images/1.jpg'},
+            { id: 2, typeId: 1, name: 'Еще одна манга', price: 12.99, currency: 'р.', img: "/images/2.jpg"},
+            { id: 3, typeId: 2, name: 'Брелок с персонажем', price: 5.99, currency: 'р.', img: 'images/3.jpg'},
+            { id: 3, typeId: 2, name: 'Брелок с персонажем', price: 5.99, currency: 'р.', img: 'images/3.jpg'},
+            { id: 3, typeId: 2, name: 'Брелок с персонажем', price: 5.99, currency: 'р.', img: 'https://sun9-80.userapi.com/impg/fnAKZE7n6yjSYnOWupOoHE4uj1BH5G9F5n-Vhg/4U8J2LUTDjA.jpg?size=607x1080&quality=96&sign=98c6fa749db58278a58c8016c331ef5a&type=album'},
+            
         ]
         this._selectedType={}
         
