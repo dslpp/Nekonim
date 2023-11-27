@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container"
 import {Col, Row} from "react-bootstrap"
 import TypeBar from "../components/TypeBar";
+import GoodsList from "../components/GoodsList";
 
 const Catalog =() => {
     return(
@@ -11,7 +12,7 @@ const Catalog =() => {
                     <TypeBar/>
                 </Col>
                 <Col md={16}>
-                    
+                    <GoodsList/>
                 </Col>
             </Row>
         </Container>

@@ -33,6 +33,17 @@
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
 }
+.active-type {
+    background-color: #B56576; 
+    color: #f8f8f8; /* Цвет текста для активного элемента */
+    
+  
+}
+.Cards{
+    width:50%;
+     cursor:pointer;
+
+}
 
 @media (max-width: 768px) {
     .brandStyle {
@@ -40,5 +51,14 @@
     }
     .NavbarText{
         display: none;
+    }
+    .Cards{
+        display:flex ;
+        justify-content:center;
+         align-items:center;
+        width:70%;
+         cursor:pointer;
+         margin: 15% auto  auto;
+    
     }
 }

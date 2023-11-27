@@ -1,8 +1,5 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import FirstImage from '../images/1.jpg'; // Путь к первому изображению
-import SecondImage from '../images/2.jpg'; // Путь ко второму изображению
-import ThirdImage from '../images/3.jpg'; // Путь к третьему изображению
 
 
 const SomeCarousel = () => {
@@ -12,22 +9,22 @@ const SomeCarousel = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={SecondImage}
-            alt="Second slide"
+            src={"./images/1.jpg"}
+            alt="Первый слайд"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100 "
-            src={FirstImage}
-            alt="First slide"
+            src={"./images/2.jpg"}
+            alt="Второй слайд"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100 "
-            src={ThirdImage}
-            alt="Third slide"
+            src={"./images/3.jpg"}
+            alt="Третий слайд"
           />
         </Carousel.Item>
       </Carousel>

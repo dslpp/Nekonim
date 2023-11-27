@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+
 export default class GoodsStore  {
     constructor(){
         this._types=[
@@ -13,9 +14,9 @@ export default class GoodsStore  {
             {id: 9, name:'Мыльная'}
         ]
         this._products=[
-            { id: 1, typeId: 1, name: 'Название манги', price: 10.99, imgage: 'images/1.jpg'},
-            { id: 2, typeId: 1, name: 'Еще одна манга', price: 12.99, imgage: 'images/2.jpg'},
-            { id: 3, typeId: 2, name: 'Брелок с персонажем', price: 5.99, imgage: 'images/3.jpg'},
+            { id: 1, typeId: 1, name: 'Название манги', price: 10.99, img: '../images/1.jpg'},
+            { id: 2, typeId: 1, name: 'Еще одна манга', price: 12.99, img: "/images/2.jpg"},
+            { id: 3, typeId: 2, name: 'Брелок с персонажем', price: 5.99, img: 'images/3.jpg'},
         ]
         this._selectedType={}
         
