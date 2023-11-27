@@ -7,7 +7,7 @@ import ThirdImage from '../images/3.jpg'; // Путь к третьему изо
 
 const SomeCarousel = () => {
   return (
-    <div  style={{ width: '60%', height: '40%', margin: 'auto', paddingTop: '60px'}} >
+    <div  style={{ width: '70%', height: '40%', margin: 'auto', paddingTop: '60px'}} >
       <Carousel>
         <Carousel.Item>
           <img

@@ -11,7 +11,7 @@ root.render(
   <Context.Provider value={
     {
       user: new UserStore(),
-      goods:new GoodsStore()
+      type:new GoodsStore()
     }}>
     <App/>
   </Context.Provider>
