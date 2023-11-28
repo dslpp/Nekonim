@@ -14,8 +14,8 @@ const AdminPanel =() => {
             <Button  variant={'outline-dark'} className="mt-2" onClick={()=> setprosuctsVisable(true)}>
                 Добавить продукт
             </Button>
-            <CreateType show={typeVisable} onHide={()=> setprosuctsVisable(false)}/>
-           <CreateProducts show={prosuctsVisable} onHide={()=> settypeVisable(false)}/>
+            <CreateType show={typeVisable} onHide={()=> settypeVisable(false)}/>
+           <CreateProducts show={prosuctsVisable} onHide={()=> setprosuctsVisable(false)}/>
         </Container>
         
     );
