@@ -21,7 +21,7 @@ const GoodsItem =({products})=> {
                         <hr></hr>
                         </div>
                         <div>
-                                <div className='price'>{products.price} {products.currency} </div>
+                                <div className='price'>{products.price} р. </div>
                         </div>
                         
                    </div>

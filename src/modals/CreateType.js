@@ -6,7 +6,6 @@ import { Form, Modal, Button} from 'react-bootstrap';
 const CreateType = ({show, onHide}) => {
     return (
         <Modal
-        
         show={show}
         onHide={onHide}
         size="lg"

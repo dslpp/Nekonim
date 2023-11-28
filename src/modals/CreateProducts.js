@@ -1,9 +1,11 @@
-import React from 'react';
-import { Form, Modal, Button} from 'react-bootstrap';
-
+import React, { useContext } from 'react';
+import { Form, Modal, Button, Dropdown} from 'react-bootstrap';
+import { Context } from "../index";
 
 
 const CreateProducts = ({show, onHide}) => {
+  const{type}=useContext(Context)
+  
     return (
         <Modal
         show={show}
@@ -14,19 +16,46 @@ const CreateProducts = ({show, onHide}) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Добавить новый тип
+            Добавить товар
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
          <Form>
+           <Dropdown>
+              <Dropdown.Toggle> Выберите тип</Dropdown.Toggle>
+              <Dropdown.Menu> 
+                  {type.types.map(types=>
+                    <Dropdown.Item key={types.id}>{types.name}</Dropdown.Item>
+                    )}
+              </Dropdown.Menu>
+           </Dropdown>
+           <Form.Control
+              className='mt-3'
+              placeholder='Введите название товара'
+           />
             <Form.Control
-            placeholder={"Введите название типа"}
-            />
+              className='mt-3'
+              placeholder='Введите краткое описание товара (опицонально)'
+      
+           />
+           <Form.Control
+            className='mt-3'
+            placeholder='Введите стоимость товара'
+            type='number' 
+
+        />
+          
+           <Form.Control
+              className='mt-3'
+              type='file'
+           />
+           
+ 
          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-          <Button variant="outline-succes" onClick={onHide}>Добавить</Button>
+          <Button variant="outline-success" onClick={onHide}>Добавить</Button>
         </Modal.Footer>
       </Modal>
     );

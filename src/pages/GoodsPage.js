@@ -8,7 +8,6 @@ const GoodsPage = () => {
         name: 'Организаторша',
         shortdescription:'АХАХАХАХХАХАХАХАХАХАХА ',
         price: 5.99,
-        currency: 'р.',
         img: '../images/3.jpg'
     };
 
@@ -35,7 +34,7 @@ const GoodsPage = () => {
                         {products.shortdescription}
                     </p>
                     <Card className="BasketCardGoods">
-                        <h3> {products.price} {products.currency}</h3>
+                        <h3> {products.price} р.</h3>
                         <Button variant="outline-success" className="w-15">Добавить в корзину</Button>
                     </Card>
                     <Row className="characteristic">
