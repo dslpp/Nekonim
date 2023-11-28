@@ -12,11 +12,11 @@ const GoodsPage = () => {
     };
 
     const description = [
-        { id: 1, title: "Набить ебало?", description: 'Всегда готова' },
-        { id: 2, title: "Унизить взглядом?", description: 'Дай мне пару минут' },
-        { id: 3, title: "Уничтожить мир?", description: 'чачка пипсов' },
-        { id: 4, title: "иди нахуй", description: 'дрипка' },
-        { id: 5, title: "Посоветуете качалку?", description: 'PIPSKA' }
+        { id: 1, title: "Набить ебало?", descriptions: 'Всегда готова' },
+        { id: 2, title: "Унизить взглядом?", descriptions: 'Дай мне пару минут' },
+        { id: 3, title: "Уничтожить мир?", descriptions: 'чачка пипсов' },
+        { id: 4, title: "иди нахуй", descriptions: 'дрипка' },
+        { id: 5, title: "Посоветуете качалку?", descriptions: 'PIPSKA' }
     ];
 
     return (
@@ -43,7 +43,7 @@ const GoodsPage = () => {
                             {description.map((info, index) =>
                                 <Row key={info.id} style={{ background: index % 2 === 0 ? '#f5f5f5' : 'transparent', padding: '10px' }}>
                                     <Col xs={6}>{info.title}</Col>
-                                    <Col xs={6}>{info.description}</Col>
+                                    <Col xs={6}>{info.descriptions}</Col>
                                 </Row>
                             )}
                         </Col>

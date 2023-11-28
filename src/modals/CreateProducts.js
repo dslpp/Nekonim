@@ -1,11 +1,19 @@
-import React, { useContext } from 'react';
-import { Form, Modal, Button, Dropdown} from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import { Form, Modal, Button, Dropdown, Row, Col} from 'react-bootstrap';
 import { Context } from "../index";
 
 
 const CreateProducts = ({show, onHide}) => {
-  const{type}=useContext(Context)
-  
+  const { type } = useContext(Context);
+  const [info, setInfo] = useState([]);
+
+  const addInfo = () => {
+    setInfo([...info, { title: '', description: '', number: Date.now() }]);
+  };
+  const removeInfo = (numberToRemove) => {
+    setInfo(info.filter(index=> index.number !== numberToRemove));
+  };
+
     return (
         <Modal
         show={show}
@@ -41,16 +49,41 @@ const CreateProducts = ({show, onHide}) => {
            <Form.Control
             className='mt-3'
             placeholder='Введите стоимость товара'
-            type='number' 
-
-        />
-          
+            type='number'
+           />
            <Form.Control
               className='mt-3'
               type='file'
            />
-           
- 
+          <hr/>
+          <Button
+            variant='outline-dark'
+            onClick={addInfo}
+          >
+            Добавить новое свойство характеристики
+          </Button>
+          {info.map((index) =>
+            <Row key={index.number} className="mt-4" >
+              <Col md={4}>
+                <Form.Control
+                  placeholder="Введите название свойства"
+                />
+              </Col>
+              <Col md={4}>
+                <Form.Control
+                  placeholder="Введите описание свойства"
+                />
+              </Col>
+              <Col md={4}>
+                <Button
+                  onClick={()=> removeInfo(index.number)}
+                  variant={"outline-danger"}
+                >
+                  Удалить
+                </Button>
+              </Col>
+            </Row>
+          )}
          </Form>
         </Modal.Body>
         <Modal.Footer>
