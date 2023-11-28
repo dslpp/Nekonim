@@ -6,11 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import './../App.css';
 import {observer} from 'mobx-react-lite';
+import {useNavigate} from "react-router-dom"
+import { ADMIN_Route, LOGIN_Route } from '../utils/const';
 
 
 
 const NavBar = observer(() => {
   const {user} = useContext(Context)
+  const history =useNavigate()
         return (
             <>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -22,12 +25,12 @@ const NavBar = observer(() => {
           </Nav>
           {user.isAuth ?
           <Nav>
-            <Button  className='login' variant='dark' >Админ-панель</Button>
-            <Button  className='login' variant='dark' >Выход</Button>
+            <Button  className='login' variant='dark'  onClick={()=> history(ADMIN_Route)}>Админ-панель</Button>
+            <Button  className='login' variant='dark' onClick={()=> history(LOGIN_Route) & user.setIsAuth(false)}>Выход</Button>
          </Nav>
          :
          <Nav>
-            <Button  className='login' variant='dark' href="/login" onClick={() => user.setIsAuth(true)}>Вход</Button>
+            <Button  className='login' variant='dark'  onClick={() => user.setIsAuth(true)}>Вход</Button>
          </Nav>
          }
         </Container>
