@@ -54,8 +54,6 @@
      cursor:pointer;
      font-family: "Ossem";
      margin-bottom: 2vw;
-      
-
 }
 .label{
     text-align: center;
@@ -78,6 +76,31 @@
     padding-top: 1.5vw;
  
 }
+.BasketCardGoods{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+}
+.characteristic{
+    font-size: 1.2rem;
+    margin-top: 5vh;
+}
+.imagegoods{
+    height: 100%;
+    width: 100%;
+}
+.centerimage{
+    width: 100%; /* Установите желаемую ширину изображения */
+    height: 120%; /* Установите желаемую высоту изображения */
+    max-width: 100%;
+    max-height: 100%;
+
+}
+.shortdesc{
+    color:#6e6e6e;
+}
+
 
 @media (max-width: 768px) {
     .brandStyle {
@@ -96,11 +119,23 @@
     
     }
     .image-wrapper {
-        height: 60vw; /* Изменяем высоту обертки для iPhone X */
+        height: 60vw; 
     }
     .center-image {
-        width: 55vw; /* Установите желаемую ширину изображения */
+        width: 55vw; 
        padding-top: 5vw;
        padding-bottom: 5vw;
     }
+    .imagegoods{
+        height: 100vw;
+        width: 55vw;
+ 
+    }
+    .centerimage {
+       width: 93vw;
+       height: 100%; 
+
+       padding-bottom: 5vw;
+    }
+    
 }

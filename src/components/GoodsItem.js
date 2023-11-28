@@ -2,12 +2,15 @@
 import {React }from 'react';
 import './../App.css';
 import {Card, Col, Image} from "react-bootstrap"
-
+import {useNavigate} from "react-router-dom"
+import { GOODS_Route } from '../utils/const';
+ 
 
 const GoodsItem =({products})=> {
+    const history =useNavigate()
 
         return (
-            <Col md={3    }>
+            <Col md={3} onClick={()=> history(GOODS_Route+'/'+products.id)}>
                <Card className='Cards'>
                <div className='image-wrapper'>
                     <Image className='center-image' src={products.img} />

@@ -11,14 +11,15 @@ export const  authRoutes = [
     {
         path: ADMIN_Route,
         Component: Admin
-    },
-    {
+    }, {
         path: BASKET_Route,
         Component: Basket
-    }
+    }   
+   
 ]
 //список страниц для  НЕ авторизированных пользователей
 export const publicRoutes = [
+   
     {
         path: SHOP_Route,
         Component: Shop
