@@ -18,7 +18,7 @@ const NavBar = observer(() => {
           <Navbar.Brand  className='brandStyle' href="/shop">Nekonim</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link className='NavbarText' href="/shop">Главная</Nav.Link>
-            <Nav.Link className='NavbarText' href="catalog">Каталог</Nav.Link>
+            <Nav.Link className='NavbarText' href="/catalog">Каталог</Nav.Link>
           </Nav>
           {user.isAuth ?
           <Nav>
@@ -27,7 +27,7 @@ const NavBar = observer(() => {
          </Nav>
          :
          <Nav>
-            <Button  className='login' variant='dark' onClick={() => user.setIsAuth(true)}>Вход</Button>
+            <Button  className='login' variant='dark' href="/login" onClick={() => user.setIsAuth(true)}>Вход</Button>
          </Nav>
          }
         </Container>
