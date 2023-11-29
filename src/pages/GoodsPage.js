@@ -3,20 +3,14 @@ import { Container, Col, Image, Card, Button, Row } from "react-bootstrap";
 
 const GoodsPage = () => {
     const products = {
-        id: 3,
-        typeId: 2,
-        name: 'Организаторша',
-        shortdescription:'АХАХАХАХХАХАХАХАХАХАХА ',
-        price: 5.99,
-        img: '../images/3.jpg'
+         id: 9, typeId: 9, name: 'Мягкая монетница Тоторо', shortdescription:'Мягкая игрушка-монетница — дух леса Тоторо из популярного аниме Хаяо Миядзаки «Мой сосед Тоторо».', price: 6.99, img: '../images/totoro.jpg'
     };
 
     const description = [
-        { id: 1, title: "Набить ебало?", descriptions: 'Всегда готова' },
-        { id: 2, title: "Унизить взглядом?", descriptions: 'Дай мне пару минут' },
-        { id: 3, title: "Уничтожить мир?", descriptions: 'чачка пипсов' },
-        { id: 4, title: "иди нахуй", descriptions: 'дрипка' },
-        { id: 5, title: "Посоветуете качалку?", descriptions: 'PIPSKA' }
+        { id: 1, title: "Высота", descriptions: '8 см.' },
+        { id: 2, title: "Вес", descriptions: '30 г.' },
+        { id: 3, title: "Материал", descriptions: 'Плюш' },
+
     ];
 
     return (

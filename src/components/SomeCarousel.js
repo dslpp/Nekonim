@@ -9,21 +9,21 @@ const SomeCarousel = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={"./images/1.jpg"}
+            src={"./images/с1.jpg"}
             alt="Первый слайд"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100 "
-            src={"./images/2.jpg"}
+            src={"./images/с2.jpeg"}
             alt="Второй слайд"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100 "
-            src={"./images/3.jpg"}
+            src={"./images/с3.jpg"}
             alt="Третий слайд"
           />
         </Carousel.Item>

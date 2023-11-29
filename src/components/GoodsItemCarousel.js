@@ -6,19 +6,18 @@ import {useNavigate} from "react-router-dom"
 import { GOODS_Route } from '../utils/const';
  
 
-const GoodsItem =({products})=> {
+const GoodsItemCarousel =({products})=> {
     const history =useNavigate()
 
         return (
-            <Col md={3} onClick={()=> history(GOODS_Route+'/'+products.id)}>
-               <Card className='Cards'>
+            <Col onClick={()=> history(GOODS_Route+'/'+products.id)}>
+               <Card className='Cardss'>
                <div className='image-wrapper'>
                     <Image className='center-image' src={products.img} />
                 </div>
                    <div className='label'>
                         <div>
                         {products.name}
-                        
                         <hr></hr>
                         </div>
                         <div>
@@ -32,4 +31,4 @@ const GoodsItem =({products})=> {
     
 }
 
-export default GoodsItem;
+export default GoodsItemCarousel;

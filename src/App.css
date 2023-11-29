@@ -51,10 +51,15 @@
 }
 .Cards{
     width:100%;
+  
      cursor:pointer;
      font-family: "Ossem";
      margin-bottom: 2vw;
 }
+hr{
+    padding-top: vw;
+}
+   
 .label{
     text-align: center;
     
@@ -100,6 +105,32 @@
 .shortdesc{
     color:#6e6e6e;
 }
+/* App.css */
+.custom-carousel {
+    height: 43vh; /* Устанавливаем высоту на 100% высоты экрана */
+    width: 93vw;
+   
+      
+  }
+  
+  .custom-carousel .carousel-inner {
+     width: 78vw;
+     margin-left: 6vw;
+ /* Устанавливаем высоту внутреннего контейнера карусели на 100% */
+  }
+  
+  .custom-carousel .carousel-item {
+    height: 100%; /* Устанавливаем высоту слайда карусели на 100% */
+  }
+
+  .Cardss {
+    width: 15vw;
+    cursor: pointer;
+    font-family: "Ossem";
+    margin-left: 3vw;
+
+}
+  
 
 
 @media (max-width: 768px) {
@@ -117,6 +148,12 @@
          cursor:pointer;
          margin: 3vw 12vw ;
     
+    }
+    .Cardss {
+
+         width:70%;
+         cursor:pointer;
+         margin: 3vw 14vw 
     }
     .image-wrapper {
         height: 60vw; 
@@ -137,5 +174,8 @@
 
        padding-bottom: 5vw;
     }
-    
+    .custom-carousel .carousel-inner {
+        width: 78vw;
+        margin-left: 3vw;
+    }
 }
