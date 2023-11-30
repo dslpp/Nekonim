@@ -3,7 +3,7 @@ import { Container, Col, Image, Card, Button, Row } from "react-bootstrap";
 
 const GoodsPage = () => {
     const products = {
-         id: 9, typeId: 9, name: 'Мягкая монетница Тоторо', shortdescription:'Мягкая игрушка-монетница — дух леса Тоторо из популярного аниме Хаяо Миядзаки «Мой сосед Тоторо».', price: 6.99, img: '../images/totoro.jpg'
+        id: 9, typeId: 9, name: 'Мягкая монетница Тоторо', shortdescription: 'Мягкая игрушка-монетница — дух леса Тоторо из популярного аниме Хаяо Миядзаки «Мой сосед Тоторо».', price: 6.99, img: '../images/totoro.jpg'
     };
 
     const description = [
@@ -17,9 +17,9 @@ const GoodsPage = () => {
         <Container className="mt-5">
             <Row>
                 <Col md={4}>
-                <div className='imagegoods'>
-                    <Image className='centerimage' src={products.img} />
-                </div>
+                    <div className='imagegoods'>
+                        <Image className='centerimage' src={products.img} />
+                    </div>
 
                 </Col>
                 <Col md={8}>

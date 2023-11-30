@@ -108,14 +108,14 @@ hr{
 /* App.css */
 .custom-carousel {
     height: 43vh; /* Устанавливаем высоту на 100% высоты экрана */
-    width: 93vw;
+    width: 91vw;
    
       
   }
   
   .custom-carousel .carousel-inner {
      width: 78vw;
-     margin-left: 6vw;
+     margin-left: 5vw;
  /* Устанавливаем высоту внутреннего контейнера карусели на 100% */
   }
   

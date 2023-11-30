@@ -30,7 +30,7 @@ const NavBar = observer(() => {
          </Nav>
          :
          <Nav>
-            <Button  className='login' variant='dark'  onClick={() => user.setIsAuth(true)}>Вход</Button>
+            <Button  className='login' variant='dark'  onClick={() =>history(LOGIN_Route)}>Вход</Button>
          </Nav>
          }
         </Container>
