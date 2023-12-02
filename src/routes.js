@@ -4,7 +4,8 @@ import GoodsPage from "./pages/GoodsPage"
 import Shop from "./pages/Shop"
 import Admin from "./pages/AdminPanel"
 import Catalog from "./pages/Catalog"
-import { ADMIN_Route, BASKET_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, REGISTRATION_Route, SHOP_Route } from "./utils/const"
+import Main from "./pages/Main"
+import { ADMIN_Route, BASKET_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route } from "./utils/const"
 
 //список страниц для авторизированных пользователей
 export const  authRoutes = [
@@ -42,5 +43,9 @@ export const publicRoutes = [
     {
         path: GOODS_Route,
         Component: GoodsPage
+    },
+    {
+        path: MAIN_Route,
+        Component: Main
     }
 ]

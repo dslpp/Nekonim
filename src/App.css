@@ -1,8 +1,8 @@
 @font-face {
     font-family: "Outfit";
-    src: url(fonts/Outfit.ttf) format('truetype');
+    src: url(/public/fonts/Outfit.ttf) format('truetype');
     font-family: "Ossem";
-    src: url(fonts/Ossem.ttf) format('truetype');
+    src: url(/public/fonts/Ossem.ttf) format('truetype');
 }
 .brandStyle{
     font-family: "Outfit";
@@ -128,8 +128,15 @@ hr{
     cursor: pointer;
     font-family: "Ossem";
     margin-left: 3vw;
-
 }
+    .Navcontainer{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .NavBars{
+        display: flex;
+        flex-direction: row-reverse;
+    }
   
 
 
