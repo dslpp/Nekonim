@@ -1,64 +1,27 @@
 @font-face {
     font-family: "Outfit";
     src: url(/public/fonts/Outfit.ttf) format('truetype');
-    font-family: "Ossem";
-    src: url(/public/fonts/Ossem.ttf) format('truetype');
 }
-.brandStyle{
-    font-family: "Outfit";
-    font-size: 1.5rem;
-    color: #B56576;
-    letter-spacing: 0.3em;
-    text-transform: uppercase; 
-}
-.brandStyle:hover{
-    color: #B56576;
-    
-}
-.NavbarText{
-    color: white;
-    font-family: "Ossem";
-    padding-top: 1vw;
-  
-}
-.NavbarText:hover{
-    color:#B56576;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
+@font-face {
+    font-family: 'Ossem'; 
+    src: url(/public/fonts/Ossem.ttf) format('truetype'),
+     url(/public/fonts/Ossem.woff2) format('woff2'),
+     url(/public/fonts/Ossem.woff) format('woff');
 }
 
-.login{
-    color: white;
-    font-family: "Ossem";
-    padding-top: 1vw;
-}
-.login:hover{
-    color: #B56576;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-}
+
+
 .active-type {
     background-color: #B56576; 
-    color: #f8f8f8; /* Цвет текста для активного элемента */
-    
-  
+    color: #f8f8f8; 
 }
 .Cards{
     width:100%;
-  
      cursor:pointer;
      font-family: "Ossem";
      margin-bottom: 2vw;
 }
-hr{
-    padding-top: vw;
-}
+
    
 .label{
     text-align: center;
@@ -79,7 +42,6 @@ hr{
     max-width: 100%;
     max-height: 100%;
     padding-top: 1.5vw;
- 
 }
 .BasketCardGoods{
     display: flex;
@@ -96,48 +58,59 @@ hr{
     width: 100%;
 }
 .centerimage{
-    width: 100%; /* Установите желаемую ширину изображения */
-    height: 120%; /* Установите желаемую высоту изображения */
+    width: 100%; 
+    height: 120%; 
     max-width: 100%;
     max-height: 100%;
-
 }
 .shortdesc{
     color:#6e6e6e;
 }
-/* App.css */
 .custom-carousel {
-    height: 43vh; /* Устанавливаем высоту на 100% высоты экрана */
+    height: 43vh; 
     width: 91vw;
-   
-      
-  }
+}
   
-  .custom-carousel .carousel-inner {
+.custom-carousel .carousel-inner {
      width: 78vw;
      margin-left: 5vw;
- /* Устанавливаем высоту внутреннего контейнера карусели на 100% */
-  }
+}
   
-  .custom-carousel .carousel-item {
-    height: 100%; /* Устанавливаем высоту слайда карусели на 100% */
-  }
+.custom-carousel .carousel-item {
+    height: 100%; 
+}
 
-  .Cardss {
+.Cardss {
     width: 15vw;
     cursor: pointer;
     font-family: "Ossem";
     margin-left: 3vw;
 }
-    .Navcontainer{
-        display: flex;
-        flex-direction: row-reverse;
-    }
-    .NavBars{
-        display: flex;
-        flex-direction: row-reverse;
-    }
+
   
+body {
+    --color-primary: #ffffff;
+    --color-secondary: #ffab2c;
+    --color-foreground: #212121;
+    --color-background: #000000;
+    background-color:var(--color-primary)
+  }
+  .dark-mode {
+    --color-primary: #880000;;
+    --color-secondary: #ffb446;
+    --color-foreground: #e3e3e3;
+    --color-background: #000000;
+    background-color:var(--color-primary)
+  }
+
+
+
+
+  
+.p-5{
+    background-color: #111111;
+    color: white;
+}
 
 
 @media (max-width: 768px) {

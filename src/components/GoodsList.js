@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import {React, useContext }from 'react';
 import { Context } from '../index';
-import {Col, Row} from "react-bootstrap"
+import {Row} from "react-bootstrap"
 import GoodsItem from "../components/GoodsItem";
 
 const GoodsList =observer(()=> {

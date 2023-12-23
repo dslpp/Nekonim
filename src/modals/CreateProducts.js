@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Form, Modal, Button, Dropdown, Row, Col} from 'react-bootstrap';
 import { Context } from "../index";
 
-
 const CreateProducts = ({show, onHide}) => {
   const { type } = useContext(Context);
   const [info, setInfo] = useState([]);
@@ -13,7 +12,6 @@ const CreateProducts = ({show, onHide}) => {
   const removeInfo = (numberToRemove) => {
     setInfo(info.filter(index=> index.number !== numberToRemove));
   };
-
     return (
         <Modal
         show={show}
@@ -44,7 +42,6 @@ const CreateProducts = ({show, onHide}) => {
             <Form.Control
               className='mt-3'
               placeholder='Введите краткое описание товара (опицонально)'
-      
            />
            <Form.Control
             className='mt-3'

@@ -1,0 +1,71 @@
+.Navcontainer{
+    display: flex;
+    flex-direction: row-reverse;
+  
+}
+.login-dark-mode{
+--color-secondary: #ffffff;
+color: var(--color-secondary);
+}
+.navbars a:hover{
+color:#B56576;
+transition: 0.5s;
+-webkit-transition: 0.5s;
+-moz-transition: 0.5s;
+-ms-transition: 0.5s;
+-o-transition: 0.5s;
+}
+.navbars {
+height: 5vw;
+font-family: "Ossem";
+display: flex;
+flex-direction: row-reverse;
+--color-primary: #ffffff;
+background-color: var(--color-primary);
+}
+.navbars a {
+text-decoration: none;
+padding-top: 1vw;
+margin-right: 1.3vw;
+--color-primary: #000000;
+color: var(--color-primary);
+}
+
+.navbars-dark-mode {
+--color-secondary: #000000;
+background-color: var(--color-secondary);
+}
+.navbars-dark-mode a {
+--color-secondary:  #ffffff;;
+color: var(--color-secondary);
+}
+
+.image-container {
+    width: 1.5vw;
+    padding-top: 0.5vw;
+}
+
+.image-container img {
+    width: 100%;
+}
+
+.image-container.negative img {
+    filter: invert(100%);
+}
+.Container{
+
+    display:  flex;
+    justify-content: center;
+    align-items:center;
+}
+ .navbars .brandStyle {
+    font-family: "Outfit";
+    font-size: 1.5rem;
+    --color-primary: #B56576;
+    color: var(--color-primary);
+    letter-spacing: 0.3em;
+    text-transform: uppercase; 
+}
+.brandStyle:hover{
+    color: #B56576;
+}

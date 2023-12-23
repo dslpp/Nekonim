@@ -23,7 +23,6 @@ const GoodsCarousel = () => {
   return (
     <Container>
       <Carousel variant='dark' indicators={false} className="custom-carousel">
-
         {chunkedProducts.map((chunk, index) => (
           <Carousel.Item key={index}>
             <Row>
