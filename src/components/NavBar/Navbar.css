@@ -16,7 +16,7 @@ transition: 0.5s;
 -o-transition: 0.5s;
 }
 .navbars {
-height: 5vw;
+height: 4vw;
 font-family: "Ossem";
 display: flex;
 flex-direction: row-reverse;
@@ -25,14 +25,13 @@ background-color: var(--color-primary);
 }
 .navbars a {
 text-decoration: none;
-padding-top: 1vw;
 margin-right: 1.3vw;
 --color-primary: #000000;
 color: var(--color-primary);
 }
 
 .navbars-dark-mode {
---color-secondary: #000000;
+--color-secondary: #111111;
 background-color: var(--color-secondary);
 }
 .navbars-dark-mode a {
@@ -41,14 +40,12 @@ color: var(--color-secondary);
 }
 
 .image-container {
-    width: 1.5vw;
-    padding-top: 0.5vw;
+    width: 1.4vw;
 }
 
 .image-container img {
     width: 100%;
 }
-
 .image-container.negative img {
     filter: invert(100%);
 }

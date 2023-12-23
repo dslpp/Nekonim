@@ -96,7 +96,7 @@ body {
     background-color:var(--color-primary)
   }
   .dark-mode {
-    --color-primary: #880000;;
+    --color-primary: #000000;;
     --color-secondary: #ffb446;
     --color-foreground: #e3e3e3;
     --color-background: #000000;
