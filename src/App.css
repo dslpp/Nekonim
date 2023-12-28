@@ -11,10 +11,6 @@
 
 
 
-.active-type {
-    background-color: #B56576; 
-    color: #f8f8f8; 
-}
 .Cards{
     width:100%;
      cursor:pointer;
@@ -89,7 +85,7 @@
 
   
 body {
-    --color-primary: #ffffff;
+    --color-primary: #f7f7f7;
     --color-secondary: #ffab2c;
     --color-foreground: #212121;
     --color-background: #000000;
@@ -97,7 +93,7 @@ body {
   }
   .dark-mode {
     --color-primary: #000000;;
-    --color-secondary: #ffb446;
+    --color-secondary: #111111;
     --color-foreground: #e3e3e3;
     --color-background: #000000;
     background-color:var(--color-primary)

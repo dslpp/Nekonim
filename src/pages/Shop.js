@@ -14,10 +14,10 @@ const Shop = ({ products }) => {
       </div>
 
       <Container>
-        <Row className="mt-5">
-          <Col md={9}>
+        <Row className="mt-4">
+    
             <GoodsCarousel />
-          </Col>
+       
         </Row>
       </Container>
       <div className="d-flex justify-content-center align-items-center mt-2">

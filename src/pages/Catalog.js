@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container"
 import {Col, Row} from "react-bootstrap"
-import TypeBar from "../components/TypeBar";
+import TypeBar from "../components/TypeBar/TypeBar";
 import GoodsList from "../components/GoodsList";
 
 const Catalog =() => {

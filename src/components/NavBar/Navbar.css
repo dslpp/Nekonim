@@ -48,6 +48,7 @@ color: var(--color-secondary);
 }
 .image-container.negative img {
     filter: invert(100%);
+    -webkit-filter: invert(100%);
 }
 .Container{
 

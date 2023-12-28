@@ -1,4 +1,4 @@
-import { React, useContext, useState } from 'react';
+import { React, useContext} from 'react';
 import { Context } from '../../index';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -21,6 +21,10 @@ const NavBar = observer(() => {
   const handleImageClick = () => {
     toggleTheme();
   };
+  const logOut=()=>{
+    user.setUser({})
+    user.setIsAuth(false)
+  }
 
   return (
     <>
@@ -33,13 +37,10 @@ const NavBar = observer(() => {
             <Link to= "/catalog"> Каталог </Link>
             <Link to= "/basket"> Корзина</Link>
             <Link to= "/dilevery"> Доставка</Link>
-
-       
-           
             {user.isAuth ? (
               <Nav>
                <Link to="/admin"  onClick={() => history(ADMIN_Route)}>Админ-панель</Link>
-                <Link to="/login" onClick={() => history(LOGIN_Route) & user.setIsAuth(false)}>Выход</Link>
+                <Link to="/login" onClick={() => logOut()}>Выход</Link>
               </Nav>
             ) : (
               <Nav>
