@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Route, Routes, Navigate} from 'react-router-dom';
 import { authRoutes, publicRoutes } from "../routes";
-import { SHOP_Route } from "../utils/const";
+import { MAIN_Route } from "../utils/const";
 import { Context } from "../index";
 
 
@@ -16,7 +16,7 @@ const AppRouter = () => {
             {publicRoutes.map(({ path, Component }) => (
                 <Route key={path} path={path} element={<Component />} />
             ))}
-         <Route path="*" element={<Navigate to={SHOP_Route}/>} />
+         <Route path="*" element={<Navigate to={MAIN_Route}/>} />
         </Routes>
     );
 }

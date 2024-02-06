@@ -4,7 +4,7 @@ import GoodsPage from "./pages/GoodsPage"
 import Shop from "./pages/Shop"
 import Admin from "./pages/AdminPanel"
 import Catalog from "./pages/Catalog"
-import Main from "./pages/Main"
+import Main from "./pages/Main/Main"
 import { ADMIN_Route, BASKET_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route } from "./utils/const"
 
 //список страниц для авторизированных пользователей
@@ -21,6 +21,10 @@ export const  authRoutes = [
 //список страниц для  НЕ авторизированных пользователей
 export const publicRoutes = [
    
+    {
+        path: MAIN_Route,
+        Component: Main
+    },
     {
         path: SHOP_Route,
         Component: Shop
@@ -43,9 +47,6 @@ export const publicRoutes = [
     {
         path: GOODS_Route,
         Component: GoodsPage
-    },
-    {
-        path: MAIN_Route,
-        Component: Main
     }
+    
 ]

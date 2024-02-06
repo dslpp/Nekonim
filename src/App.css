@@ -90,6 +90,7 @@ body {
     --color-foreground: #212121;
     --color-background: #000000;
     background-color:var(--color-primary)
+    
   }
   .dark-mode {
     --color-primary: #000000;;

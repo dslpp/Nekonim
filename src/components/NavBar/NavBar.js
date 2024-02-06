@@ -21,10 +21,11 @@ const NavBar = observer(() => {
   const handleImageClick = () => {
     toggleTheme();
   };
-  const logOut=()=>{
+  const logOut = () => {
     user.setUser({})
     user.setIsAuth(false)
-  }
+    localStorage.clear("token")
+}
 
   return (
     <>

@@ -1,0 +1,19 @@
+.carousel{
+    width: 85%;
+    height: 30%;
+    margin:auto;
+}
+.carouselblock{
+    display: block;
+    width: 100%;
+}
+@media screen and (orientation: portrait){
+    .carousel{
+        width: 50vmax;
+        height: 50vmin;
+        padding: auto;
+    }
+    .carouselblock{
+        height: 23vh;
+    }
+}
