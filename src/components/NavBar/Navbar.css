@@ -20,23 +20,20 @@ height: 4vw;
 font-family: "Ossem";
 display: flex;
 flex-direction: row-reverse;
---color-primary: #ffffff;
-background-color: var(--color-primary);
+background-color: #ffffff;
 }
 .navbars a {
 text-decoration: none;
 margin-right: 1.3vw;
---color-primary: #000000;
-color: var(--color-primary);
+color: #000000;
 }
 
 .navbars-dark-mode {
---color-secondary: #111111;
-background-color: var(--color-secondary);
+background-color: #111111;
+
 }
 .navbars-dark-mode a {
---color-secondary:  #ffffff;;
-color: var(--color-secondary);
+color:  #ffffff;;
 }
 
 .image-container {
