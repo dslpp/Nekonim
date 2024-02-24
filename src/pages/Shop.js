@@ -3,7 +3,7 @@ import GoodsCarousel from '../components/GoodsCarousel';
 import { Row,  Container } from 'react-bootstrap';
 
 
-const Shop = ({ products }) => {
+const Shop = () => {
   return (
     <div >
       <div className="d-flex justify-content-center align-items-center mt-4">

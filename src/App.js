@@ -16,12 +16,13 @@ const App = observer(() => {
     } else {
       localStorage.setItem('theme', 'light');
     }
-    check().then(data =>{
-      user.setUser({ })
-      user.setIsAuth(true)
-    })
-  }, []);
-
+    check().then(data => {
+      user.setUser(data);
+      user.setIsAuth(true);
+    }).catch(() => {
+      localStorage.clear();
+    });
+  }, [user]);
   return (
     
     <ThemeProvider>

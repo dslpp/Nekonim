@@ -13,7 +13,7 @@ const GoodsItem =({products})=> {
             <Col md={3} onClick={()=> history(GOODS_Route+'/'+products.id)}>
                <Card className='Cards'>
                <div className='image-wrapper'>
-                    <Image className='center-image' src={products.img} />
+                    <Image className='center-image' src={process.env.REACT_APP_API_URL+ products.img} />
                 </div>
                    <div className='label'>
                         <div>

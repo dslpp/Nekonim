@@ -1,0 +1,24 @@
+.Container{
+    height: calc(100vh - 62px);
+    position: relative;
+}
+.Card{
+    width: 40vmax;
+    padding: 3vmax;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+}
+.Card-dark-mode{
+    background-color: #111111;
+    color: #ffffff; 
+}
+@media screen and (orientation: portrait){
+    .Card{
+        width: 50vmax;
+    } 
+}

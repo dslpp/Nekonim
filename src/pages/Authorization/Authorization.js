@@ -1,17 +1,19 @@
 import React, { useState, useContext } from 'react';
-import { Context } from '../index';
+import { Context } from '../../index';
 import Container from 'react-bootstrap/esm/Container';
-import './../App.css';
+import '../Authorization/Authorization.css';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 import Row from 'react-bootstrap/Row';
-import { CATALOG_Route, LOGIN_Route, REGISTRATION_Route } from '../utils/const';
+import { CATALOG_Route, LOGIN_Route, REGISTRATION_Route } from '../../utils/const';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { registration, login } from '../http/userAPI';
+import { registration, login } from '../../http/userAPI';
 import { observer } from 'mobx-react-lite';
+import { useTheme } from '../../ThemeContext';
 
 const Authorization = observer(() => {
+  const { isDarkMode} = useTheme();
   const location = useLocation();
   const history = useNavigate();
   const isLogin = location.pathname === LOGIN_Route;
@@ -47,7 +49,7 @@ const Authorization = observer(() => {
       } else {
         data = await registration(email, password);
       }
-      user.setUser(user);
+      user.setUser(data);
       user.setIsAuth(true);
       history(CATALOG_Route)
     } catch (e) {
@@ -55,9 +57,10 @@ const Authorization = observer(() => {
       console.clear();
     }
   };
+  
   return (
-    <Container className="Container" style={{ height: window.innerHeight - 62 }}>
-      <Card style={{ width: 600 }} className="p-5">
+    <Container className={Container}>
+      <Card  className={`Card ${isDarkMode ? 'Card-dark-mode' : ''}`}>
         <h2 className="m-auto">{isLogin ? 'Вход в личный кабинет' : 'Регистрация'}</h2>
         <Form className="d-flex flex-column">
           <Form.Control

@@ -1,24 +1,60 @@
-import React, { useContext } from "react";
-import { Route, Routes, Navigate} from 'react-router-dom';
-import { authRoutes, publicRoutes } from "../routes";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { adminRoutes, authRoutes, publicRoutes } from "../routes";
 import { MAIN_Route } from "../utils/const";
-import { Context } from "../index";
-
+import { check } from "../http/userAPI";
 
 const AppRouter = () => {
-   const {user} = useContext(Context)
+    const [userRole, setUserRole] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchUserRole = async () => {
+            try {
+                const user = await check();
+                setUserRole(user.role);
+            } catch (error) {
+                // Обработка ошибки, например, если токен недействителен или истек
+                setUserRole(null);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchUserRole();
+    }, []);
+
+    // Если происходит загрузка, показываем сообщение "Загрузка..."
+    if (loading) {
+        return <div>Загрузка...</div>;
+    }
 
     return (
         <Routes>
-            {user.isAuth === true && authRoutes.map(({ path, Component }) => (
-                <Route key={path} path={path} element={<Component />} />
+            {adminRoutes.map(({ path, Component, role }) => (
+                <Route
+                    key={path}
+                    path={path}
+                    element={
+                        userRole === role ? <Component /> : <Navigate to={MAIN_Route} replace />
+                    }
+                />
+            ))}
+              {authRoutes.map(({ path, Component, role }) => (
+               <Route
+               key={path}
+               path={path}
+               element={
+                   role.includes(userRole) ? <Component /> : <Navigate to={MAIN_Route} replace />
+               }
+           />
             ))}
             {publicRoutes.map(({ path, Component }) => (
                 <Route key={path} path={path} element={<Component />} />
             ))}
-         <Route path="*" element={<Navigate to={MAIN_Route}/>} />
+            
+            <Route path="*" element={<Navigate to={MAIN_Route} replace />} />
         </Routes>
     );
-}
+};
 
 export default AppRouter;
