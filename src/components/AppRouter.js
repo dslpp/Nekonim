@@ -14,7 +14,6 @@ const AppRouter = () => {
                 const user = await check();
                 setUserRole(user.role);
             } catch (error) {
-                // Обработка ошибки, например, если токен недействителен или истек
                 setUserRole(null);
             } finally {
                 setLoading(false);
@@ -23,7 +22,7 @@ const AppRouter = () => {
         fetchUserRole();
     }, []);
 
-    // Если происходит загрузка, показываем сообщение "Загрузка..."
+    
     if (loading) {
         return <div>Загрузка...</div>;
     }

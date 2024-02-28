@@ -24,6 +24,7 @@ const NavBar = observer(() => {
         user.setUser({});
         user.setIsAuth(false);
         localStorage.clear("token");
+        window.location.reload(history(LOGIN_Route));
     };
 
     return (
@@ -44,7 +45,7 @@ const NavBar = observer(() => {
 
                         {user.isAuth ? (
                             <Nav>
-                                 <Link to="/account" >Личный кабинет</Link>
+                                 {/* <Link to="/account" >Личный кабинет</Link> */}
                                 <Link to="/login" onClick={() => logOut()}>Выход</Link>
                             </Nav>
                         ) : (

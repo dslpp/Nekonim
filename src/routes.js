@@ -1,11 +1,12 @@
 import Authorization from "./pages/Authorization/Authorization"
 import Basket from "./pages/Basket"
-import GoodsPage from "./pages/GoodsPage"
+import GoodsPage from "./pages/GoodsPage/GoodsPage"
 import Shop from "./pages/Shop"
 import Admin from "./pages/AdminPanel"
 import Catalog from "./pages/Catalog"
 import Main from "./pages/Main/Main"
-import { ADMIN_Route, BASKET_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route } from "./utils/const"
+import Receipt from "./components/Receipt"
+import { ADMIN_Route, BASKET_Route,RECEIPT_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route } from "./utils/const"
 import PersonalArea from "./pages/Personal Area/PersonalArea"
 
 export const  adminRoutes = [
@@ -22,8 +23,18 @@ export const  authRoutes = [
         path: PERSONAL_Route,
         Component: PersonalArea,
         role: ['USER', 'ADMIN']
-    }
-   
+    },
+    {
+        path: BASKET_Route,
+        Component: Basket,
+        role: ['USER', 'ADMIN']
+    }   
+    ,
+    {
+        path: RECEIPT_Route,
+        Component: Receipt,
+        role: ['USER', 'ADMIN']
+    }  
 ]
 //список страниц для  НЕ авторизированных пользователей
 export const publicRoutes = [
@@ -54,9 +65,5 @@ export const publicRoutes = [
     {
         path: GOODS_Route,
         Component: GoodsPage
-    },
-    {
-        path: BASKET_Route,
-        Component: Basket
-    }   
+    }
 ]

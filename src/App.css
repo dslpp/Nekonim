@@ -26,6 +26,15 @@
 .price{
     font-weight: bold;
 }
+.itemres{
+    
+        width: 60vmax;
+        padding: 10px;
+        border: 1px solid #ccc;
+ 
+      
+   
+}
 .image-wrapper {
     display: flex;
     justify-content: center;

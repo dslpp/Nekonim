@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "Outfit";
+    src: url(/public/fonts/Outfit.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Ossem'; 
+    src: url(/public/fonts/Ossem.ttf) format('truetype'),
+     url(/public/fonts/Ossem.woff2) format('woff2'),
+     url(/public/fonts/Ossem.woff) format('woff');
+}
+.containerbas {
+    margin-top: 2vmax;
+    margin-left: 3vmax;
+    display: grid;
+    grid-template-columns: 60vmax 8vmax 23vmax;
+}
+.name{
+    font-family: "Ossem";
+    grid-row:1;
+    font-size: 1.5vmax;
+    padding-top: 2.5vmax;
+}
+
+.items {
+    display:grid;
+    gap: 2vmax;
+    height: 8.5vmax;
+
+}
+
+.item {
+    width: 60vmax;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: 60% 4% 35%;
+}
+.product{
+display: grid;
+grid-column-start: auto;
+}
+.prices{
+    display: grid;
+    grid-column:3;
+    font-family: "Ossem";
+    font-size: 1.5vmax;
+ 
+    grid-template-columns: 8.5vmax 2vmax 10vmax;
+
+    }
+.item img {
+    width: 5vmax;
+    height: auto;
+    margin-right: 10px;    
+    grid-row:1;
+}
+
+.buttondel{
+    margin-top: 3vmax;
+    width: 8vmax;
+    height: 2vmax;
+    grid-column: 3;
+}
+.priceb{
+    padding-top: 3vmax;
+    font-family: "Ossem";
+    font-weight:normal;
+    
+}
+.item .quantity {
+    margin-left: auto;
+    grid-row:1;
+    font-family: "Ossem";
+    font-size: 1.1vmax;
+    padding-top: 3vmax;
+}
+
+.total {
+    display: grid;
+    grid-column: 3;
+    font-size: 18px;
+    justify-content: center;
+    height: 20vmax;
+
+
+}
+
+.total .amount {
+    font-weight: normal;
+    
+}
+
+.payment {
+    margin-top: 30px;
+ 
+}
+.button{
+    width: 15vmax;
+    height: 3vmax;
+    display: flex;
+    justify-content: center;
+    
+}
+.result{
+    padding-top: 2vmax;
+    
+}
+
+
+@media screen and (orientation: portrait){
+    /* Адаптивная вёрстка для планшетов и десктопов */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .items {
+        width: 70%;
+    }
+
+    .total {
+        width: 70%;
+    }
+
+    .payment {
+        width: 70%;
+    }
+}

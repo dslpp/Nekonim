@@ -34,3 +34,26 @@ export const fetchOneProducts = async (id) => {
     const {data} = await $host.get('api/products/'+id)
     return data
 }
+export const updateProducts = async (id, products) => {
+    const {data} = await $authHost.patch(`api/products/${id}`, products);
+    return data;
+};
+export const deleteProducts = async (id) => {
+    const { data } = await $authHost.delete(`api/products/${id}`);
+    return data;
+};
+
+
+export const addToBasket = async (productId) => {
+    const {response} = await $authHost.post('api/basket', productId)
+    return response
+}
+
+export const getBasket = async () => {
+    const {data} = await $authHost.get('api/basket')
+    return data
+}
+export const deleteFromBasket = async (basketId) => {
+    const { data } = await $authHost.delete(`api/basket/${basketId}`);
+    return data;
+};

@@ -5,6 +5,8 @@ export default class GoodsStore  {
         this._types=[]
         this._products=[]
         this._selectedType={}
+        this._baskets = []
+        this._totalCount = 0
         
         makeAutoObservable(this)
     }
@@ -14,8 +16,14 @@ export default class GoodsStore  {
     setProducts(products){
         this._products=products
     }
+    setBaskets(basket){
+        this._baskets = basket
+    }
     setSelectedType(types){
         this._selectedType=types
+    }
+    setTotalCount(count) {
+        this._totalCount = count
     }
    
     get types(){
@@ -26,5 +34,11 @@ export default class GoodsStore  {
     }
     get selectedType(){
         return this._selectedType
+    }
+    get basket() {
+        return this._baskets
+    }
+    get totalCount() {
+        return this._totalCount
     }
 }

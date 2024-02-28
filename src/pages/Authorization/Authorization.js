@@ -51,11 +51,13 @@ const Authorization = observer(() => {
       }
       user.setUser(data);
       user.setIsAuth(true);
-      history(CATALOG_Route)
+      window.location.reload(history(CATALOG_Route));
+      
     } catch (e) {
       alert(e.response.data.message)
       console.clear();
     }
+    
   };
   
   return (
