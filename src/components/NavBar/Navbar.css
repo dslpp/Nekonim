@@ -1,0 +1,66 @@
+.Navcontainer{
+    display: flex;
+    flex-direction: row-reverse;
+  
+}
+.login-dark-mode{
+--color-secondary: #ffffff;
+color: var(--color-secondary);
+}
+.navbars a:hover{
+color:#B56576;
+transition: 0.5s;
+-webkit-transition: 0.5s;
+-moz-transition: 0.5s;
+-ms-transition: 0.5s;
+-o-transition: 0.5s;
+}
+.navbars {
+height: 4vw;
+font-family: "Ossem";
+display: flex;
+flex-direction: row-reverse;
+background-color: #ffffff;
+}
+.navbars a {
+text-decoration: none;
+margin-right: 1.3vw;
+color: #000000;
+}
+
+.navbars-dark-mode {
+background-color: #111111;
+
+}
+.navbars-dark-mode a {
+color:  #ffffff;;
+}
+
+.image-container {
+    width: 1.4vw;
+}
+
+.image-container img {
+    width: 100%;
+}
+.image-container.negative img {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+.Container{
+
+    display:  flex;
+    justify-content: center;
+    align-items:center;
+}
+ .navbars .brandStyle {
+    font-family: "Outfit";
+    font-size: 1.5rem;
+    --color-primary: #B56576;
+    color: var(--color-primary);
+    letter-spacing: 0.3em;
+    text-transform: uppercase; 
+}
+.brandStyle:hover{
+    color: #B56576;
+}

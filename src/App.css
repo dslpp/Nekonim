@@ -1,0 +1,161 @@
+@font-face {
+    font-family: "Outfit";
+    src: url(/public/fonts/Outfit.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Ossem'; 
+    src: url(/public/fonts/Ossem.ttf) format('truetype'),
+     url(/public/fonts/Ossem.woff2) format('woff2'),
+     url(/public/fonts/Ossem.woff) format('woff');
+}
+
+
+
+.Cards{
+    width:100%;
+     cursor:pointer;
+     font-family: "Ossem";
+     margin-bottom: 2vw;
+}
+
+   
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Минимальная высота страницы */
+  }
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vw;/* Установите высоту обертки */
+}
+.center-image {
+    width: 70%; /* Установите желаемую ширину изображения */
+    height: 100%; /* Установите желаемую высоту изображения */
+    max-width: 100%;
+    max-height: 100%;
+    padding-top: 1.5vw;
+}
+.BasketCardGoods{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+}
+.characteristic{
+    font-size: 1.2rem;
+    margin-top: 5vh;
+}
+.imagegoods{
+    height: 100%;
+    width: 100%;
+}
+.centerimage{
+    width: 100%; 
+    height: 120%; 
+    max-width: 100%;
+    max-height: 100%;
+}
+.shortdesc{
+    color:#6e6e6e;
+}
+.carousel {
+    width: 85%;
+    height: 0%;
+    margin: auto;
+}
+  
+.custom-carousel .carousel-inner {
+     width: 78vw;
+     padding-top: 5vmax;
+     margin-left: 5vw;
+}
+.carousel-control-prev-icon
+{
+    padding-top: 15vmax;
+}
+.custom-carousel .carousel-item {
+    height: 100%; 
+}
+
+.Cardss {
+    width: 15vw;
+    cursor: pointer;
+    font-family: "Ossem";
+    margin-left: 3vw;
+}
+
+  
+body {
+    --color-primary: #f7f7f7;
+    --color-secondary: #ffab2c;
+    --color-foreground: #212121;
+    --color-background: #000000;
+    background-color:var(--color-primary)
+    
+  }
+  .dark-mode {
+    --color-primary: #000000;;
+    --color-secondary: #111111;
+    --color-foreground: #e3e3e3;
+    --color-background: #000000;
+    background-color:var(--color-primary)
+  }
+
+
+
+
+  
+.p-5{
+    background-color: #111111;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .brandStyle {
+        font-size: 0.9rem; /* Новый размер шрифта для мобильных устройств */
+    }
+    .NavbarText{
+        display: none;
+    }
+    .Cards{
+        display:flex ;
+        justify-content:center;
+         align-items:center;
+         width:75%;
+         cursor:pointer;
+         margin: 3vw 12vw ;
+    
+    }
+    .Cardss {
+
+         width:70%;
+         cursor:pointer;
+         margin: 3vw 14vw 
+    }
+    .image-wrapper {
+        height: 60vw; 
+    }
+    .center-image {
+        width: 55vw; 
+       padding-top: 5vw;
+       padding-bottom: 5vw;
+    }
+    .imagegoods{
+        height: 100vw;
+        width: 55vw;
+ 
+    }
+    .centerimage {
+       width: 93vw;
+       height: 100%; 
+
+       padding-bottom: 5vw;
+    }
+    .custom-carousel .carousel-inner {
+        width: 78vw;
+        margin-left: 3vw;
+    }
+}

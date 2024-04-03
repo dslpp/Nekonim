@@ -1,0 +1,148 @@
+@font-face {
+    font-family: "Outfit";
+    src: url(/public/fonts/Outfit.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Ossem'; 
+    src: url(/public/fonts/Ossem.ttf) format('truetype'),
+     url(/public/fonts/Ossem.woff2) format('woff2'),
+     url(/public/fonts/Ossem.woff) format('woff');
+}
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.containerbas {
+    opacity: 0;
+    animation: ani 2.5s forwards;
+    margin-top: 2vmax;
+    margin-left: 3vmax;
+    display: grid;
+    grid-template-columns: 60vmax 8vmax 23vmax;
+}
+.name{
+    font-family: "Ossem";
+    grid-row:1;
+    font-size: 1.3vmax;
+    padding-top: 1vmax;
+    line-height: 0.9em;
+}
+
+.items {
+    display:grid;
+    gap: 2vmax;
+
+}
+    
+.item {
+    width: 60vmax;
+    height: 11vmax;
+    padding: 0.5vmax;
+    border: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: 65% 2% 35%;
+}
+.product{
+display: grid;
+grid-column-start: auto;
+grid-template-columns: 20% 75%;
+
+}
+.prices{
+    display: grid;
+    grid-column:3;
+    font-family: "Ossem";
+    font-size: 1.5vmax;
+    grid-template-columns:10vmax 1vmax 10vmax;
+
+    }
+.item img {
+    width: 7vmax;
+    height: 100%;
+    padding: 0.6vmax;
+    grid-row:1/4;
+}
+
+.buttondel{
+    margin-top: 3vmax;
+    width: 8vmax;
+    height: 2vmax;
+    grid-column: 3;
+}
+.priceb{
+    padding-top: 3vmax;
+    font-family: "Ossem";
+    font-weight:normal;
+    
+}
+.quantity {
+    grid-row:2;
+    grid-column: 2;
+    font-family: "Ossem";
+    font-size: 1.1vmax;
+}
+
+
+.total {
+    position: fixed;
+    top: 50%; 
+    left: 82.5%; 
+    transform: translate(-50%, -50%);
+    width: 23vmax;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 1000; 
+    display: grid;
+    font-size: 18px;
+    justify-content: center;
+    height: 25vmax;
+    
+}
+
+.total .amount {
+    font-weight: normal;
+    
+}
+
+.payment {
+    margin-top: 30px;
+ 
+}
+.button{
+    width: 15vmax;
+    height: 3vmax;
+    display: flex;
+    justify-content: center;
+    
+}
+.result{
+    padding-top: 2vmax;
+    
+}
+
+
+@media screen and (orientation: portrait){
+    /* Адаптивная вёрстка для планшетов и десктопов */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .items {
+        width: 70%;
+    }
+
+    .total {
+        width: 70%;
+    }
+
+    .payment {
+        width: 70%;
+    }
+}
