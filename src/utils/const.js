@@ -7,6 +7,4 @@ export const GOODS_Route = '/products'
 export const CATALOG_Route = '/catalog'
 export const MAIN_Route = '/main'
 export const PERSONAL_Route = '/account'
-export const RECEIPT_Route = '/cheak'
-export const SEND_Route = '/send'
-
+export const RECEIPT_Route = '/cheak'   

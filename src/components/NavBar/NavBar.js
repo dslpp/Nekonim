@@ -38,7 +38,7 @@ const NavBar = observer(() => {
                         <Link to="/dilevery"> Доставка</Link>
                         <Link to="/catalog"> Каталог </Link>
                         <Link to="/basket"> Корзина</Link>
-                        <Link to="/send" onClick={() => history(ADMIN_Route)}> Контакты</Link>
+
                         
                     
                         {user.isAuth && user.user.role === 'ADMIN' && (

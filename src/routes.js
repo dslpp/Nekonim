@@ -6,9 +6,8 @@ import Admin from "./pages/AdminPanel"
 import Catalog from "./pages/Catalog"
 import Main from "./pages/Main/Main"
 import Receipt from "./components/Receipt"
-import { ADMIN_Route, BASKET_Route,RECEIPT_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route, SEND_Route } from "./utils/const"
+import { ADMIN_Route, BASKET_Route,RECEIPT_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route } from "./utils/const"
 import PersonalArea from "./pages/Personal Area/PersonalArea"
-import SendEmail from "./components/SendEmail/SendEmail"
 
 export const  adminRoutes = [
     {
@@ -43,10 +42,6 @@ export const publicRoutes = [
     {
         path: MAIN_Route,
         Component: Main
-    },
-    {
-        path: SEND_Route,
-        Component: SendEmail
     },
     {
         path: SHOP_Route,

@@ -32,10 +32,10 @@ const Catalog = observer(() => {
             const data = await searchProducts(searchQuery, sortByPrice);
             if (data.message) {
                 setSearchResultMessage(data.message);
-                type.setProducts([]); // Очищаем список товаров
+                type.setProducts([]); 
             } else {
                 type.setProducts(data);
-                setSearchResultMessage(""); // Очищаем сообщение об отсутствии результатов
+                setSearchResultMessage(""); 
             }
         }
     };
@@ -76,7 +76,7 @@ const Catalog = observer(() => {
                 </Col>
                 <Col md={9}>
                 {searchResultMessage && <p>{searchResultMessage}</p>}
-                    <GoodsList />
+                    <GoodsList/>
                     <Pages />
                 </Col>
             </Row>
