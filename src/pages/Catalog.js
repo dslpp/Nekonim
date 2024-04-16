@@ -7,7 +7,7 @@ import Pages from "../components/Pages";
 import { observer } from "mobx-react-lite";
 import { fetchProducts, fetchTypes, searchProducts } from "../http/products";
 import { Context } from "..";
-import './Catalog.css';
+import './Catalog.css'; 
 
 const Catalog = observer(() => {
     const { type } = useContext(Context);
@@ -18,6 +18,7 @@ const Catalog = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => type.setTypess(data));
     }, []);
+  
 
     useEffect(() => {
         fetchProducts(type.selectedType.id, type.page, 12, sortByPrice).then(data => {

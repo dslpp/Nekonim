@@ -22,17 +22,17 @@
 .app-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Минимальная высота страницы */
+    min-height: 100vh; 
   }
 .image-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15vw;/* Установите высоту обертки */
+    height: 15vw;
 }
 .center-image {
-    width: 70%; /* Установите желаемую ширину изображения */
-    height: 100%; /* Установите желаемую высоту изображения */
+    width: 70%; 
+    height: 100%; 
     max-width: 100%;
     max-height: 100%;
     padding-top: 1.5vw;
@@ -88,25 +88,15 @@
 
   
 body {
-    --color-primary: #f7f7f7;
-    --color-secondary: #ffab2c;
-    --color-foreground: #212121;
-    --color-background: #000000;
-    background-color:var(--color-primary)
+  
+    background-color:#f7f7f7;
     
   }
   .dark-mode {
-    --color-primary: #000000;;
-    --color-secondary: #111111;
-    --color-foreground: #e3e3e3;
-    --color-background: #000000;
-    background-color:var(--color-primary)
+   
+    background-color:#000000;
   }
 
-
-
-
-  
 .p-5{
     background-color: #111111;
     color: white;
@@ -115,7 +105,7 @@ body {
 
 @media (max-width: 768px) {
     .brandStyle {
-        font-size: 0.9rem; /* Новый размер шрифта для мобильных устройств */
+        font-size: 0.9rem;
     }
     .NavbarText{
         display: none;

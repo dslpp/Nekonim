@@ -1,8 +1,26 @@
+
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .Container{
     height: calc(100vh - 62px);
     position: relative;
+   
+
 }
+
 .Card{
+    height: 23vmax;
+    font-family: "Ossem";
+    font-size: 1vmax;
+    opacity: 0;
+    animation: ani 2s forwards; 
     width: 40vmax;
     padding: 3vmax;
     margin: 0;
@@ -17,8 +35,26 @@
     background-color: #111111;
     color: #ffffff; 
 }
+h2{
+    font-size: 2vmax;
+}
+#Log{
+    width: 50%;
+    background-color:#B56576;
+    border-style: none;
+}
 @media screen and (orientation: portrait){
     .Card{
         width: 50vmax;
+        height: 40vmax;
+        font-size: 2vmax;
     } 
+    h2{
+        font-size: 3.5vmax;
+    }
+    #Log{
+        width: 65%;
+
+    }
+   
 }

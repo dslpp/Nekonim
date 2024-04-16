@@ -70,7 +70,7 @@ export const decrementQuantity = async (basketId) => {
     return data;
 };
 export const searchProducts = async (searchQuery) => {
-    const { data } = await $host.post("api/products/search", { searchQuery });
+    const { data } = await $authHost.post("api/products/search", { searchQuery });
     return data;
 };
 

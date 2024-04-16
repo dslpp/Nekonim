@@ -12,6 +12,7 @@ import { registration, login } from '../../http/userAPI';
 import { observer } from 'mobx-react-lite';
 import { useTheme } from '../../ThemeContext';
 
+
 const Authorization = observer(() => {
   const { isDarkMode} = useTheme();
   const location = useLocation();
@@ -59,11 +60,12 @@ const Authorization = observer(() => {
     }
     
   };
+
   
   return (
     <Container className={Container}>
       <Card  className={`Card ${isDarkMode ? 'Card-dark-mode' : ''}`}>
-        <h2 className="m-auto">{isLogin ? 'Вход в личный кабинет' : 'Регистрация'}</h2>
+        <h2  className="m-auto">{isLogin ? 'Вход в личный кабинет' : 'Регистрация'}</h2>
         <Form className="d-flex flex-column">
           <Form.Control
             className="mt-4"
@@ -86,7 +88,7 @@ const Authorization = observer(() => {
           <Form.Control.Feedback type="invalid" style={{ textAlign: 'right' }}>
             {passwordError}
           </Form.Control.Feedback>
-          <Button className="mt-3 mx-auto" style={{ width: '50%' }} onClick={() => click()}>
+          <Button className="mt-3 mx-auto" id='Log' onClick={() => click()}>
             {isLogin ? 'Войти' : 'Зарегистрироваться'}
           </Button>
           <Row className="mt-4">

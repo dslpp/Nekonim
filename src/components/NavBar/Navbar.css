@@ -1,11 +1,19 @@
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .Navcontainer{
+   
     display: flex;
     flex-direction: row-reverse;
   
 }
 .login-dark-mode{
---color-secondary: #ffffff;
-color: var(--color-secondary);
+color: #ffffff;
 }
 .navbars a:hover{
 color:#B56576;
@@ -16,6 +24,8 @@ transition: 0.5s;
 -o-transition: 0.5s;
 }
 .navbars {
+    opacity: 0;
+    animation: ani 2s forwards; 
 height: 4vw;
 font-family: "Ossem";
 display: flex;
@@ -24,7 +34,7 @@ background-color: #ffffff;
 }
 .navbars a {
 text-decoration: none;
-margin-right: 1.3vw;
+margin-right: 2vmax;
 color: #000000;
 }
 
@@ -56,8 +66,7 @@ color:  #ffffff;;
  .navbars .brandStyle {
     font-family: "Outfit";
     font-size: 1.5rem;
-    --color-primary: #B56576;
-    color: var(--color-primary);
+    color: #B56576;
     letter-spacing: 0.3em;
     text-transform: uppercase; 
 }
