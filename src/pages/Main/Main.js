@@ -1,5 +1,5 @@
 import React from 'react';
-import SomeCarousel from '../../components/Carousel/SomeCarousel';
+import Carousel from '../../components/Carousel/Carousel';
 import { useTheme } from '../../ThemeContext';
 import './Main.css'
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ const Main = observer(()=>  {
                 <div  className={`logo-container ${isNegative ? 'negative' : ''}`}>
                 <img src='./images/catlogo.png' alt="Theme Mode" /></div></div> 
                 </main>  
-                <SomeCarousel />
+                <Carousel />
                 <div >
       <div className="d-flex justify-content-center align-items-center mt-5">
         <h1 className={`tovar ${isDarkMode ? 'tovar-dark-mode' : ''}`}>Товары в нашем магазине</h1>

@@ -28,7 +28,6 @@ const NavBar = observer(() => {
         user.setIsAuth(false);
         localStorage.clear("token");
         window.location.reload(history(LOGIN_Route));
-        
     };
     useEffect(() => {
         const fetchBasket = async () => {
@@ -53,7 +52,8 @@ const NavBar = observer(() => {
                         <Link to="/dilevery"> Доставка</Link>
                         <Link to="/catalog"> Каталог </Link>    
                             <Link to="/basket"> Корзина
-                            <BasketSVG itemCount={type.basket.length}/> 
+                            {user.isAuth &&(
+                            <BasketSVG itemCount={type.basket.length}/> )}
                             </Link>
                         {user.isAuth && user.user.role === 'ADMIN' && (
                             <Link to="/admin" onClick={() => history(ADMIN_Route)}>Админ-панель</Link>
@@ -61,7 +61,7 @@ const NavBar = observer(() => {
 
                         {user.isAuth ? (
                             <Nav>
-                                 {/* <Link to="/account" >Личный кабинет</Link> */}
+                             <Link to="/account" >Личный кабинет</Link> 
                                 <Link
                                  to="/login"  onClick={() => logOut()}>  Выход</Link>
                             </Nav>

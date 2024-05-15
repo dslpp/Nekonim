@@ -4,7 +4,7 @@ import CreateType from "../modals/CreateType";
 import CreateProducts from "../modals/CreateProducts";
 import DeleteType from "../modals/DeleteType";
 import ChangeType from "../modals/ChangeType";
-import { fetchTypes, fetchProducts } from "../http/products"; // Импортируем функции для загрузки данных
+import { fetchTypes, fetchProducts } from "../http/products";
 import { Context } from "../index";
 
 const AdminPanel = () => {

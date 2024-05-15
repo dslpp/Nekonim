@@ -1,4 +1,3 @@
-// Receipt.jsx
 import React, { useEffect, useState, useContext } from 'react';
 import { getBasket } from '../http/products';
 import { Context } from '../index';

@@ -1,7 +1,5 @@
 @media print {
-    body * {
-      visibility: hidden;
-    }
+  
   
     .container.printing {
       visibility: visible;

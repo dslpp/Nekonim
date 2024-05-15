@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import "./Carousel.css"
 
 
-const SomeCarousel = () => {
+const Carousell = () => {
   return (
     <div   className="carousel" >
       <Carousel>
@@ -33,4 +33,4 @@ const SomeCarousel = () => {
   );
 }
 
-export default SomeCarousel;
+export default Carousell;

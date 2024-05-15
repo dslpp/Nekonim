@@ -1,0 +1,83 @@
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.personal-area {
+    opacity: 0;
+    animation: ani 2s forwards; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Ossem";
+    font-size: 1.15vw;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 15%;  
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cardAc {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2vw;
+    width: 40vw;
+    max-height: 100vh; /* Максимальная высота карточки */
+    overflow-y: auto; /* Добавляем вертикальный скроллбар при необходимости */
+    margin-top: 2vw; /* Добавляем немного отступа сверху */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование по горизонтали */
+    justify-content: flex-start; /* Выравниваем содержимое в начало */
+}
+
+/* Добавим отступы между кнопками и формой */
+.form-group {
+    margin-bottom: 1.5vw; 
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5vw; 
+}
+
+#firstName,
+#lastName,
+#middleName,
+#gender,
+#phone,
+#email,
+#password,
+#confirmPassword {
+    width: calc(100% - 1.6vw); 
+    padding: 0.8vw; 
+    border-radius: 4px;
+    border: 0.1vw solid #ccc; 
+    font-size: 1.15vw;
+    margin-top: 0.5vw; 
+}
+
+button {
+    background-color: #f7f7f7;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 0.8vw 1.6vw; 
+    text-align: center;
+    margin-bottom: 1vw; 
+    cursor: pointer;
+}
+
+button:hover {
+    color: #b56576;
+}

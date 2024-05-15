@@ -24,6 +24,22 @@
     display: grid;
     grid-template-columns: 60vmax 8vmax 23vmax;
 }
+#delAll{
+    color:#ED0101;
+    font-family: "Ossem";
+    font-size: 1.2vmax;
+    border: none;
+}
+#delAll:active{
+    color:#d00000;
+    
+}
+
+#all{
+    padding-left: 5vmax;
+    padding-top: 2vmax;
+    font-family: "Ossem";
+}
 .name{
     font-family: "Ossem";
     grid-row:1;

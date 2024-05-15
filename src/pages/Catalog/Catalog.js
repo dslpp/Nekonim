@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
-import TypeBar from "../components/TypeBar/TypeBar";
-import GoodsList from "../components/GoodsList";
-import Pages from "../components/Pages";
+import TypeBar from "../../components/TypeBar/TypeBar";
+import GoodsList from "../../components/GoodsList";
+import Pages from "../../components/Pages";
 import { observer } from "mobx-react-lite";
-import { fetchProducts, fetchTypes, searchProducts } from "../http/products";
-import { Context } from "..";
+import { fetchProducts, fetchTypes, searchProducts } from "../../http/products";
+import { Context } from "../..";
 import './Catalog.css'; 
 
 const Catalog = observer(() => {
     const { type } = useContext(Context);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResultMessage, setSearchResultMessage] = useState("");
-    const [sortByPrice, setSortByPrice] = useState(null);
+    const [sortByPrice, setSortByPrice] = useState(""); // установка значения по умолчанию в пустую строку
 
     useEffect(() => {
         fetchTypes().then(data => type.setTypess(data));

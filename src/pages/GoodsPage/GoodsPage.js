@@ -8,6 +8,7 @@ import ChangeProducts from "../../modals/ChangeProducts";
 import DeleteProducts from "../../modals/DeleteProducts";
 import { observer } from "mobx-react-lite";
 import { check } from "../../http/userAPI";
+import Authorizmodal from "../../modals/Authorizmodal";
 
 const GoodsPage = observer(() => {
     const { user } = useContext(Context);
@@ -16,7 +17,7 @@ const GoodsPage = observer(() => {
     const [chnprodVisable, setchnprodVisable] = useState(false);
     const [delprodVisable, setdelprodVisable] = useState(false);
     const [userRole, setUserRole] = useState(null);
-
+    const [typeVisable, settypeVisable] = useState(false);
     useEffect(() => {
         fetchOneProducts(id).then(data => setProduct(data));
     }, [id]);
@@ -30,7 +31,7 @@ const GoodsPage = observer(() => {
         formData.append('productId', id);
         addToBasket(formData).then(response => alert(`Товар ${product.name} был добавлен в вашу корзину!`));
     } catch (error) {
-        alert("Вы не авторизованы, пожалуйста войдите в аккаунт!")
+        settypeVisable(true);
         setUserRole(null);
     }
 };
@@ -75,6 +76,7 @@ const GoodsPage = observer(() => {
             </Row>
             <ChangeProducts show={chnprodVisable} onHide={() => setchnprodVisable(false)}/>
             <DeleteProducts show={delprodVisable} onHide={() => setdelprodVisable(false)}/>
+            <Authorizmodal show={typeVisable} onHide={() => settypeVisable(false)}/>
         </Container>
     );
 });

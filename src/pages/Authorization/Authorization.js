@@ -57,7 +57,7 @@ const Authorization = observer(() => {
     } catch (e) {
       alert(e.response.data.message)
       console.clear();
-    }
+    }   
     
   };
 

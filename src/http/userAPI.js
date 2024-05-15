@@ -18,3 +18,12 @@ export const check = async () => {
     localStorage.setItem('token', data.token)
     return jwtDecode(data.token)
 }
+
+export const getAccount = async () => {
+    try {
+        const {data} = await $authHost.get('api/account'); // Добавляем деструктуризацию для получения данных
+        return data; // Возвращаем полученные данные
+    } catch (error) {
+        throw new Error(error.response.data.message || 'Ошибка получения текущего пользователя');
+    }
+};

@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { getBasket, deleteFromBasket, incrementQuantity, decrementQuantity } from "../http/products";
-import { Context } from '../index';
+import { getBasket, deleteFromBasket, incrementQuantity, decrementQuantity } from "../../http/products";
+import { Context } from '../../index';
 import { observer } from "mobx-react-lite";
-import { RECEIPT_Route } from '../utils/const';
+import { RECEIPT_Route } from '../../utils/const';
 import './Basket.css'; 
 
 const Basket = observer(() => {
@@ -57,9 +57,12 @@ const Basket = observer(() => {
 
     const handleIncrement = async (basketId) => {
         try {
-            await incrementQuantity(basketId);
-            const data = await getBasket();
-            type.setBaskets(data);
+            const existingItem = type.basket.find(item => item.id === basketId);
+            if (existingItem && existingItem.quantity < 15) {
+                await incrementQuantity(basketId);
+                const data = await getBasket();
+                type.setBaskets(data);
+            }
         } catch (error) {
             console.error("Ошибка при увеличении количества товара:", error);
         }
@@ -67,9 +70,13 @@ const Basket = observer(() => {
 
     const handleDecrement = async (basketId) => {
         try {
-            await decrementQuantity(basketId);
-            const data = await getBasket();
-            type.setBaskets(data);
+            const existingItem = type.basket.find(item => item.id === basketId);
+            if (existingItem && existingItem.quantity > 1) {
+                await decrementQuantity(basketId);
+                const data = await getBasket();
+                type.setBaskets(data);
+            
+            }
         } catch (error) {
             console.error("Ошибка при уменьшении количества товара:", error);
         }
@@ -77,12 +84,33 @@ const Basket = observer(() => {
 
     const handleSelectAll = () => {
         const allItemIds = type.basket.map(item => item.id);
-        setSelectedItems(allItemIds);
+        if (selectedItems.length === allItemIds.length) {
+
+            setSelectedItems([]);
+        } else {
+            setSelectedItems(allItemIds);
+        }
+    };
+    const handleDeleteAll = async () => {
+        try {
+            for (const itemId of selectedItems) {
+                await deleteFromBasket(itemId);
+            }
+            const data = await getBasket();
+            type.setBaskets(data);
+            setSelectedItems([]);
+        } catch (error) {
+            console.error("Ошибка при удалении выбранных товаров из корзины:", error);
+        }
     };
 
     return (
-        <div> 
-            <Button variant='primary' className="select-all" onClick={handleSelectAll}>Выбрать всё</Button>
+        <div>
+            <div id="all">
+                <input type="checkbox"  id="selectAll" onClick={handleSelectAll}/> Выбрать всё
+                <Button variant="online" id="delAll" onClick={handleDeleteAll}>Удалить выбранное</Button>
+             </div>
+
             {type.basket.length === 0 && (
                 <div className="alert alert-info">Корзина пуста</div>
             )}
@@ -120,7 +148,7 @@ const Basket = observer(() => {
                     </div>
                 </div>
             )}
-        </div>
+        </div> 
     );
 });
 
