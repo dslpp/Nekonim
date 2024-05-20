@@ -16,7 +16,8 @@
 }
 
 .Card{
-    height: 23vmax;
+
+    max-height:100vh ;
     font-family: "Ossem";
     font-size: 1vmax;
     opacity: 0;
@@ -36,6 +37,7 @@
     color: #ffffff; 
 }
 h2{
+    
     font-size: 2vmax;
 }
 #Log{

@@ -20,7 +20,7 @@ const Main = observer(()=>  {
                 <div className="wrap">
                 
                 <p className='namelogo'>Nekonim</p>
-                <p className={`description ${isDarkMode ? 'description-dark-mode' : ''}`}>Интренет-магазин аниме товаров из Японии</p>
+                <p className={`description ${isDarkMode ? 'description-dark-mode' : ''}`}>Интернет-магазин аниме товаров из Японии</p>
                 <div  className={`logo-container ${isNegative ? 'negative' : ''}`}>
                 <img src='./images/catlogo.png' alt="Theme Mode" /></div></div> 
                 </main>  

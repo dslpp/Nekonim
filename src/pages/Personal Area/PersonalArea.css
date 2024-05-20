@@ -1,12 +1,3 @@
-@keyframes ani {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .personal-area {
     opacity: 0;
     animation: ani 2s forwards; 
@@ -22,62 +13,163 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 15%;  
-    top: 50%;
+    left: 80%;
     transform: translateY(-50%);
+    top: 50%;
+}
+
+.menu button {
+    margin-bottom: 1vw; 
+    padding: 0.8vw 1.6vw;
+    background-color: transparent;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.menu button:hover {
+    color: #b56576;
 }
 
 .cardAc {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 2vw;
-    width: 40vw;
-    max-height: 100vh; /* Максимальная высота карточки */
-    overflow-y: auto; /* Добавляем вертикальный скроллбар при необходимости */
-    margin-top: 2vw; /* Добавляем немного отступа сверху */
+    width: 55vw;
+    height: 80vh;
+    overflow-y: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрирование по горизонтали */
-    justify-content: flex-start; /* Выравниваем содержимое в начало */
 }
 
-/* Добавим отступы между кнопками и формой */
+.info-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.info-row {
+    display: flex;
+    gap: 8vw;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vw;
+    border-bottom: 0.1vw solid #ccc;
+    gap: 18vw;
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+.info-label-name {
+    font-weight: bold;
+    margin-right: -7vmax;
+}
+
+.info-label-sname {
+    font-weight: bold;
+    margin-right: -7vmax;
+    margin-left: 10vmax;
+}
+
 .form-group {
-    margin-bottom: 1.5vw; 
+    margin-bottom: 1.5vw;
 }
 
 label {
     display: block;
-    margin-bottom: 0.5vw; 
+    margin-bottom: 0.5vw;
 }
 
 #firstName,
 #lastName,
-#middleName,
-#gender,
 #phone,
 #email,
 #password,
 #confirmPassword {
-    width: calc(100% - 1.6vw); 
-    padding: 0.8vw; 
+    width: 15vw;
+    padding: 0.8vw;
     border-radius: 4px;
-    border: 0.1vw solid #ccc; 
+    border: 0.1vw solid #ccc;
     font-size: 1.15vw;
-    margin-top: 0.5vw; 
+    margin-top: 0.5vw;
+}
+label {
+    font-weight: bold;
+}
+#gender {
+    width: 5vw;
+    padding: 0.8vw;
+    border-radius: 4px;
+    border: 0.1vw solid #ccc;
+    font-size: 1.15vw;
+    margin-top: 0.5vw
+}
+#email {
+    width: 15vw;
+    padding: 0.8vw;
+    border-radius: 4px;
+    border: 0.1vw solid #ccc;
+    font-size: 1.15vw;
+    margin-top: 0.5vw
 }
 
 button {
-    background-color: #f7f7f7;
+    background-color: transparent;
     border: none;
     color: rgb(0, 0, 0);
-    padding: 0.8vw 1.6vw; 
+    padding: 0.8vw 1.6vw;
     text-align: center;
-    margin-bottom: 1vw; 
+    margin-bottom: 1vw;
     cursor: pointer;
 }
+
+#change {
+    width: 8vmax;
+    background-color: #b56576;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 2vmax;
+}
+#changes {
+    width: 8vmax;
+    background-color: #65b584;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 2vmax;
+}
+#changec {
+    width: 8vmax;
+    background-color: #aa3851;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 25vmax;
+}
+
 
 button:hover {
     color: #b56576;
 }
+
+.password-hint {
+    background: none;
+    border: none;
+    color: #b56576;
+    cursor: default;
+    font-size: 0.9vw;
+}
+
+
+
+

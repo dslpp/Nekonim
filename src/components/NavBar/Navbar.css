@@ -24,8 +24,8 @@ transition: 0.5s;
 -o-transition: 0.5s;
 }
 .navbars {
-    opacity: 0;
-    animation: ani 2s forwards; 
+opacity: 0;
+animation: ani 2s forwards; 
 height: 4vw;
 font-family: "Ossem";
 display: flex;
