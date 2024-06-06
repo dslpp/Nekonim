@@ -27,7 +27,7 @@
 #delAll{
     color:#ED0101;
     font-family: "Ossem";
-    font-size: 1.2vmax;
+    font-size: 1.1vmax;
     border: none;
 }
 #delAll:active{
@@ -35,10 +35,16 @@
     
 }
 
+#selectAll{
+    border: none;
+    font-size: 1.1vmax;
+}
+
 #all{
     padding-left: 5vmax;
     padding-top: 2vmax;
     font-family: "Ossem";
+    
 }
 .name{
     font-family: "Ossem";
@@ -64,6 +70,7 @@
 }
 .product{
 display: grid;
+grid-column: 1;
 grid-column-start: auto;
 grid-template-columns: 20% 75%;
 
@@ -73,7 +80,7 @@ grid-template-columns: 20% 75%;
     grid-column:3;
     font-family: "Ossem";
     font-size: 1.5vmax;
-    grid-template-columns:10vmax 1vmax 10vmax;
+    grid-template-columns:10.5vmax 0.5vmax 10vmax;
 
     }
 .item img {
@@ -86,7 +93,7 @@ grid-template-columns: 20% 75%;
 .buttondel{
     margin-top: 3vmax;
     width: 8vmax;
-    height: 2vmax;
+    height: 2.2vw ;
     grid-column: 3;
 }
 .priceb{
@@ -94,6 +101,10 @@ grid-template-columns: 20% 75%;
     font-family: "Ossem";
     font-weight:normal;
     
+}
+.checkbox{
+    grid-column: 2;
+    margin-top: 3.7vw;
 }
 .quantity {
     grid-row:2;
@@ -117,6 +128,9 @@ grid-template-columns: 20% 75%;
     font-size: 18px;
     justify-content: center;
     height: 25vmax;
+    border-radius: 1vw;
+    font-family: "Ossem";
+    font-size: 1.5rem;
     
 }
 
@@ -130,8 +144,8 @@ grid-template-columns: 20% 75%;
  
 }
 .button{
-    width: 15vmax;
-    height: 3vmax;
+    width: 12vmax;
+    height: 2.5vmax;
     display: flex;
     justify-content: center;
     
@@ -140,7 +154,10 @@ grid-template-columns: 20% 75%;
     padding-top: 2vmax;
     
 }
-
+#buttondec{
+    margin-top: 0.7vw;
+    border: none;
+}
 
 @media screen and (orientation: portrait){
     /* Адаптивная вёрстка для планшетов и десктопов */

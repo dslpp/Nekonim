@@ -15,7 +15,7 @@ function SendEmail() {
         <label htmlFor="emailFrom">Email:</label>
         <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="person@example.com"/>
         <label htmlFor="subject">Тема:</label>
-        <input type="text" name="subject_form" id="subjectForm" className="subject__form" placeholder="Тема вопроса"/>
+        <input type="text" name="subject_form" id="subjectForm" className="subject__form" placeholder="Тема вопроса"  autocomplete="off"/>
         <label htmlFor="message">Комментарий:</label>
         <textarea name="message" id="message" className="message__box"></textarea>
         <Button type='submit' variant="outline-dark"  className="submit__btn" style={{marginTop: "5px"}}>

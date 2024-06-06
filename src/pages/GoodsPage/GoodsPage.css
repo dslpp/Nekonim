@@ -1,9 +1,59 @@
-.button-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; 
+.imagegoods {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
-img{
-    width: 2vmax;
+
+.image {
+  grid-column: 1;
+  width: 30vw;
+  height: 75vh;
+}
+
+.centerimage {
+  width: 100%; 
+}
+
+.products {
+  grid-column-start: 2;
+  font-family: "Ossem";
+  font-size: 1vw;
+}
+
+.mt {
+  display: grid;
+  grid-template-columns: 32vw 58vw 5vw;
+  margin-top:3vw;
+  margin-left: 2vw;
+}
+
+.mt-dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.shortdesc {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.characteristic {
+  margin-top: 20px;
+}
+
+.product-details {
+  margin-top: 20px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px; /* для отступа сверху */
+}
+
+img {
+  width: 2vmax;
 }

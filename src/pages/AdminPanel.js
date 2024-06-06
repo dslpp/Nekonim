@@ -20,7 +20,7 @@ const AdminPanel = () => {
     })
     return (
         <Container style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-5" onClick={() => settypeVisable(true)}>
+            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-4" onClick={() => settypeVisable(true)}>
                 Добавить тип
             </Button>
             <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-2" onClick={() => setchntypeVisable(true)}>

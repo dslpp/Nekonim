@@ -73,3 +73,9 @@ color:  #ffffff;;
 .brandStyle:hover{
     color: #B56576;
 }
+@media print {
+    .navbars {
+      display: none;
+    }
+  }
+  

@@ -1,16 +1,50 @@
+.brandStyles {
+  display: none;
+}
+
+.containerr {
+  width: 40vw; /* Ширина чека */
+  margin: 0 auto;
+  padding: 2vw;
+  border: 0.2vw solid #000;
+  border-radius: 1vw;
+  font-family: "Ossem";
+  font-size: 1.2rem;
+  margin-top: 3vw;
+}
+
+.buttonContainer {
+  font-family: "Ossem";
+  font-size: 1.2rem;
+  position: absolute; 
+  right: 0; 
+  margin-right: 28vw; 
+}
+
 @media print {
   
-  
-    .container.printing {
+    .containerr.printing {
       visibility: visible;
-      width: 300px; /* Ширина чека */
+      width: 50vw; /* Ширина чека */
       margin: 0 auto;
-      padding: 20px;
-      border: 2px solid #000;
-      border-radius: 10px;
+      padding: 2vw;
+      border: 0.2vw solid #000;
+      border-radius: 1vw;
       position: absolute;
-      left: 0;
-      top: 0;
+      left: 25%;
+      top: 40%;
+      font-family: "Ossem";
+      font-size: 1.5rem;
+      
+    }
+    .brandStyles {
+      display: block;
+      font-family: "Outfit";
+      font-size: 2.5rem;
+      color: #B56576;
+      letter-spacing: 0.3em;
+      text-transform: uppercase; 
+      margin: 5vw;
     }
   
     .title,
@@ -44,5 +78,9 @@
     button {
       display: none; /* Скрываем кнопку при печати */
     }
+    body {
+      margin: 0; /* Убедитесь, что нет отступов на печати */
+    }
+    
   }
-  
+ 

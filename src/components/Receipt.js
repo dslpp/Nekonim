@@ -32,25 +32,30 @@ const Receipt = () => {
   };
 
   return (
-    <div className={`container ${isPrinting ? 'printing' : ''}`}>
-      {isPrinting && (
-        <>
-          <h2>Чек об оплате</h2>
-          <div className="items">
-            {type.basket.map(item => (
-              <div className="itemres" key={item.id}>
-                <span>{item.product.name} — </span>
-                <span>{item.product.price * item.quantity} рублей</span> {/* Учитываем количество товара */}
-              </div>
-            ))}
-          </div>
-          <hr />
+    <div>
+      <h1 className='brandStyles'>Nekonim</h1>
+      <div className={`containerr ${isPrinting ? 'printing' : ''}`}>
+        {isPrinting && (
           <div>
-            <strong>Итого:</strong> {totalAmount} рублей
+            <h2>Чек об оплате</h2>
+            <div className="items">
+              {type.basket.map(item => (
+                <div className="itemres" key={item.id}>
+                  <span>{item.product.name} — </span>
+                  <span>{item.product.price * item.quantity} рублей</span> {/* Учитываем количество товара */}
+                </div>
+              ))}
+            </div>
+            <hr />
+            <div>
+              <strong>Итого:</strong> {totalAmount.toFixed(2)} рублей
+            </div>
           </div>
-        </>
-      )}
-      <button id="myButton" onClick={printReceipt}>Распечатать чек</button>
+        )}
+      </div>
+      <div className="buttonContainer">
+        <button id="myButton" onClick={printReceipt}>Распечатать чек</button>
+      </div>
     </div>
   );
 };
