@@ -105,42 +105,43 @@ const Basket = observer(() => {
 
     return (
         <div>
-            <div id="all">
-                <Button  id="selectAll"variant="online" onClick={handleSelectAll}>
-                    <input type="checkbox" checked={selectedItems.length === type.basket.length} readOnly />
-                    Выбрать всё
-                </Button>
-                <Button  id="delAll" variant="online" onClick={handleDeleteAll}>Удалить выбранное</Button>
-            </div>
+            {type.basket.length > 0 && (
+                <div id="all">
+                    <Button id="selectAll" variant="online" onClick={handleSelectAll}>
+                        <input type="checkbox" checked={selectedItems.length === type.basket.length} readOnly />
+                        Выбрать всё
+                    </Button>
+                    <Button id="delAll" variant="online" onClick={handleDeleteAll}>Удалить выбранное</Button>
+                </div>
+            )}
 
             {type.basket.length === 0 && (
-                <div className="alert alert-info">Корзина пуста</div>
+                <div className="empty-basket">
+                    <img src='./images/empty.png' alt="Пустая корзина" />
+                    <div>Корзина пуста</div>
+                </div>
             )}
             {type.basket.length > 0 && (
                 <div className="containerbas">
                     <div className="items"> 
                         {type.basket.map(item => (
                             <Card className="item" key={item.id}>
-                               
                                 <div className="product">
-                                    
-                                        
                                     <img src={process.env.REACT_APP_API_URL + item.product.img} width={100} alt={item.product.name} />
-                                    
                                     <p className="name">{item.product.name}</p>
-                                    <p className="quantity">Количество: 
-                                    <Button variant="outline" id="buttondec" onClick={() => handleDecrement(item.id)}>-</Button> {item.quantity}
-                                    <Button variant="outline" id="buttondec" onClick={() => handleIncrement(item.id)}>+</Button>
+                                    <p className="quantity">
+                                        Количество: 
+                                        <Button variant="outline" id="buttondec" onClick={() => handleDecrement(item.id)}>-</Button> {item.quantity}
+                                        <Button variant="outline" id="buttondec" onClick={() => handleIncrement(item.id)}>+</Button>
                                     </p>   
                                 </div>
                                 <div>
-                                <input
-                                            className="checkbox"
-                                            type="checkbox"
-                                            checked={selectedItems.includes(item.id)}
-                                            onChange={() => toggleSelect(item.id)}
-                                        />
-                                   
+                                    <input
+                                        className="checkbox"
+                                        type="checkbox"
+                                        checked={selectedItems.includes(item.id)}
+                                        onChange={() => toggleSelect(item.id)}
+                                    />
                                 </div>
                                 <div className="prices">
                                     <p className="priceb">{(item.product.price * item.quantity).toFixed(2)} рублей</p>
