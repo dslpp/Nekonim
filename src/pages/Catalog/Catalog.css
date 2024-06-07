@@ -1,19 +1,21 @@
-
-    input{
-    padding:0.4vmax 1vmax;
-    border:0;
-    font-size:1em;
-    }
-    .search {
+input {
+    padding: 0.4vmax 1vmax;
+    border: 0;
+    font-size: 1em;
+}
+input:focus {
+    outline: none;
+}
+.search {
     width: 82%;
-    }
-    .submit{
+}
+.submit {
     font-family: "Ossem";
     width: 6vmax;
-    background-color:#b56576;
-    color:#ffffff;
-    }
-.row{
+    background-color: #b56576;
+    color: #ffffff;
+}
+.row {
     overflow: hidden;
 }
 .custom-select {

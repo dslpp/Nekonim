@@ -19,13 +19,16 @@ const Catalog = observer(() => {
         fetchTypes().then(data => type.setTypess(data));
     }, []);
   
-
     useEffect(() => {
         fetchProducts(type.selectedType.id, type.page, 12, sortByPrice).then(data => {
             type.setProducts(data.rows);
             type.setTotalCounti(data.count);
         });
     }, [type.page, type.selectedType, type.selectedBrand, sortByPrice]);
+
+    useEffect(() => {
+        setSearchResultMessage("");
+    }, [type.selectedType]);
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -38,6 +41,7 @@ const Catalog = observer(() => {
                 type.setProducts(data);
                 setSearchResultMessage(""); 
             }
+            setSearchQuery(""); // Очистка поля поиска после выполнения поиска
         }
     };
 
@@ -50,33 +54,30 @@ const Catalog = observer(() => {
             <Row className="mt-4">
                 <Row className="mb-3">
                     <Col md={7}>
-                    <select value={sortByPrice} onChange={(e) => handleSortByPrice(e.target.value)}>
-                        <option value="">Сортировать по цене</option>
-                        <option value="asc">Дешевле</option>
-                        <option value="desc">Дороже</option>
-                    </select>
+                        <select value={sortByPrice} onChange={(e) => handleSortByPrice(e.target.value)}>
+                            <option value="">Сортировать по цене</option>
+                            <option value="asc">Дешевле</option>
+                            <option value="desc">Дороже</option>
+                        </select>
                     </Col>
                     <Col md={5}>
-                    <form className="ctlgform" onSubmit={handleSearch}>
-                        <input
-                            type="text"
-                            className="search"
-                            placeholder="Найди товар мечты!"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <input type="submit" name="submit" className="submit" value="Поиск" />
-                    </form>
-                    
+                        <form className="ctlgform" onSubmit={handleSearch}>
+                            <input
+                                type="text"
+                                className="search"
+                                placeholder="Найди товар мечты!"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            <input type="submit" name="submit" className="submit" value="Поиск" />
+                        </form>
                     </Col>
-                    
-                    
                 </Row>
                 <Col md={3}>
                     <TypeBar />
                 </Col>
                 <Col md={9}>
-                {searchResultMessage && <p>{searchResultMessage}</p>}
+                    {searchResultMessage && <p>{searchResultMessage}</p>}
                     <GoodsList/>
                     <Pages />
                 </Col>
