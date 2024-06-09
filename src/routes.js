@@ -7,8 +7,8 @@ import Catalog from "./pages/Catalog/Catalog";
 import Main from "./pages/Main/Main";
 import Receipt from "./components/Receipt";
 import PersonalArea from "./pages/Personal Area/PersonalArea";
-import ResetPasswordPage from "./pages/ResetPasswordPage";
-import { ADMIN_Route, BASKET_Route, RECEIPT_Route, FORGET_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route } from "./utils/const";
+import { ADMIN_Route, BASKET_Route, RECEIPT_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route, PAY_Route } from "./utils/const";
+import PaymentPage from "./pages/PaymentPage";
 
 export const adminRoutes = [
     {
@@ -32,6 +32,11 @@ export const authRoutes = [
     {
         path: PERSONAL_Route,
         Component: PersonalArea,
+        role: ['USER', 'ADMIN']
+    },
+    {
+        path: PAY_Route,
+        Component: PaymentPage,
         role: ['USER', 'ADMIN']
     }
 ];

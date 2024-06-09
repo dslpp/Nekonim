@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import { getBasket, deleteFromBasket, incrementQuantity, decrementQuantity } from "../../http/products";
 import { Context } from '../../index';
 import { observer } from "mobx-react-lite";
-import { RECEIPT_Route } from '../../utils/const';
+import { PAY_Route } from '../../utils/const';
 import './Basket.css'; 
 
 const Basket = observer(() => {
@@ -103,6 +103,10 @@ const Basket = observer(() => {
         }
     };
 
+    const handlePayment = () => {
+        history(PAY_Route, { state: { totalPrice } });
+    };
+
     return (
         <div>
             {type.basket.length > 0 && (
@@ -153,7 +157,7 @@ const Basket = observer(() => {
                     <div className="total"> 
                         <h1 className="result">Итого:</h1>
                         <h3 className="pl-2">{totalPrice.toFixed(2)} рублей</h3>
-                        <Button variant='success' className="button" onClick={() => history(RECEIPT_Route)}>Оплата</Button>
+                        <Button variant='success' className="button" onClick={handlePayment}>Оплата</Button>
                     </div>
                 </div>
             )}
