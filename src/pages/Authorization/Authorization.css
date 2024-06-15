@@ -11,8 +11,6 @@
 .Container{
     height: calc(100vh - 62px);
     position: relative;
-   
-
 }
 
 .Card{
@@ -21,7 +19,7 @@
     font-family: "Ossem";
     font-size: 1vmax;
     opacity: 0;
-    animation: ani 2s forwards; 
+    animation: ani 0.5s forwards; 
     width: 40vmax;
     padding: 3vmax;
     margin: 0;

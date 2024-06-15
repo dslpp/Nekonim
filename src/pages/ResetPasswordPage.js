@@ -68,7 +68,6 @@ const ResetPasswordPage = () => {
       
     } catch (error) {
       console.error('Error resetting password:', error);
-      // Обработка ошибки при изменении пароля
     }
   };
 

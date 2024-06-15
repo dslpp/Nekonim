@@ -12,7 +12,7 @@ const BasketSVG = ({ itemCount }) => {
     <div className="basket-container">
       <img className={`basket-icon ${isNegative ? 'basket-icon-negative' : ''}`} src="../images/basket.png" alt="Basket" />
       <div className="item-count-container">
-        {itemCount == 0 || <span className="item-count">{itemCount}</span>}
+        {itemCount == 0 ||<span className="item-count">{itemCount}</span>}
       </div>
     </div>
   );

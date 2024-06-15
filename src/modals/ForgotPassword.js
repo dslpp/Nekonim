@@ -15,12 +15,11 @@ const ForgotPasswordModal = ({ show, handleClose }) => {
 
   const handleSendEmail = async () => {
     try {
-      await resetPasswordRequest(email); // Отправка запроса на сброс пароля с введенным email
-      console.log('Reset password email sent for:', email);
-      handleClose(); // После отправки запроса закрываем модальное окно
+      await resetPasswordRequest(email); 
+      handleClose(); 
     } catch (error) {
       console.error('Error sending reset password email:', error);
-      setError(error.message || 'Произошла ошибка при отправке email'); // Установка сообщения об ошибке
+      setError(error.message || 'Произошла ошибка при отправке email'); 
     }
   };
 
@@ -37,7 +36,7 @@ const ForgotPasswordModal = ({ show, handleClose }) => {
             <Form.Text className="text-muted">
               Мы отправим вам инструкции для сброса пароля на указанный email.
             </Form.Text>
-            {error && <Form.Text className="text-danger">{error}</Form.Text>} {/* Отображение сообщения об ошибке */}
+            {error && <Form.Text className="text-danger">{error}</Form.Text>}
           </Form.Group>
         </Form>
       </Modal.Body>

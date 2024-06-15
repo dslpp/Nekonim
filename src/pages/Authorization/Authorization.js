@@ -27,7 +27,7 @@ const Authorization = observer(() => {
   const { user } = useContext(Context);
   const [errors, setErrors] = useState({});
   const [showForgotPassword, setShowForgotPassword] = useState(false); 
-  const [resetPasswordEmailSent, setResetPasswordEmailSent] = useState(false); 
+
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

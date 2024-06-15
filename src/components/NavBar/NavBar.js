@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../index';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -10,6 +10,7 @@ import { ADMIN_Route, LOGIN_Route, MAIN_Route } from '../../utils/const';
 import { useTheme } from '../../ThemeContext';
 import BasketSVG from '../BasketSVG';
 import { getBasket } from "../../http/products";
+import Authorizmodal from '../../modals/Authorizmodal';
 
 const NavBar = observer(() => {
     const { type } = useContext(Context);
@@ -19,6 +20,8 @@ const NavBar = observer(() => {
     const isMainRoute = location.pathname === MAIN_Route;
     const { isDarkMode, toggleTheme, isNegative } = useTheme();
 
+    const [authVisable, setauthVisable] = useState(false); // Состояние для управления модальным окном
+
     const handleImageClick = () => {
         toggleTheme();
     };
@@ -26,9 +29,18 @@ const NavBar = observer(() => {
     const logOut = () => {
         user.setUser({});
         user.setIsAuth(false);
-        localStorage.clear("token");
+        localStorage.removeItem("token");
         window.location.reload(history(LOGIN_Route));
     };
+
+    const handleBasketClick = () => {
+        if (user.isAuth) {
+            history("/basket");
+        } else {
+            setauthVisable(true);
+        }
+    };
+
     useEffect(() => {
         const fetchBasket = async () => {
             try {
@@ -50,20 +62,24 @@ const NavBar = observer(() => {
 
                         <Link to="/shop"> О нас</Link>
                         <Link to="/dilevery"> Доставка</Link>
-                        <Link to="/catalog"> Каталог </Link>    
-                            <Link to="/basket"> Корзина
-                            {user.isAuth &&(
-                            <BasketSVG itemCount={type.basket.length}/> )}
+                        <Link to="/catalog"> Каталог </Link>
+                        {user.user.role !== 'ADMIN' && (
+                            <Link to="/basket" onClick={handleBasketClick}> Корзина
+                                {user.isAuth && (
+                                    <BasketSVG itemCount={type.basket.length} />
+                                )}
                             </Link>
+                        )}
                         {user.isAuth && user.user.role === 'ADMIN' && (
                             <Link to="/admin" onClick={() => history(ADMIN_Route)}>Админ-панель</Link>
                         )}
 
                         {user.isAuth ? (
                             <Nav>
-                             <Link to="/account" >Личный кабинет</Link> 
-                                <Link
-                                 to="/login"  onClick={() => logOut()}>  Выход</Link>
+                                {user.user.role !== 'ADMIN' && (
+                                    <Link to="/account">Личный кабинет</Link>
+                                )}
+                                <Link to="/login" onClick={() => logOut()}>Выход</Link>
                             </Nav>
                         ) : (
                             <Nav>
@@ -78,6 +94,7 @@ const NavBar = observer(() => {
                     </div>
                 </Container>
             </Navbar>
+            <Authorizmodal show={authVisable} onHide={() => setauthVisable(false)} />
         </>
     );
 });

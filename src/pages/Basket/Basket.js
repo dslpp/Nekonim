@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { getBasket, deleteFromBasket, incrementQuantity, decrementQuantity } from "../../http/products";
 import { Context } from '../../index';
 import { observer } from "mobx-react-lite";
-import { PAY_Route } from '../../utils/const';
+import { CATALOG_Route, PAY_Route } from '../../utils/const';
 import './Basket.css'; 
 
 const Basket = observer(() => {
@@ -106,6 +106,9 @@ const Basket = observer(() => {
     const handlePayment = () => {
         history(PAY_Route, { state: { totalPrice } });
     };
+    const relocate = () => {
+        history(CATALOG_Route );
+    };
 
     return (
         <div>
@@ -123,6 +126,8 @@ const Basket = observer(() => {
                 <div className="empty-basket">
                     <img src='./images/empty.png' alt="Пустая корзина" />
                     <div>Корзина пуста</div>
+                    <br/>
+                    <Button id="relocatebbt" onClick={relocate}>Отправиться за покупками!</Button>
                 </div>
             )}
             {type.basket.length > 0 && (

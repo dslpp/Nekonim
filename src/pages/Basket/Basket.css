@@ -163,16 +163,31 @@ grid-template-columns: 20% 75%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 70vh; /* Устанавливает высоту, чтобы центрировать по вертикали */
+    height: 85vh; /* Устанавливает высоту, чтобы центрировать по вертикали */
     color: #808080; /* Серый цвет текста */
     text-align: center;
     font-family: "Ossem";
     font-size: 1.5vmax;
+    opacity: 0;
+    animation: ani 2.5s forwards;
 }
 
 .empty-basket img {
     width: 20vmax; /* Размер картинки */
     margin-bottom: 2vmax; /* Отступ снизу */
+}
+#relocatebbt{
+    background-color: #b56576;
+    border-color: transparent;
+}
+#relocatebbt:hover{
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow:#808080;
+}
+#relocatebbt:active{
+    background-color: #98556b; 
 }
 @media screen and (orientation: portrait){
     .empty-basket img {

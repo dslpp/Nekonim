@@ -1,3 +1,11 @@
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
 input {
     padding: 0.4vmax 1vmax;
     border: 0;
@@ -8,10 +16,12 @@ input:focus {
 }
 .search {
     width: 82%;
+    margin-top: -1vh;
 }
 .submit {
     font-family: "Ossem";
     width: 6vmax;
+    height: 4.8vh;
     background-color: #b56576;
     color: #ffffff;
 }
@@ -31,4 +41,8 @@ input:focus {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.container{
+    opacity: 0;
+    animation: ani 3s forwards;
 }

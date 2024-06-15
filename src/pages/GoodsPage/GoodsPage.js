@@ -19,7 +19,7 @@ const GoodsPage = observer(() => {
   const [chnprodVisable, setchnprodVisable] = useState(false);
   const [delprodVisable, setdelprodVisable] = useState(false);
   const [userRole, setUserRole] = useState(null);
-  const [typeVisable, settypeVisable] = useState(false);
+  const [authVisable, setauthVisable] = useState(false);
 
   useEffect(() => {
     fetchOneProducts(id).then(data => setProduct(data));
@@ -36,7 +36,7 @@ const GoodsPage = observer(() => {
         addToBasket(formData).then(response => alert(`Товар ${product.name} был добавлен в вашу корзину!`));
     } catch (error) {
         console.error('Error adding to basket:', error);
-        settypeVisable(true);
+        setauthVisable(true);
         setUserRole(null);
     }
 };
@@ -69,10 +69,10 @@ const GoodsPage = observer(() => {
       </div> {user.isAuth && user.user.role === 'ADMIN' && (
         <div className="button-group">
           <Button variant="outline" onClick={() => setchnprodVisable(true)}>
-            <img src="../images/edit.png" alt="edit" />
+            <img id="edit-del" src="../images/edit.png" alt="edit" />
           </Button>
           <Button variant="outline" onClick={() => setdelprodVisable(true)}>
-            <img src="../images/trash.png" alt="delete" width={20} />
+            <img id="edit-del"src="../images/trash.png" alt="delete" width={20} />
           </Button>
         </div>
        
@@ -82,7 +82,7 @@ const GoodsPage = observer(() => {
       </div>
       <ChangeProducts show={chnprodVisable} onHide={() => setchnprodVisable(false)} />
       <DeleteProducts show={delprodVisable} onHide={() => setdelprodVisable(false)} />
-      <Authorizmodal show={typeVisable} onHide={() => settypeVisable(false)} />
+      <Authorizmodal show={authVisable} onHide={() =>  setauthVisable(false)} />
     </Container>
   );
 });

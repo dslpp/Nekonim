@@ -22,22 +22,22 @@ export const authRoutes = [
     {
         path: BASKET_Route,
         Component: Basket,
-        role: ['USER', 'ADMIN']
+        role: ['USER']
     },
     {
         path: RECEIPT_Route,
         Component: Receipt,
-        role: ['USER', 'ADMIN']
+        role: ['USER']
     },
     {
         path: PERSONAL_Route,
         Component: PersonalArea,
-        role: ['USER', 'ADMIN']
+        role: ['USER']
     },
     {
         path: PAY_Route,
         Component: PaymentPage,
-        role: ['USER', 'ADMIN']
+        role: ['USER']
     }
 ];
 
