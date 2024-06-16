@@ -3,7 +3,7 @@ import { Route, Routes, Navigate, useParams } from 'react-router-dom';
 import { adminRoutes, authRoutes, publicRoutes } from "../routes";
 import { MAIN_Route, LOGIN_Route, REGISTRATION_Route, FORGET_Route } from "../utils/const";
 import { check } from "../http/userAPI";
-import ResetPasswordPage from "../pages/ResetPasswordPage"; // Импортируем страницу сброса пароля
+import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 const AppRouter = () => {
     const [userRole, setUserRole] = useState(null);
@@ -50,22 +50,21 @@ const AppRouter = () => {
             {publicRoutes.map(({ path, Component }) => (
                 <Route key={path} path={path} element={<Component />} />
             ))}
-            {/* Проверка наличия токена перед рендерингом страницы сброса пароля */}
             <Route
                 path={`${FORGET_Route}/:resetToken`}
                 element={<ResetPasswordRoute />}
             />
+            {/* Добавляем перенаправление с корневого URL на /main */}
+            <Route path="/" element={<Navigate to={MAIN_Route} replace />} />
             {/* Добавляем перенаправление на главную страницу для всех остальных путей */}
             <Route path="*" element={<Navigate to={MAIN_Route} replace />} />
         </Routes>
     );
 };
 
-// Компонент для проверки токена перед рендерингом страницы сброса пароля
 const ResetPasswordRoute = () => {
     const { resetToken } = useParams();
 
-    // Проверка наличия токена
     if (!resetToken) {
         return <Navigate to={MAIN_Route} replace />;
     }
