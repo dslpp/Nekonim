@@ -46,7 +46,9 @@ const GoodsPage = observer(() => {
      
       <div className="image">
         <div className="imagegoods">
-          <Image className="centerimage" src={process.env.REACT_APP_API_URL + product.img} />
+       <Image className="centerimage" src={product.img ? `${process.env.REACT_APP_API_URL}/statics/${product.img}` : ''} />
+
+
         </div>
       </div>
       <div className="products">

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import GoodsItemCarousel from './GoodsItemCarousel'; 
+import GoodsItem from './GoodsItem'; 
 import { Context } from '../index';
 import './../App.css';
 import { observer } from 'mobx-react-lite';
@@ -44,7 +44,7 @@ const GoodsItemMain = observer(() => {
         <Row key={index}>
           {chunk.map((product) => (
             <Col key={product.id} md={12 / itemsPerRow}>
-              <GoodsItemCarousel products={product} />
+              <GoodsItem products={product} />
             </Col>
           ))}
         </Row>

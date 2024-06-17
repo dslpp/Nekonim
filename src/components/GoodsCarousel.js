@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel, Container, Row, Col } from 'react-bootstrap';
-import GoodsItemCarousel from './GoodsItemCarousel'; // Импортируйте компонент GoodsItem
+import GoodsItem from './GoodsItem'; 
 import { useContext } from 'react';
 import { Context } from '../index';
 import './../App.css';
@@ -28,7 +28,7 @@ const GoodsCarousel = () => {
             <Row>
               {chunk.map((product) => (
                 <Col key={product.id} md={12 / itemsPerRow}>
-                  <GoodsItemCarousel products={product} />
+                  <GoodsItem products={product} />
                 </Col>
               ))}
             </Row>
