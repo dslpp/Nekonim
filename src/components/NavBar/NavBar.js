@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { ADMIN_Route, LOGIN_Route, MAIN_Route } from '../../utils/const';
 import { useTheme } from '../../ThemeContext';
-import BasketSVG from '../BasketSVG';
+import BasketSVG from '../BasketSVG/BasketSVG';
 import { getBasket } from "../../http/products";
 import Authorizmodal from '../../modals/Authorizmodal';
 

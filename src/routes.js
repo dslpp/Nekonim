@@ -5,7 +5,7 @@ import Shop from "./pages/Shop";
 import Admin from "./pages/AdminPanel";
 import Catalog from "./pages/Catalog/Catalog";
 import Main from "./pages/Main/Main";
-import Receipt from "./components/Receipt";
+import Receipt from "./components/Receipt/Receipt";
 import PersonalArea from "./pages/Personal Area/PersonalArea";
 import { ADMIN_Route, BASKET_Route, RECEIPT_Route, CATALOG_Route, GOODS_Route, LOGIN_Route, MAIN_Route, REGISTRATION_Route, SHOP_Route, PERSONAL_Route, PAY_Route } from "./utils/const";
 import PaymentPage from "./pages/PaymentPage";

@@ -1,0 +1,86 @@
+.Cards {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+    height: 90%; /* Задание одинаковой высоты */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Cards-dark {
+    background-color: #242424;
+    color: white;
+}
+
+.Cards-dark .price {
+    color: white;
+}
+
+.Cards:hover {
+    transform: scale(1.05);
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; /* Увеличиваем высоту изображения */
+    overflow: hidden;
+}
+
+.center-image {
+    width: 100%;
+    height: auto;
+}
+
+.label {
+    text-align: center;
+    margin-top: 1rem;
+    flex-grow: 1; /* Заставляем .label занимать оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* количество строк */
+    -webkit-box-orient: vertical;
+}
+
+.price {
+    font-size: 1.125rem;
+    color: #000000;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.add-to-cart-button {
+    width: 100%;
+    background-color: #B56576;
+    border: none;
+    padding: 0.625rem; /* 10px = 0.625rem (16px = 1rem) */
+    color: white;
+    border-radius: 0.25rem; /* 4px = 0.25rem */
+    font-size: 1rem; /* 16px = 1rem */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+    background-color: #8a4f5c;
+    color: white;
+}
+
+.add-to-cart-button:active {
+    background-color: #ce778a;
+}

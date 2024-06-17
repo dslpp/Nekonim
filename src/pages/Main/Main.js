@@ -7,7 +7,7 @@ import GoodsItemMain from '../../components/GoodsItemMain';
 import { Button } from 'react-bootstrap';
 import { CATALOG_Route } from '../../utils/const';
 import { observer } from "mobx-react-lite";
-import Footer from '../../components/Footer';
+import Footer from '../../components/Footer/Footer';
 
 const Main = observer(()=>  {
     const history = useNavigate();
@@ -24,19 +24,18 @@ const Main = observer(()=>  {
                 <div  className={`logo-container ${isNegative ? 'negative' : ''}`}>
                 <img src='./images/catlogo.png' alt="Theme Mode" /></div></div> 
                 </main>  
-                <Carousel />
+                
                 <div >
+                <Carousel />
       <div className="d-flex justify-content-center align-items-center mt-5">
         <h1 className={`tovar ${isDarkMode ? 'tovar-dark-mode' : ''}`}>Товары в нашем магазине</h1>
       </div>
-            <GoodsItemMain >
-              
-            </GoodsItemMain>
-       
+            <GoodsItemMain/>
       <div className="d-flex justify-content-center align-items-center mt-4">
         <Button variant='outline-dark' onClick={() => history(CATALOG_Route)}>Перейти в каталог</Button>
       </div>
     </div>
+    <br/>
     <Footer/>
     </div>  
         );

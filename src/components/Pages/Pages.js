@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React, { useContext } from "react";
-import { Context } from "../index";
+import { Context } from "../../index";
 import { Pagination } from "react-bootstrap";
+import './Pages.css'; 
 const Pages = observer( () => {
     const {type}=useContext(Context)
     const pageCount=Math.ceil(type.totalCounti/ type.limit)

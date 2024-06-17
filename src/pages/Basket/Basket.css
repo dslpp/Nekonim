@@ -115,7 +115,7 @@ grid-template-columns: 20% 75%;
 
 
 .total {
-    position: fixed;
+    position:absolute;
     top: 50%; 
     left: 82.5%; 
     transform: translate(-50%, -50%);

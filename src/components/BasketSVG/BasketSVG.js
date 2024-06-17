@@ -1,7 +1,7 @@
 import React from 'react';
 import './BasketSVG.css';
 
-import { useTheme } from '../ThemeContext';
+import { useTheme } from '../../ThemeContext';
 
 const BasketSVG = ({ itemCount }) => {
   const { isNegative } = useTheme();

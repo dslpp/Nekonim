@@ -10,6 +10,7 @@ import { observer } from "mobx-react-lite";
 import { check } from "../../http/userAPI";
 import Authorizmodal from "../../modals/Authorizmodal";
 import { useTheme } from '../../ThemeContext';
+import Footer from '../../components/Footer/Footer';
 
 const GoodsPage = observer(() => {
   const { isDarkMode } = useTheme();
@@ -42,11 +43,12 @@ const GoodsPage = observer(() => {
 };
 
   return (
+    <div>
     <Container className={`mt ${isDarkMode ? 'mt-dark-mode' : ''}`} >
      
       <div className="image">
         <div className="imagegoods">
-       <Image className="centerimage" src={product.img ? `${process.env.REACT_APP_API_URL}/statics/${product.img}` : ''} />
+       <Image className="centerimage" src={process.env.REACT_APP_API_URL + product.img} />
 
 
         </div>
@@ -85,7 +87,10 @@ const GoodsPage = observer(() => {
       <ChangeProducts show={chnprodVisable} onHide={() => setchnprodVisable(false)} />
       <DeleteProducts show={delprodVisable} onHide={() => setdelprodVisable(false)} />
       <Authorizmodal show={authVisable} onHide={() =>  setauthVisable(false)} />
+     
     </Container>
+    <Footer/>
+    </div>
   );
 });
 

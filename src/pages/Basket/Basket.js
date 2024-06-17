@@ -6,6 +6,7 @@ import { Context } from '../../index';
 import { observer } from "mobx-react-lite";
 import { CATALOG_Route, PAY_Route } from '../../utils/const';
 import './Basket.css'; 
+import Footer from '../../components/Footer/Footer';
 
 const Basket = observer(() => {
     const { type } = useContext(Context);
@@ -166,6 +167,8 @@ const Basket = observer(() => {
                     </div>
                 </div>
             )}
+            <br/>
+             <Footer/>
         </div> 
     );
 });

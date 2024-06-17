@@ -1,10 +1,11 @@
 import React, { useEffect, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import GoodsItem from './GoodsItem'; 
+import GoodsItem from './GoodsItem/GoodsItem'; 
 import { Context } from '../index';
 import './../App.css';
 import { observer } from 'mobx-react-lite';
 import { fetchProducts, fetchTypes } from "../http/products";
+import GoodsItemCarousel from './GoodsItemCarousel/GoodsItemCarousel';
 
 const GoodsItemMain = observer(() => {
   const { type } = useContext(Context);
@@ -44,7 +45,7 @@ const GoodsItemMain = observer(() => {
         <Row key={index}>
           {chunk.map((product) => (
             <Col key={product.id} md={12 / itemsPerRow}>
-              <GoodsItem products={product} />
+              <GoodsItemCarousel products={product} />
             </Col>
           ))}
         </Row>

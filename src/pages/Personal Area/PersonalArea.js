@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PersonalArea.css';
+import Footer from '../../components/Footer/Footer';
 import { updateUserInfo, getUserInfo, updatePassword, updateEmail } from '../../http/userAPI';
 
 const PersonalArea = () => {
@@ -112,6 +113,7 @@ const PersonalArea = () => {
   };
 
   return (
+     <div>
     <div className="personal-area">
       <div className="menu">
         <button id='personal' onClick={() => handleSectionChange('personal')} disabled={isEditingPersonal}>Личная информация</button>
@@ -242,6 +244,9 @@ const PersonalArea = () => {
           </>
         )}
       </div>
+      
+    </div>
+    <Footer/>
     </div>
   );
 };

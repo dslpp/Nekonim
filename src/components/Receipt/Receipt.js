@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { getBasket } from '../http/products';
-import { Context } from '../index';
+import { getBasket } from '../../http/products';
+import { Context } from '../../index';
 import './Receipt.css'
 
 const Receipt = () => {

@@ -3,11 +3,12 @@ import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
 import TypeBar from "../../components/TypeBar/TypeBar";
 import GoodsList from "../../components/GoodsList";
-import Pages from "../../components/Pages";
+import Pages from "../../components/Pages/Pages";
 import { observer } from "mobx-react-lite";
 import { fetchProducts, fetchTypes, searchProducts } from "../../http/products";
 import { Context } from "../..";
 import './Catalog.css'; 
+import Footer from '../../components/Footer/Footer';
 
 const Catalog = observer(() => {
     const { type } = useContext(Context);
@@ -50,6 +51,7 @@ const Catalog = observer(() => {
     };
 
     return (
+        <div>
         <Container className="container">
             <Row className="mt-4">
                 <Row className="mb-3">
@@ -81,8 +83,10 @@ const Catalog = observer(() => {
                     <GoodsList/>
                     <Pages />
                 </Col>
-            </Row>
+            </Row> 
         </Container>
+        <Footer/>
+        </div>
     );
 });
 

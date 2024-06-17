@@ -1,0 +1,73 @@
+/* styles.css */
+
+.footer {
+  background-color: #ffffff; /* Цвет фона подвала */
+  padding: 5vh 0  2vh 0; /* Внутренние отступы */
+  font-family: "Ossem";
+  border-radius: 2vh;
+}
+
+.footer-dark {
+  background-color: #111111;; /* Цвет фона подвала */
+ color:white
+}
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+ 
+}
+.mail{
+text-align: center;
+padding-top: 2vh;
+}
+.copy{
+  padding-top: 2vh;
+text-align: center;
+}
+.social-links li {
+  margin-right: 10px;
+
+}
+
+.social-links a {
+  color: #333; /* Цвет иконок */
+  font-size: 24px;
+}
+
+.negative img {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+ .brandStyle {
+  font-family: "Outfit";
+  font-size: 1.5rem;
+  color: #B56576;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none; 
+}
+.brandStyle:hover{
+  color: #B56576;
+}
+.footer-nav {
+  list-style-type: none; /* Убираем точки */
+  padding: 0;
+  
+}
+.footer-nav a {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: #777777; /* Наследуем цвет текста от родительского элемента */
+}
+.footer-nav a:hover {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Наследуем цвет текста от родительского элемента */
+}
+.footer-nav li {
+  margin-right: 2vh; /* Расстояние между элементами */
+}
+
+.footer-nav li:last-child {
+  margin-right: 0; /* Убираем margin-right у последнего элемента */
+}
