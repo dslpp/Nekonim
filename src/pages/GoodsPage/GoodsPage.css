@@ -75,3 +75,54 @@
 .centerimage:hover {
   transform: scale(1.1); 
 }
+.reviews {
+  font-family: "Ossem";
+  margin-top: 2vh;
+    width: 35vw;
+    margin: 0 auto; /* Центрируем блок по горизонтали */
+    margin-top: 50px; /* Примерное расстояние от верхнего края страницы */
+ 
+}
+
+.add-review {
+  margin-bottom: 20px;
+}
+
+.add-review .rating {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-review .stars {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.add-review .star {
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.add-review .star.filled,
+.add-review .star:hover,
+.add-review .star:hover ~ .star {
+  color: #ff0;
+}
+
+.user-name{
+  font-size: 1.5vw;
+}
+
+
+.review-section .card {
+  margin-bottom: 10px;
+}
+.review-section {
+  width: 45vw;
+  transform: translateX(-10%);
+  margin: 0 auto; /* Центрируем блок по горизонтали */
+  margin-top: 50px; /* Примерное расстояние от верхнего края страницы */
+}

@@ -13,7 +13,7 @@ const GoodsItemCarousel =({products})=> {
             <Col  onClick={() => history(GOODS_Route + '/' + products.id)}>
             <Card className={`Cardss ${isDarkMode ? 'Cardss-dark' : ''}`}>
                <div className='image-wrapper'>
-                    <Image className='center-image' src={process.env.REACT_APP_API_URL+ products.img} />
+                    <Image className='center-image' src={products.img ? `${process.env.REACT_APP_API_URL}/statics/${products.img}` : ''}/>
                 </div>
                    <div className='label'>
                         <div>

@@ -73,6 +73,14 @@ export const searchProducts = async (searchQuery) => {
     const { data } = await $authHost.post("api/products/search", { searchQuery });
     return data;
 };
-
+export const addReview = async (review) => {
+    const { data } = await $authHost.post('api/review', review);
+    return data;
+  };
+  
+  export const fetchReviews = async (productId) => {
+    const { data } = await $host.get(`api/review/${productId}`);
+    return data;
+  };
 
 

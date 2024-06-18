@@ -19,6 +19,7 @@
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
+  
   }
   
   .wrap {
@@ -96,6 +97,7 @@
   .tovar{
     color:#111111;
     padding-bottom: 3vmax;
+    font-family: "Ossem";
   }
   .tovar-dark-mode{
     color: white;

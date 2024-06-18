@@ -8,13 +8,15 @@ import { observer } from "mobx-react-lite";
 import { fetchProducts, fetchTypes, searchProducts } from "../../http/products";
 import { Context } from "../..";
 import './Catalog.css'; 
+import { useTheme } from '../../ThemeContext';
 import Footer from '../../components/Footer/Footer';
 
 const Catalog = observer(() => {
     const { type } = useContext(Context);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResultMessage, setSearchResultMessage] = useState("");
-    const [sortByPrice, setSortByPrice] = useState(""); // установка значения по умолчанию в пустую строку
+    const [sortByPrice, setSortByPrice] = useState("");
+    const { isDarkMode} = useTheme();
 
     useEffect(() => {
         fetchTypes().then(data => type.setTypess(data));
@@ -52,15 +54,19 @@ const Catalog = observer(() => {
 
     return (
         <div>
-        <Container className="container">
+        <Container  className={`container ${isDarkMode ? 'container-dark-mode' : ''}`}>
             <Row className="mt-4">
                 <Row className="mb-3">
                     <Col md={7}>
-                        <select value={sortByPrice} onChange={(e) => handleSortByPrice(e.target.value)}>
-                            <option value="">Сортировать по цене</option>
-                            <option value="asc">Дешевле</option>
-                            <option value="desc">Дороже</option>
-                        </select>
+                        <div className="sort-dropdown">
+                            <span className="sort-label">Сортировка цен</span>
+                            
+                            <select className="custom-select" value={sortByPrice} onChange={(e) => handleSortByPrice(e.target.value)}>
+                                <option value="">По умолчанию</option>
+                                <option value="asc">Дешевле</option>
+                                <option value="desc">Дороже</option>
+                            </select>
+                        </div>
                     </Col>
                     <Col md={5}>
                         <form className="ctlgform" onSubmit={handleSearch}>
@@ -85,6 +91,7 @@ const Catalog = observer(() => {
                 </Col>
             </Row> 
         </Container>
+        <br/>
         <Footer/>
         </div>
     );

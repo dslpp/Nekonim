@@ -16,6 +16,7 @@
         opacity: 1;
     }
 }
+
 .containerbas {
     opacity: 0;
     animation: ani 2.5s forwards;
@@ -23,6 +24,7 @@
     margin-left: 3vmax;
     display: grid;
     grid-template-columns: 60vmax 8vmax 23vmax;
+    height: 100%;
 }
 #delAll{
     color:#ED0101;
@@ -113,7 +115,6 @@ grid-template-columns: 20% 75%;
     font-size: 1.1vmax;
 }
 
-
 .total {
     position:absolute;
     top: 50%; 
@@ -163,7 +164,7 @@ grid-template-columns: 20% 75%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 85vh; /* Устанавливает высоту, чтобы центрировать по вертикали */
+    height: 70vh; /* Устанавливает высоту, чтобы центрировать по вертикали */
     color: #808080; /* Серый цвет текста */
     text-align: center;
     font-family: "Ossem";

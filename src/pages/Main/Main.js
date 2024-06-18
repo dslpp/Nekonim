@@ -32,7 +32,11 @@ const Main = observer(()=>  {
       </div>
             <GoodsItemMain/>
       <div className="d-flex justify-content-center align-items-center mt-4">
-        <Button variant='outline-dark' onClick={() => history(CATALOG_Route)}>Перейти в каталог</Button>
+      {isDarkMode ? (
+                <Button  style={{fontFamily:"Ossem"}} variant='outline-light' onClick={() => history(CATALOG_Route)}>Перейти в каталог</Button>
+            ) : (
+                <Button style={{fontFamily:"Ossem"}} variant='outline-dark' onClick={() => history(CATALOG_Route)}>Перейти в каталог</Button>
+            )}
       </div>
     </div>
     <br/>

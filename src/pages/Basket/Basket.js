@@ -137,7 +137,7 @@ const Basket = observer(() => {
                         {type.basket.map(item => (
                             <Card className="item" key={item.id}>
                                 <div className="product">
-                                    <img src={process.env.REACT_APP_API_URL + item.product.img} width={100} alt={item.product.name} />
+                                    <img src={item.product.img ? `${process.env.REACT_APP_API_URL}/statics/${item.product.img}` : ''}  width={100} alt={item.product.name} />
                                     <p className="name">{item.product.name}</p>
                                     <p className="quantity">
                                         Количество: 
