@@ -1,15 +1,17 @@
 import React from 'react';
-import { Modal} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import './Authorizmodal.css';
 import { useNavigate } from 'react-router-dom';
 import { LOGIN_Route } from '../utils/const';
 
-const Authorizmodal = ({ show, onHide }) => {
+const Authorizmodal = ({ show, onHide, onHideOffcanvas }) => {
     const history = useNavigate();
     const click = async () => {
         history(LOGIN_Route);
         onHide();
-    }
+        onHideOffcanvas(); // Закрытие канваса
+    };
+
     return (
         <>
             {show && <div className="modal-backdrop-blur" />}

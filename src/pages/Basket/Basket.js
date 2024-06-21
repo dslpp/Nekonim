@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Card, Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom"
+import { Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { getBasket, deleteFromBasket, incrementQuantity, decrementQuantity } from "../../http/products";
 import { Context } from '../../index';
 import { observer } from "mobx-react-lite";
@@ -46,7 +46,6 @@ const Basket = observer(() => {
             }
         });
     };
-    
 
     const handleDelete = async (basketId) => {
         try {
@@ -111,27 +110,41 @@ const Basket = observer(() => {
             state: {
                 totalPrice: totalPrice,
                 selectedItems: type.basket.filter(item => selectedItems.includes(item.id)).map(item => ({
-                    productId: item.product.id, // Предполагаем, что у продукта есть поле id
+                    productId: item.product.id, 
                     quantity: item.quantity,
                     price: item.product.price
                 }))
             }
         });
     };
-    
+
     const relocate = () => {
-        history(CATALOG_Route );
+        history(CATALOG_Route);
     };
+
+    const isAnyItemSelected = selectedItems.length > 0;
 
     return (
         <div>
             {type.basket.length > 0 && (
-                <div id="all">
-                    <Button id="selectAll" variant="online" onClick={handleSelectAll}>
-                        <input type="checkbox" checked={selectedItems.length === type.basket.length} readOnly />
+                <div id="allCustom">
+                    <div className="checkbox-container-custom" onClick={handleSelectAll}>
+                        <input 
+                            type="checkbox" 
+                            checked={selectedItems.length === type.basket.length} 
+                            readOnly 
+                        />
+                        <span className="custom-checkbox-custom"></span>
                         Выбрать всё
+                    </div>
+                    <Button 
+                        id="delAllCustom" 
+                        variant="online" 
+                        onClick={handleDeleteAll} 
+                        disabled={!isAnyItemSelected} // Делаем кнопку недоступной, если ни один товар не выбран
+                    >
+                        Удалить выбранное
                     </Button>
-                    <Button id="delAll" variant="online" onClick={handleDeleteAll}>Удалить выбранное</Button>
                 </div>
             )}
 
@@ -139,49 +152,58 @@ const Basket = observer(() => {
                 <div className="empty-basket">
                     <img src='./images/empty.png' alt="Пустая корзина" />
                     <div>Корзина пуста</div>
-                    <br/>
+                    <br />
                     <Button id="relocatebbt" onClick={relocate}>Отправиться за покупками!</Button>
                 </div>
             )}
+
             {type.basket.length > 0 && (
                 <div className="containerbas">
-                    <div className="items"> 
+                    <div className="items">
                         {type.basket.map(item => (
                             <Card className="item" key={item.id}>
+                                <div className="checkbox-container" onClick={() => toggleSelect(item.id)}>
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedItems.includes(item.id)}
+                                        onChange={() => toggleSelect(item.id)}
+                                    />
+                                    <span className="custom-checkbox"></span>
+                                </div>
                                 <div className="product">
-                                    <img src={item.product.img ? `${process.env.REACT_APP_API_URL}/statics/${item.product.img}` : ''}  width={100} alt={item.product.name} />
+                                    <img className="images" src={item.product.img ? `${process.env.REACT_APP_API_URL}/statics/${item.product.img}` : ''}  width={100} alt={item.product.name} />
                                     <p className="name">{item.product.name}</p>
                                     <p className="quantity">
                                         Количество: 
                                         <Button variant="outline" id="buttondec" onClick={() => handleDecrement(item.id)}>-</Button> {item.quantity}
                                         <Button variant="outline" id="buttondec" onClick={() => handleIncrement(item.id)}>+</Button>
-                                    </p>   
-                                </div>
-                                <div>
-                                    <input
-                                        className="checkbox"
-                                        type="checkbox"
-                                        checked={selectedItems.includes(item.id)}
-                                        onChange={() => toggleSelect(item.id)}
-                                    />
-                                </div>
+                                    </p>
+                                </div>                        
                                 <div className="prices">
                                     <p className="priceb">{(item.product.price * item.quantity).toFixed(2)} рублей</p>
-                                    <Button variant="danger" className="buttondel" onClick={() => handleDelete(item.id)}>Удалить</Button>
+                                    <img src="../images/trash.png" className="buttondel" onClick={() => handleDelete(item.id)}/>
                                 </div>
                             </Card>
                         ))}
                     </div>
-                    <div className="total"> 
+                    <div className="total">
                         <h1 className="result">Итого:</h1>
                         <h3 className="pl-2">{totalPrice.toFixed(2)} рублей</h3>
-                        <Button variant='success' className="button" onClick={handlePayment}>Оплата</Button>
+                        <Button 
+                            variant='success' 
+                            className="button" 
+                            onClick={handlePayment} 
+                            disabled={!isAnyItemSelected} // Делаем кнопку оплаты недоступной, если ни один товар не выбран
+                        >
+                            Оплата
+                        </Button>
                     </div>
                 </div>
             )}
-            <br/>
-             <Footer/>
-        </div> 
+
+            <br />
+            <Footer />
+        </div>
     );
 });
 

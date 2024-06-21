@@ -1,8 +1,4 @@
 @font-face {
-    font-family: "Outfit";
-    src: url(/public/fonts/Outfit.ttf) format('truetype');
-}
-@font-face {
     font-family: 'Ossem'; 
     src: url(/public/fonts/Ossem.ttf) format('truetype'),
      url(/public/fonts/Ossem.woff2) format('woff2'),
@@ -26,27 +22,89 @@
     grid-template-columns: 60vmax 8vmax 23vmax;
     height: 100%;
 }
-#delAll{
-    color:#ED0101;
+ #selectAllCustom {
+    border: none;
+    font-size: 1.1vmax;
     font-family: "Ossem";
-    font-size: 1.1vmax;
-    border: none;
+    cursor: pointer;
 }
-#delAll:active{
-    color:#d00000;
-    
-}
-
-#selectAll{
+#delAllCustom{
     border: none;
     font-size: 1.1vmax;
+    font-family: "Ossem";
+    cursor: pointer;
+    margin-top: 1vw;
+    margin-left: 1vw;
 }
 
-#all{
+#delAllCustom {
+    color: #ED0101;
+}
+
+#delAllCustom:active {
+    color: #d00000;
+}
+
+#allCustom {
     padding-left: 5vmax;
     padding-top: 2vmax;
     font-family: "Ossem";
+}
+.checkbox-container-custom {
+    display: inline-block;
+    position: relative;
+    padding-left: 1.5vw;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container-custom input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+}
+
+.custom-checkbox-custom {
     
+    position: absolute;
+    top: 0.1vw;
+    left: 0;
+    height: 1.2vw;
+    width: 1.2vw;
+    background-color: #ffffff;
+    border-radius: 0.25em;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-container-custom:hover .custom-checkbox-custom {
+    background-color: #ffffff;
+}
+
+.checkbox-container-custom input:checked + .custom-checkbox-custom {
+    background-color: #b56576;
+    border-color: #98556b;
+}
+
+.custom-checkbox-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container-custom input:checked + .custom-checkbox-custom:after {
+    display: block;
+}
+
+.checkbox-container-custom .custom-checkbox-custom:after {
+    left: 0.35em;
+    width: 0.5em;
+    height: 1em;
+    border: solid white;
+    border-width: 0 0.2em 0.2em 0;
+    transform: rotate(45deg);
 }
 .name{
     font-family: "Ossem";
@@ -64,17 +122,20 @@
     
 .item {
     width: 60vmax;
-    height: 11vmax;
     padding: 0.5vmax;
-    border: 1px solid #ccc;
+    border: 2px solid #efefef;
     display: grid;
-    grid-template-columns: 65% 2% 35%;
+    grid-template-columns: 2% 75% 23%;
+    padding-top: 2vw;
+    height: 14vw;
 }
 .product{
 display: grid;
 grid-column: 1;
 grid-column-start: auto;
 grid-template-columns: 20% 75%;
+    
+padding-left: 1vw;
 
 }
 .prices{
@@ -82,31 +143,29 @@ grid-template-columns: 20% 75%;
     grid-column:3;
     font-family: "Ossem";
     font-size: 1.5vmax;
-    grid-template-columns:10.5vmax 0.5vmax 10vmax;
+    grid-template-columns:11.5vw 2vw;
 
     }
-.item img {
-    width: 7vmax;
-    height: 100%;
-    padding: 0.6vmax;
+.item .images {
+    width: 8vw;
+    height: 74%;
     grid-row:1/4;
-}
+    border-radius: 15px;
+
+}   
 
 .buttondel{
-    margin-top: 3vmax;
-    width: 8vmax;
-    height: 2.2vw ;
-    grid-column: 3;
+    width: 2vw;
+    grid-column: 2;
+    grid-row: 2;
+
 }
 .priceb{
     padding-top: 3vmax;
     font-family: "Ossem";
     font-weight:normal;
+    grid-column: 1/3;
     
-}
-.checkbox{
-    grid-column: 2;
-    margin-top: 3.7vw;
 }
 .quantity {
     grid-row:2;
@@ -156,7 +215,7 @@ grid-template-columns: 20% 75%;
     
 }
 #buttondec{
-    margin-top: 0.7vw;
+    margin-top: 0.8vw;
     border: none;
 }
 .empty-basket {
@@ -190,6 +249,63 @@ grid-template-columns: 20% 75%;
 #relocatebbt:active{
     background-color: #98556b; 
 }
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    margin-top: -1vw;
+    margin-left: 0.2vw;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.2vw;
+    width: 1.2vw;
+    background-color: #ffffff;
+    border-radius: 0.25em;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-container:hover input ~ .custom-checkbox {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .custom-checkbox {
+    background-color: #b56576;
+    border-color: #98556b;
+}
+
+.custom-checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .custom-checkbox:after {
+    display: block;
+}
+
+.checkbox-container .custom-checkbox:after {
+    left: 0.35em;
+    width: 0.5em;
+    height: 1em;
+    border: solid white;
+    border-width: 0 0.2em 0.2em 0;
+    transform: rotate(45deg);
+}
+
 @media screen and (orientation: portrait){
     .empty-basket img {
         width: 50vw; /* Уменьшает размер картинки на мобильных устройствах */

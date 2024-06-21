@@ -118,7 +118,7 @@ const NavBar = observer(() => {
                     </Navbar.Offcanvas>
                 </Container>
             </Navbar>
-            <Authorizmodal show={authVisable} onHide={() => setauthVisable(false)} />
+            <Authorizmodal show={authVisable} onHide={() => setauthVisable(false)} onHideOffcanvas={() => setShowOffcanvas(false)} />
         </>
     );
 });
