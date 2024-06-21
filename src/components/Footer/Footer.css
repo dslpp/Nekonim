@@ -40,7 +40,7 @@ text-align: center;
   filter: invert(100%);
   -webkit-filter: invert(100%);
 }
- .brandStyle {
+ .brandStyless {
   font-family: "Outfit";
   font-size: 1.5rem;
   color: #B56576;
@@ -48,7 +48,7 @@ text-align: center;
   text-transform: uppercase;
   text-decoration: none; 
 }
-.brandStyle:hover{
+.brandStyless:hover{
   color: #B56576;
 }
 .footer-nav {
@@ -70,4 +70,11 @@ text-align: center;
 
 .footer-nav li:last-child {
   margin-right: 0; /* Убираем margin-right у последнего элемента */
+}
+@media screen and (orientation: portrait) {
+  .brandStyless {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
 }

@@ -3,6 +3,7 @@ import { Context } from '../../index';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import './Navbar.css';
 import { observer } from 'mobx-react-lite';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
@@ -20,7 +21,8 @@ const NavBar = observer(() => {
     const isMainRoute = location.pathname === MAIN_Route;
     const { isDarkMode, toggleTheme, isNegative } = useTheme();
 
-    const [authVisable, setauthVisable] = useState(false); // Состояние для управления модальным окном
+    const [authVisable, setauthVisable] = useState(false);
+    const [showOffcanvas, setShowOffcanvas] = useState(false);
 
     const handleImageClick = () => {
         toggleTheme();
@@ -30,7 +32,8 @@ const NavBar = observer(() => {
         user.setUser({});
         user.setIsAuth(false);
         localStorage.removeItem("token");
-        window.location.reload(history(LOGIN_Route));
+        history(LOGIN_Route);
+        window.location.reload();
     };
 
     const handleBasketClick = () => {
@@ -39,6 +42,11 @@ const NavBar = observer(() => {
         } else {
             setauthVisable(true);
         }
+    };
+
+    const handleLinkClick = (url) => {
+        setShowOffcanvas(false);
+        history(url);
     };
 
     useEffect(() => {
@@ -55,43 +63,59 @@ const NavBar = observer(() => {
 
     return (
         <>
-            <Navbar className={`navbars ${isDarkMode ? 'navbars-dark-mode' : ''}`}>
+            <Navbar className={`navbars ${isDarkMode ? 'navbars-dark-mode' : ''}`} expand="lg">
                 <Container className="nav-container">
+                    <Navbar.Toggle aria-controls="offcanvas-navbar-nav" onClick={() => setShowOffcanvas(true)} className={isDarkMode ? 'navbar-toggle-dark-mode' : ''} />
                     {!isMainRoute && <Link to="/main" className='brandStyle'>Nekonim</Link>}
-                    <Nav className='ms-auto'>
-
-                        <Link to="/shop"> О нас</Link>
-                        <Link to="/dilevery"> Доставка</Link>
-                        <Link to="/catalog"> Каталог </Link>
-                        {user.user.role !== 'ADMIN' && (
-                            <Link to="/basket" onClick={handleBasketClick}> Корзина
-                                {user.isAuth && (
-                                    <BasketSVG itemCount={type.basket.length} />
-                                )}
-                            </Link>
-                        )}
-                        {user.isAuth && user.user.role === 'ADMIN' && (
-                            <Link to="/admin" onClick={() => history(ADMIN_Route)}>Админ-панель</Link>
-                        )}
-
-                        {user.isAuth ? (
-                            <Nav>
+                    <Navbar.Offcanvas
+                        id="offcanvas-navbar-nav"
+                        aria-labelledby="offcanvas-navbar-nav"
+                        placement="start"
+                        show={showOffcanvas}
+                        onHide={() => setShowOffcanvas(false)}
+                        className={`offcanvas ${isDarkMode ? 'offcanvas-dark-mode' : ''}`}
+                    >
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title id="offcanvas-navbar-nav">
+                                <Link to="/main" className='brandStyl'>Nekonim</Link>
+                            </Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <Nav className='ms-auto'>
+                                <Link to="/shop" onClick={() => handleLinkClick('/shop')}>О нас</Link>
+                                <Link to="/dilevery" onClick={() => handleLinkClick('/dilevery')}>Доставка</Link>
+                                <Link to="/catalog" onClick={() => handleLinkClick('/catalog')}>Каталог</Link>
                                 {user.user.role !== 'ADMIN' && (
-                                    <Link to="/account">Личный кабинет</Link>
+                                    <Link to="/basket" onClick={handleBasketClick}> Корзина
+                                    {user.isAuth && (
+                                        <BasketSVG itemCount={type.basket.length} />
+                                    )}
+                                    </Link>
                                 )}
-                                <Link to="/login" onClick={() => logOut()}>Выход</Link>
+                                {user.isAuth && user.user.role === 'ADMIN' && (
+                                    <Link to="/admin" onClick={() => handleLinkClick(ADMIN_Route)}>Админ-панель</Link>
+                                )}
+                                {user.isAuth ? (
+                                    <Nav>
+                                        {user.user.role !== 'ADMIN' && (
+                                            <Link to="/account" onClick={() => handleLinkClick('/account')}>Личный кабинет</Link>
+                                        )}
+                                        <Link to="/login" onClick={() => {
+                                            logOut();
+                                            setShowOffcanvas(false);
+                                        }}>Выход</Link>
+                                    </Nav>
+                                ) : (
+                                    <Nav>
+                                        <Link to='/login' onClick={() => handleLinkClick(LOGIN_Route)}>Вход</Link>
+                                    </Nav>
+                                )}
+                                <div className={`image-container ${isNegative ? 'negative' : ''}`} onClick={handleImageClick}>
+                                    <img src='../images/thememode.png' alt="Theme Mode" />
+                                </div>
                             </Nav>
-                        ) : (
-                            <Nav>
-                                <Link to='/login' onClick={() => history(LOGIN_Route)}>Вход</Link>
-                            </Nav>
-                        )}
-
-                    </Nav>
-
-                    <div className={`image-container ${isNegative ? 'negative' : ''}`} onClick={handleImageClick} style={{ cursor: 'pointer' }}>
-                        <img src='../images/thememode.png' alt="Theme Mode" />
-                    </div>
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
                 </Container>
             </Navbar>
             <Authorizmodal show={authVisable} onHide={() => setauthVisable(false)} />

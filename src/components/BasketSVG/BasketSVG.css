@@ -31,4 +31,19 @@
     font-size: 0.8vmax;
     padding-top:0.13vmax;
   }
+  @media screen and (orientation: portrait) {
+
+    .item-count {
   
+      font-size: 1vh;
+    }
+    .item-count-container {
+      
+      margin-top: 1vh; 
+      margin-right: 0.3vh;;
+      
+    }
+    .basket-icon {
+      width: 2.5vh;
+    }
+  }

@@ -38,13 +38,15 @@ const Basket = observer(() => {
 
     const toggleSelect = (itemId) => {
         setSelectedItems(prevSelected => {
-            if (prevSelected.includes(itemId)) {
+            const isSelected = prevSelected.some(id => id === itemId);
+            if (isSelected) {
                 return prevSelected.filter(id => id !== itemId);
             } else {
                 return [...prevSelected, itemId];
             }
         });
     };
+    
 
     const handleDelete = async (basketId) => {
         try {
@@ -105,8 +107,18 @@ const Basket = observer(() => {
     };
 
     const handlePayment = () => {
-        history(PAY_Route, { state: { totalPrice } });
+        history(PAY_Route, {
+            state: {
+                totalPrice: totalPrice,
+                selectedItems: type.basket.filter(item => selectedItems.includes(item.id)).map(item => ({
+                    productId: item.product.id, // Предполагаем, что у продукта есть поле id
+                    quantity: item.quantity,
+                    price: item.product.price
+                }))
+            }
+        });
     };
+    
     const relocate = () => {
         history(CATALOG_Route );
     };

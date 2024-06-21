@@ -11,7 +11,6 @@ const App = observer(() => {
   const { user } = useContext(Context);
   useEffect(() => {
     const fetchData = async () => {
-     
         if (localStorage.getItem('theme') === 'dark') {
           document.body.classList.add('dark-mode');
         } else {
@@ -21,15 +20,9 @@ const App = observer(() => {
           user.setUser(data);
           user.setIsAuth(true);
         }).catch(() => {
-          localStorage.clear();
-        });
-     
-    };
-
+          localStorage.clear();});};
     fetchData();
   }, [user]);
-
-
   return (
     <ThemeProvider>
       <BrowserRouter>
@@ -39,5 +32,4 @@ const App = observer(() => {
     </ThemeProvider>
   );
 });
-
 export default App;

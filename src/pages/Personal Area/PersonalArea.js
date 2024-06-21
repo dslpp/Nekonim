@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PersonalArea.css';
 import Footer from '../../components/Footer/Footer';
-import { updateUserInfo, getUserInfo, updatePassword, updateEmail } from '../../http/userAPI';
+import { updateUserInfo, getUserInfo, updatePassword, updateEmail, getOrders } from '../../http/userAPI';
 
 const PersonalArea = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -18,6 +18,9 @@ const PersonalArea = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [orders, setOrders] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -36,6 +39,19 @@ const PersonalArea = () => {
     };
 
     fetchUserInfo();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const userOrders = await getOrders();
+        setOrders(userOrders);
+      } catch (error) {
+        console.error('Ошибка при получении заказов:', error);
+      }
+    };
+
+    fetchOrders();
   }, []);
 
   const handleSectionChange = (section) => {
@@ -112,143 +128,168 @@ const PersonalArea = () => {
     setPasswordError('');
   };
 
+  const handleOrderClick = (order) => {
+    setSelectedOrder(order);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedOrder(null);
+  };
+
   return (
-     <div>
-    <div className="personal-area">
-      <div className="menu">
-        <button id='personal' onClick={() => handleSectionChange('personal')} disabled={isEditingPersonal}>Личная информация</button>
-        <button onClick={() => handleSectionChange('password')} disabled={isEditingPersonal}>Сменить пароль</button>
-        <button onClick={() => handleSectionChange('orders')} disabled={isEditingPersonal}>Заказы</button>
-      </div>
+    <div>
+      <div className="personal-area">
+        <div className="menu">
+          <button id='personal' onClick={() => handleSectionChange('personal')} disabled={isEditingPersonal}>Личная информация</button>
+          <button onClick={() => handleSectionChange('password')} disabled={isEditingPersonal}>Сменить пароль</button>
+          <button onClick={() => handleSectionChange('orders')} disabled={isEditingPersonal}>Заказы</button>
+        </div>
 
-      <div className="cardAc">
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            {currentSection === 'personal' && (
-              <div className="info-section">
-                {!isEditingPersonal ? (
-                  <>
-                    <h2>Личная информация</h2>
-                    <div className="info-container">
-                      <div className="info-item">
-                        <span className="info-label-name">Имя:</span> {name}
+        <div className="cardAc">
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <>
+              {currentSection === 'personal' && (
+                <div className="info-section">
+                  {!isEditingPersonal ? (
+                    <>
+                      <h2>Личная информация</h2>
+                      <div className="info-container">
+                        <div className="info-item">
+                          <span className="info-label-name">Имя:</span> {name}
+                        </div>
+                        <div className="info-item">
+                          <span className="info-label-sname">Фамилия:</span> {surname}
+                        </div>
+                        <div className="info-item">
+                          <span className="info-label">Пол:</span> {sex}
+                        </div>
+                        <div className="info-item">
+                          <span className="info-label">Телефон:</span> {phoneNumber}
+                        </div>
+                        <button id='change' onClick={handleEditPersonalClick}>Изменить</button>
                       </div>
-                      <div className="info-item">
-                        <span className="info-label-sname">Фамилия:</span> {surname}
+                    </>
+                  ) : (
+                    <div>
+                      <div className="info-container">
+                        <h4 style={{ textAlign: "center" }}>Редактирование данных</h4>
+                        <div className="info-row">
+                          <div className="form-group">
+                            <label htmlFor="firstName">Имя:</label>
+                            <input
+                              type="text"
+                              id="firstName"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label htmlFor="lastName">Фамилия:</label>
+                            <input
+                              type="text"
+                              id="lastName"
+                              value={surname}
+                              onChange={(e) => setSurname(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                        <div className="info-row">
+                          <div className="form-group">
+                            <label id='genderLabel' htmlFor="gender">Пол:</label>
+                            <select id="gender" value={sex} onChange={(e) => setSex(e.target.value)}>
+                              <option value="Мужской">Мужской</option>
+                              <option value="Женский">Женский</option>
+                            </select>
+                          </div>
+                          <div className="form-group">
+                            <label htmlFor="phone">Номер телефона:</label>
+                            <input
+                              type="text"
+                              id="phone"
+                              value={phoneNumber}
+                              onChange={(e) => setPhoneNumber(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                        <div className="button-row">
+                          <button id='changec' onClick={handleCancelPersonalClick}>Отмена</button>
+                          <button id='changes' onClick={handleSavePersonalClick}>Сохранить</button>
+                        </div>
                       </div>
-                      <div className="info-item">
-                        <span className="info-label">Пол:</span> {sex}
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Телефон:</span> {phoneNumber}
-                      </div>
-                      <button id='change' onClick={handleEditPersonalClick}>Изменить</button>
                     </div>
-                  </>
-                ) : (
-                  <div>
-                    <div className="info-container">
-                      <h4 style={{ textAlign: "center" }}>Редактирование данных</h4>
-                      <div className="info-row">
-                        <div className="form-group">
-                          <label htmlFor="firstName">Имя:</label>
-                          <input
-                            type="text"
-                            id="firstName"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="lastName">Фамилия:</label>
-                          <input
-                            type="text"
-                            id="lastName"
-                            value={surname}
-                            onChange={(e) => setSurname(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <div className="info-row">
-                        <div className="form-group">
-                          <label id='genderLabel' htmlFor="gender">Пол:</label>
-                          <select id="gender" value={sex} onChange={(e) => setSex(e.target.value)}>
-                            <option value="Мужской">Мужской</option>
-                            <option value="Женский">Женский</option>
-                          </select>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="phone">Номер телефона:</label>
-                          <input
-                            type="text"
-                            id="phone"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <div className="button-row">
-                        <button id='changec' onClick={handleCancelPersonalClick}>Отмена</button>
-                        <button id='changes' onClick={handleSavePersonalClick}>Сохранить</button>
-                      </div>
-                    </div>
+                  )}
+                </div>
+              )}
+              {currentSection === 'password' && (
+                <div className="info-section">
+                  <h2>Сменить пароль</h2>
+                  <div className="form-group">
+                    <label htmlFor="oldPassword">Старый пароль:</label>
+                    <input
+                      type="password"
+                      id="oldPassword"
+                      value={oldPassword}
+                      onChange={(e) => setOldPassword(e.target.value)}
+                    />
                   </div>
-                )}
-              </div>
-            )}
-            {currentSection === 'password' && (
-              <div className="info-section">
-                <h2>Сменить пароль</h2>
-                <div className="form-group">
-                  <label htmlFor="oldPassword">Старый пароль:</label>
-                  <input
-                    type="password"
-                    id="oldPassword"
-                    value={oldPassword}
-                    onChange={(e) => setOldPassword(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="newPassword">Новый пароль:</label>
-                  <input
-                    type="password"
-                    id="newPassword"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="confirmPassword">Подтвердите новый пароль:</label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </div>
-                {passwordError && <p className="error-message">{passwordError}</p>}
-                <div className="button-row">
-                  <button onClick={handleSavePasswordClick}>Сохранить</button>
-                  <button onClick={handleCancelPasswordClick}>Отмена</button>
-                </div>
-              </div>
-            )}
-            {currentSection === 'orders' && (
-              <div className="info-section">
-                <h2>Заказы</h2>
-                {/* Здесь будет отображение заказов */}
-              </div>
-            )}
+                  <div className="form-group">
+                    <label htmlFor="newPassword">Новый пароль:</label>
+                    <input
+                      type="password"
+                      id="newPassword"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="confirmPassword">Подтвердите новый пароль:</label>
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </div>
+                  {passwordError && <p className="error-message">{passwordError}</p>}
+                  <div className="button-row">
+                    <button onClick={handleSavePasswordClick}>Сохранить</button>
+                    <button onClick={handleCancelPasswordClick}>Отмена</button>
+          </div>
+          </div>)}
+          {currentSection === 'orders' && (
+          <div className="info-section">
+            <h2>Заказы</h2>
+            <table className="orders-table">
+              <thead>
+                <tr>
+                  <th>Номер заказа</th>
+                  <th>Дата заказа</th>
+                  <th>Общая сумма</th>
+                  <th>Статус заказа</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                <tr key={order.id} onClick={() => handleOrderClick(order)}>
+                  <td>{order.id}</td>
+                  <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                  <td>{order.totalAmount}</td>
+                  <td>{order.status}</td>
+                </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
+          )}
           </>
-        )}
-      </div>
-      
-    </div>
-    <Footer/>
-    </div>
-  );
+          )}
+          </div></div>
+          <Footer />
+          </div>
+);
 };
-
 export default PersonalArea;

@@ -79,3 +79,13 @@ export const resetPassword = async (resetToken, password) => {
     const { data } = await $host.put('api/user/reset-password', { resetToken, password });
     return data;
 };
+export const getOrders = async () => {
+    try {
+      const response = await $authHost.get('/api/orders');
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при получении заказов:', error);
+      throw error;
+    }
+  };
+  
