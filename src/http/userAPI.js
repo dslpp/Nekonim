@@ -87,5 +87,21 @@ export const getOrders = async () => {
       console.error('Ошибка при получении заказов:', error);
       throw error;
     }
+};
+export const getAllOrders = async () => { // Новая функция для получения всех заказов
+    try {
+      const response = await $authHost.get('/api/orders/all');
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при получении всех заказов:', error);
+      throw error;
+    }
+};
+  export const updateOrderStatus = async (orderId, status) => {
+    try {
+      const { data } = await $authHost.put(`/api/orders/${orderId}/status`, { status });
+      return data;
+    } catch (error) {
+      throw error;
+    }
   };
-  

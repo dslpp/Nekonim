@@ -175,41 +175,59 @@ padding-left: 1vw;
 }
 
 .total {
-    position:absolute;
-    top: 50%; 
-    left: 82.5%; 
+    position: absolute;
+    top: 50%;
+    left: 82.5%;
     transform: translate(-50%, -50%);
     width: 23vmax;
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #fff;
-    z-index: 1000; 
+    z-index: 1000;
     display: grid;
-    font-size: 18px;
     justify-content: center;
     height: 25vmax;
     border-radius: 1vw;
     font-family: "Ossem";
     font-size: 1.5rem;
-    
+    text-align: center; /* Центрируем текст внутри блока */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+}
+.total hr {
+    margin: 10px 0;
+    color: #000000; /* Отступы для горизонтальных линий */
+}
+.total button:last-child {
+    margin-top: 10px; /* Отступ сверху для кнопок */
+    padding: 8px 20px; /* Поля внутри кнопок */
+    background-color: #8EE171;
+    border: none;
+    border-radius: 1vw;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.total button:last-child:hover {
+    background-color: #73c163; /* Цвет при наведении */
 }
 
-.total .amount {
-    font-weight: normal;
-    
+.total button:disabled {
+    background-color: #ccc; /* Цвет кнопки, когда она заблокирована */
+    cursor: not-allowed; /* Запрет курсора при заблокированной кнопке */
+}.total button:disabled:hover {
+    background-color: #ccc; /* Цвет кнопки, когда она заблокирована */
+    cursor: not-allowed; /* Запрет курсора при заблокированной кнопке */
 }
 
-.payment {
-    margin-top: 30px;
- 
+.total button:focus {
+    outline: none; /* Убираем фокусировку */
 }
-.button{
-    width: 12vmax;
-    height: 2.5vmax;
-    display: flex;
-    justify-content: center;
-    
+
+.total button:first-child {
+    margin-right: 10px; /* Отступ между кнопками "Оформить заказ" и "У меня есть промокод!" */
 }
+
 .result{
     padding-top: 2vmax;
     

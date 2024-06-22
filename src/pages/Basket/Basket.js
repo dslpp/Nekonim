@@ -108,15 +108,17 @@ const Basket = observer(() => {
     const handlePayment = () => {
         history(PAY_Route, {
             state: {
-                totalPrice: totalPrice,
+                totalPrice: totalPrice * 0.9, // Передаем сумму с учетом скидки
                 selectedItems: type.basket.filter(item => selectedItems.includes(item.id)).map(item => ({
-                    productId: item.product.id, 
+                    productId: item.product.id,
                     quantity: item.quantity,
-                    price: item.product.price
+                    price: item.product.price,
+                    name:item.product.name
                 }))
             }
         });
     };
+    
 
     const relocate = () => {
         history(CATALOG_Route);
@@ -188,15 +190,18 @@ const Basket = observer(() => {
                     </div>
                     <div className="total">
                         <h1 className="result">Итого:</h1>
-                        <h3 className="pl-2">{totalPrice.toFixed(2)} рублей</h3>
-                        <Button 
-                            variant='success' 
+                        <hr/>
+                        <h4 className="pl-2">К оплате: {totalPrice.toFixed(2)} рублей</h4>
+                       
+                        <hr/>
+                        <h5 className="pl-2">С учетом скидки: {(totalPrice * 0.9).toFixed(2)} рублей</h5> {/* Отображение с учетом скидки */}
+                        <button 
                             className="button" 
                             onClick={handlePayment} 
-                            disabled={!isAnyItemSelected} // Делаем кнопку оплаты недоступной, если ни один товар не выбран
+                            disabled={!isAnyItemSelected} 
                         >
-                            Оплата
-                        </Button>
+                            Оформить заказ
+                        </button>
                     </div>
                 </div>
             )}

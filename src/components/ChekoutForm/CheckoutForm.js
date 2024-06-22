@@ -3,6 +3,7 @@ import { Context } from '../../index';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
 import { check } from "../../http/userAPI";
+import { deleteFromBasket } from "../../http/products";
 import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ totalPrice, selectedItems }) => {
@@ -26,8 +27,8 @@ const CheckoutForm = ({ totalPrice, selectedItems }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        if (!stripe || !elements || !userId) { 
+    
+        if (!stripe || !elements || !userId) {
             return;
         }
         const cardElement = elements.getElement(CardElement);
@@ -35,24 +36,24 @@ const CheckoutForm = ({ totalPrice, selectedItems }) => {
             type: 'card',
             card: cardElement,
         });
-
+    
         if (error) {
             console.error(error);
         } else {
             console.log(paymentMethod);
             const orderData = {
-                userId: userId,  
+                userId: userId,
                 products: selectedItems.map(item => ({
                     productId: item.productId,
                     quantity: item.quantity,
-                    price: item.price
+                    price: item.price,
+                    name:item.name
                 })),
                 totalAmount: totalPrice,
-                status: "В обработке" 
+                status: "В обработке"
             };
-
+    
             try {
-                // Отправляем данные на сервер для создания заказа
                 const response = await fetch('http://localhost:5000/api/orders/create', {
                     method: 'POST',
                     headers: {
@@ -60,12 +61,13 @@ const CheckoutForm = ({ totalPrice, selectedItems }) => {
                     },
                     body: JSON.stringify(orderData)
                 });
-
+    
                 if (response.ok) {
-                    // Успешно создан заказ, переход на страницу чека или другую необходимую
+                    for (const selectedItem of selectedItems) {
+                        await deleteFromBasket(selectedItem.productId); // Передача productId для удаления товара из корзины
+                    }
                     history('/receipt');
                 } else {
-                    // Обработка ошибок, если что-то пошло не так
                     console.error('Ошибка при создании заказа');
                 }
             } catch (error) {
@@ -73,7 +75,7 @@ const CheckoutForm = ({ totalPrice, selectedItems }) => {
             }
         }
     };
-
+    
     return (
         <div className="centered-container">
             <form onSubmit={handleSubmit} className="payment-form">

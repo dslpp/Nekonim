@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './PersonalArea.css';
 import Footer from '../../components/Footer/Footer';
 import { updateUserInfo, getUserInfo, updatePassword, updateEmail, getOrders } from '../../http/userAPI';
+import OrderModal from '../../modals/OrderModal';
 
 const PersonalArea = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -288,7 +289,9 @@ const PersonalArea = () => {
           </>
           )}
           </div></div>
+          <OrderModal order={selectedOrder} onShow={isModalOpen} onClose={closeModal} />
           <Footer />
+          
           </div>
 );
 };

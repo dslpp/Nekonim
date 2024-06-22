@@ -4,6 +4,7 @@ export default class GoodsStore  {
     constructor(){
         this._types=[]
         this._products=[]
+        this._orders=[]
         this._selectedType={}
         this._baskets = []
         this._totalCount = 0
@@ -16,6 +17,9 @@ export default class GoodsStore  {
     }
     setTypess(types){
         this._types=types
+    }
+    setOrders(orders){
+        this._types=orders
     }
     setProducts(products){
         this._products=products
@@ -45,6 +49,9 @@ export default class GoodsStore  {
    
     get types(){
         return this._types
+    }
+    get orders(){
+        return this._orders
     }
     get products(){
         return this._products

@@ -56,10 +56,11 @@ export const getBasket = async () => {
     const {data} = await $authHost.get('api/basket')
     return data
 }
-export const deleteFromBasket = async (basketId) => {
-    const { data } = await $authHost.delete(`api/basket/${basketId}`);
+export const deleteFromBasket = async (productId) => {
+    const { data } = await $authHost.delete(`api/basket/${productId}`);
     return data;
 };
+
 export const incrementQuantity = async (basketId) => {
     const { data } = await $authHost.put(`api/basket/increment/${basketId}`);
     return data;
