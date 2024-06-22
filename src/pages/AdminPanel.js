@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import { Button, Container } from "react-bootstrap";
 import CreateType from "../modals/CreateType";
 import CreateProducts from "../modals/CreateProducts";

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Container, Col, Image, Button, Row, Form, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { fetchOneProducts, addToBasket, addReview, fetchReviews } from "../../http/products";
+import { fetchOneProducts, addToBasket, addReview, fetchReviews, fetchTypes, deleteReview} from "../../http/products";
 import "../GoodsPage/GoodsPage.css";
 import { Context } from '../../index';
 import ChangeProducts from "../../modals/ChangeProducts";
@@ -12,9 +12,11 @@ import Authorizmodal from "../../modals/Authorizmodal";
 import { useTheme } from '../../ThemeContext';
 import Footer from '../../components/Footer/Footer';
 
+
 const GoodsPage = observer(() => {
   const { isDarkMode } = useTheme();
   const { user } = useContext(Context);
+  const { type } = useContext(Context);
   const [product, setProduct] = useState({ info: [] });
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ rating: 0, comment: '' });
@@ -23,9 +25,11 @@ const GoodsPage = observer(() => {
   const [delprodVisable, setdelprodVisable] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const [authVisable, setauthVisable] = useState(false);
-  const [hoverRating, setHoverRating] = useState(0); // Состояние для отслеживания наведения на звёзды
+  const [hoverRating, setHoverRating] = useState(0);
+ 
 
   useEffect(() => {
+    fetchTypes().then(data => type.setTypess(data));
     fetchOneProducts(id).then(data => setProduct(data));
     fetchReviews(id).then(data => setReviews(data)); // Fetch reviews
   }, [id]);
@@ -45,7 +49,7 @@ const GoodsPage = observer(() => {
       setUserRole(null);
     }
   };
-
+  
   const handleAddReview = async () => {
     try {
       const review = {
@@ -58,6 +62,15 @@ const GoodsPage = observer(() => {
       setNewReview({ rating: 0, comment: '' });
     } catch (error) {
       console.error('Error adding review:', error);
+    }
+  };
+  const handleDeleteReview = async (reviewId) => {
+    try {
+      await deleteReview(reviewId);
+      setReviews(reviews.filter(review => review.id !== reviewId));
+      alert('Комментарий успешно удалён!');
+    } catch (error) {
+      console.error('Failed to delete review:', error);
     }
   };
 
@@ -144,6 +157,9 @@ const GoodsPage = observer(() => {
                 <Card.Text>
                   <small className="text-muted">{new Date(review.reviewDate).toLocaleDateString()}</small>
                 </Card.Text>
+                {user.isAuth && user.user.role === 'ADMIN' && (
+                  <Button variant="danger" onClick={() => handleDeleteReview(review.id)}>Удалить</Button>
+                )}
               </Card.Body>
             </Card>
           ))}

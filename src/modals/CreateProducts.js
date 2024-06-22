@@ -26,15 +26,7 @@ const CreateProducts = observer( ({show, onHide}) => {
   };
 
   const selectFile = e => {
-    const file = e.target.files[0];
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/gif']; 
-  
-    if (file && allowedTypes.includes(file.type)) {
-      setFile(file);
-    } else {
-      alert('Пожалуйста, выберите изображение (PNG, JPEG или GIF).');
-      e.target.value = null;
-    }
+    setFile(e.target.files[0]);
   };
 
   const handlePriceChange = e => {
