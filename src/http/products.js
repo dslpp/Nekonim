@@ -59,8 +59,8 @@ export const getBasket = async () => {
     return data;
 };
 
-export const deleteFromBasket = async (productId) => {
-    const { data } = await $authHost.delete(`api/basket/${productId}`);
+export const deleteFromBasket = async (basketId) => {
+    const { data } = await $authHost.delete(`api/basket/${basketId}`);
     return data;
 };
 
