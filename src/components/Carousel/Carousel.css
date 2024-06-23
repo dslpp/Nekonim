@@ -9,8 +9,8 @@
 }
 @media screen and (orientation: portrait){
     .carousel{
-        width: 50vmax;
-        height: 50vmin;
+        width: 50vh;
+        height: 50vw;
         padding: auto;
     }
     .carouselblock{
