@@ -1,11 +1,12 @@
 @keyframes ani {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
+
 .imagegoods {
   display: flex;
   justify-content: center;
@@ -21,7 +22,6 @@
 
 .centerimage {
   width: 100%; 
-
   transition: transform 0.3s ease;
 }
 
@@ -50,6 +50,13 @@
 
 .characteristic {
   margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.characteristic-dark-mode {
+  background-color: #000000;
+  color: #fff;
 }
 
 .product-details {
@@ -62,26 +69,91 @@
   align-items: center;
   gap: 10px;
   margin-top: 20px; 
- 
-}
-#edit-del{
-  width: 2vmax;
-  transition: transform 0.3s ease;
-}
-#edit-del:hover{
-  transform: scale(1.1); 
 }
 
-.centerimage:hover {
-  transform: scale(1.1); 
+.button-group .btn-outline {
+  border: none;
+  background: none;
 }
+
+button img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+button img#edit-del {
+  width: 20px;
+  height: 20px;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.star.filled {
+  color: #ff0;
+}
+
+.add-review .stars {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+#addbasket{
+  background-color: #76b565;
+  border-color: transparent;
+}
+
+  
+
+#addbasket:hover{
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow:#808080;
+}
+#addbasket:active{
+  background-color: #679d58; 
+}
+
+.review-section .card {
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  color: #000;  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-section-dark-mode .card {
+  background-color: #333;
+  color: #fff;
+}
+
+.review-section {
+  width: 45vw;
+  transform: translateX(-10%);
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.user-name {
+  font-size: 1.5vw;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.review-stars {
+  display: inline-block;
+}
+
 .reviews {
   font-family: "Ossem";
   margin-top: 2vh;
-    width: 35vw;
-    margin: 0 auto; /* Центрируем блок по горизонтали */
-    margin-top: 50px; /* Примерное расстояние от верхнего края страницы */
- 
+  width: 35vw;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 
 .add-review {
@@ -94,35 +166,17 @@
   margin-top: 10px;
 }
 
-.add-review .stars {
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
+.add-review-dark-mode {
+  background-color: #000000;
+  color: #fff;
 }
 
-.add-review .star {
-  cursor: pointer;
-  font-size: 24px;
+
+.date-text{
+  color: #6c757d;
+
+}
+
+.review-section-dark-mode{
   color: #ccc;
-}
-
-.add-review .star.filled,
-.add-review .star:hover,
-.add-review .star:hover ~ .star {
-  color: #ff0;
-}
-
-.user-name{
-  font-size: 1.5vw;
-}
-
-
-.review-section .card {
-  margin-bottom: 10px;
-}
-.review-section {
-  width: 45vw;
-  transform: translateX(-10%);
-  margin: 0 auto; /* Центрируем блок по горизонтали */
-  margin-top: 50px; /* Примерное расстояние от верхнего края страницы */
 }

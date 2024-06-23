@@ -39,6 +39,7 @@ const OrdersListModal = ({ show, onHide, orders, onUpdateStatus }) => {
                       <option value="Собран">Собран</option>
                       <option value="Отправлен">Отправлен</option>
                       <option value="Доставлен">Доставлен</option>
+                      <option value="Отменён">Отменён</option>
                     </select>
                   </td>
                 </tr>

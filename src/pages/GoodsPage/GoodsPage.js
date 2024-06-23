@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Container, Col, Image, Button, Row, Form, Card } from "react-bootstrap";
+import { Container, Col, Image, Button, Row, Form, Card, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { fetchOneProducts, addToBasket, addReview, fetchReviews, fetchTypes, deleteReview} from "../../http/products";
+import { fetchOneProducts, addToBasket, addReview, fetchReviews, fetchTypes, deleteReview } from "../../http/products";
 import "../GoodsPage/GoodsPage.css";
 import { Context } from '../../index';
 import ChangeProducts from "../../modals/ChangeProducts";
@@ -11,7 +11,6 @@ import { check } from "../../http/userAPI";
 import Authorizmodal from "../../modals/Authorizmodal";
 import { useTheme } from '../../ThemeContext';
 import Footer from '../../components/Footer/Footer';
-
 
 const GoodsPage = observer(() => {
   const { isDarkMode } = useTheme();
@@ -26,13 +25,22 @@ const GoodsPage = observer(() => {
   const [userRole, setUserRole] = useState(null);
   const [authVisable, setauthVisable] = useState(false);
   const [hoverRating, setHoverRating] = useState(0);
- 
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     fetchTypes().then(data => type.setTypess(data));
     fetchOneProducts(id).then(data => setProduct(data));
-    fetchReviews(id).then(data => setReviews(data)); // Fetch reviews
+    fetchReviews(id).then(data => setReviews(data)); 
   }, [id]);
+  useEffect(() => {
+    if (notification) {
+        const timer = setTimeout(() => {
+            setNotification(null);
+        }, 5000); // Закрываем уведомление через 5 секунд
+
+        return () => clearTimeout(timer); // Очищаем таймер при размонтировании компонента
+    }
+}, [notification]);
 
   const add = async () => {
     try {
@@ -42,16 +50,20 @@ const GoodsPage = observer(() => {
       const formData = new FormData();
       formData.append('productId', id);
       console.log('Adding product to basket:', id);
-      addToBasket(formData).then(response => alert(`Товар ${product.name} был добавлен в вашу корзину!`));
+      addToBasket(formData).then(response => setNotification(`Товар "${product.name}" был добавлен в вашу корзину!`));
     } catch (error) {
       console.error('Error adding to basket:', error);
       setauthVisable(true);
       setUserRole(null);
+      setNewReview({ rating: 0, comment: '' }); // Очищаем поля комментария и оценки
     }
   };
   
   const handleAddReview = async () => {
     try {
+      const user = await check();
+      setUserRole(user.role);
+
       const review = {
         rating: newReview.rating,
         comment: newReview.comment,
@@ -59,16 +71,20 @@ const GoodsPage = observer(() => {
       };
       const data = await addReview(review);
       setReviews([...reviews, data]);
-      setNewReview({ rating: 0, comment: '' });
+      setNewReview({ rating: 0, comment: '' }); // Очищаем поля комментария и оценки
     } catch (error) {
       console.error('Error adding review:', error);
+      setauthVisable(true);
+      setUserRole(null);
+      setNewReview({ rating: 0, comment: '' }); // Очищаем поля комментария и оценки
     }
   };
+
   const handleDeleteReview = async (reviewId) => {
     try {
       await deleteReview(reviewId);
       setReviews(reviews.filter(review => review.id !== reviewId));
-      alert('Комментарий успешно удалён!');
+      setNotification('Комментарий успешно удалён!');
     } catch (error) {
       console.error('Failed to delete review:', error);
     }
@@ -86,14 +102,14 @@ const GoodsPage = observer(() => {
           <h1>{product.name}</h1>
           <hr />
           <h3>{product.price} р.</h3>
-          <Button variant={"outline-dark"} onClick={add}>Положить в корзину</Button>
+          <Button id="addbasket" onClick={add}>Положить в корзину</Button>
           <hr />
           <p className="shortdesc">{product.shortdescription}</p>
-          <div className="characteristic mt-4">
+          <div className={`characteristic mt-4 ${isDarkMode ? 'characteristic-dark-mode' : ''}`}>
             <hr />
             <h3>Характеристики</h3>
             {product.info.map((info, index) => (
-              <Row key={info.id} style={{ background: index % 2 === 0 ? '#f5f5f5' : 'transparent', padding: '10px' }}>
+              <Row key={info.id} style={{ background: index % 2 === 0 ? (isDarkMode ? '#444' : '#f0eeee') : 'transparent', padding: '10px' }}>
                 <Col xs={6}>{info.title}</Col>
                 <Col xs={6}>{info.description}</Col>
               </Row>
@@ -115,9 +131,9 @@ const GoodsPage = observer(() => {
         <DeleteProducts show={delprodVisable} onHide={() => setdelprodVisable(false)} />
         <Authorizmodal show={authVisable} onHide={() => setauthVisable(false)} />
       </Container>
-      <div className="reviews">
+      <div className={`reviews ${isDarkMode ? 'reviews-dark-mode' : ''}`}>
         <h3>Отзывы</h3>
-        <div className="add-review">
+        <div className={`add-review ${isDarkMode ? 'add-review-dark-mode' : ''}`}>
           <Form.Group className="mb-3" controlId="formReview">
             <Form.Control
               as="textarea"
@@ -125,6 +141,7 @@ const GoodsPage = observer(() => {
               value={newReview.comment}
               onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
               placeholder="Оставить отзыв"
+              disabled={!user.isAuth} // Делаем поле неактивным при отсутствии авторизации
             />
             <div className="rating">
               <Form.Label>Ваша оценка</Form.Label>
@@ -132,30 +149,32 @@ const GoodsPage = observer(() => {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className={`star ${newReview.rating >= star ? 'filled' : ''}`}
+                    className={`star ${hoverRating >= star || newReview.rating >= star ? 'filled' : ''}`}
                     onClick={() => setNewReview({ ...newReview, rating: star })}
-                    onMouseEnter={() => setHoverRating(star)} // Обработчик наведения на звезду
-                    onMouseLeave={() => setHoverRating(0)} // Обработчик ухода с звезды
+                    onMouseEnter={() => setHoverRating(star)} 
+                    onMouseLeave={() => setHoverRating(0)} 
                   >&#9733;</span>
                 ))}
               </div>
             </div>
-            <Button variant="success" onClick={handleAddReview} disabled={!newReview.comment.trim() || newReview.rating === 0}>Отправить отзыв</Button>
+            <Button variant="success" onClick={handleAddReview} disabled={!user.isAuth || !newReview.comment.trim() || newReview.rating === 0}>Отправить отзыв</Button>
           </Form.Group>
         </div>
-        <div className="review-section">
+        <div className={`review-section ${isDarkMode ? 'review-section-dark-mode' : ''}`}>
           {reviews.map(review => (
             <Card key={review.id} className="mb-3">
               <Card.Body>
-              <Card.Text>
-                  <small className="user-name">{review.user.name}</small>
-                </Card.Text>
                 <Card.Text>
-                  <strong>Оценка:</strong> {review.rating} / 5
+                  <small className="user-name">{review.user.name}</small>
+                  <div className="review-stars">
+                    {[1, 2, 3, 4, 5].map(star => (
+                      <span key={star} className={`star ${review.rating >= star ? 'filled' : ''}`}>&#9733;</span>
+                    ))}
+                  </div>
                 </Card.Text>
                 <Card.Text>{review.comment}</Card.Text>
                 <Card.Text>
-                  <small className="text-muted">{new Date(review.reviewDate).toLocaleDateString()}</small>
+                  <small className="date-text">{new Date(review.reviewDate).toLocaleDateString()}</small>
                 </Card.Text>
                 {user.isAuth && user.user.role === 'ADMIN' && (
                   <Button variant="danger" onClick={() => handleDeleteReview(review.id)}>Удалить</Button>
@@ -166,6 +185,13 @@ const GoodsPage = observer(() => {
         </div>
       </div>
       <Footer />
+      {notification &&
+        <div style={{ position: 'fixed', top: 50, right: 20, zIndex: 9999 }}>
+          <Alert variant="success" onClose={() => setNotification(null)} dismissible>
+            {notification}
+          </Alert>
+        </div>
+      }
     </div>
   );
 });

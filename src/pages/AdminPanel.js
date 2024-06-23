@@ -10,10 +10,10 @@ import { getAllOrders, updateOrderStatus } from "../http/userAPI"; // Импор
 import { Context } from "../index";
 
 const AdminPanel = () => {
-    const [typeVisable, settypeVisable] = useState(false);
-    const [productsVisable, setproductsVisable] = useState(false);
-    const [dtypeVisable, setdtypeVisable] = useState(false);
-    const [chntypeVisable, setchntypeVisable] = useState(false);
+    const [typeVisible, setTypeVisible] = useState(false);
+    const [productsVisible, setProductsVisible] = useState(false);
+    const [deleteTypeVisible, setDeleteTypeVisible] = useState(false);
+    const [changeTypeVisible, setChangeTypeVisible] = useState(false);
     const [showOrdersModal, setShowOrdersModal] = useState(false);
     const [orders, setOrders] = useState([]); // Состояние для заказов
     const { type } = useContext(Context);
@@ -38,30 +38,49 @@ const AdminPanel = () => {
         );
         setOrders(updatedOrders); // Обновляем состояние заказов
     };
+    const handleOpenCreateTypeModal = async () => {
+        await fetchTypes().then(data => type.setTypess(data)); // Получаем типы перед открытием модального окна
+        setTypeVisible(true);
+    };
+
+    const handleOpenChangeTypeModal = async () => {
+        await fetchTypes().then(data => type.setTypess(data)); // Получаем типы перед открытием модального окна
+        setChangeTypeVisible(true);
+    };
+
+    const handleOpenDeleteTypeModal = async () => {
+        await fetchTypes().then(data => type.setTypess(data)); // Получаем типы перед открытием модального окна
+        setDeleteTypeVisible(true);
+    };
+
+    const handleOpenCreateProductsModal = async () => {
+        await fetchTypes().then(data => type.setTypess(data)); // Получаем типы перед открытием модального окна
+        setProductsVisible(true);
+    };
 
     return (
         <Container style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-4" onClick={() => settypeVisable(true)}>
+            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant="dark" className="mt-4" onClick={handleOpenCreateTypeModal}>
                 Добавить тип
             </Button>
-            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-2" onClick={() => setchntypeVisable(true)}>
+            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant="dark" className="mt-2" onClick={handleOpenChangeTypeModal}>
                 Изменить название типа
             </Button>
-            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-2" onClick={() => setdtypeVisable(true)}>
+            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant="dark" className="mt-2" onClick={handleOpenDeleteTypeModal}>
                 Удалить тип
             </Button>
 
-            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-2" onClick={() => setproductsVisable(true)}>
+            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant="dark" className="mt-2" onClick={handleOpenCreateProductsModal}>
                 Добавить продукт
             </Button>
-            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant={'dark'} className="mt-2" onClick={handleToggleOrdersModal}>
+            <Button style={{ width: "70vw", fontSize: "1.15em" }} variant="dark" className="mt-2" onClick={handleToggleOrdersModal}>
                 Просмотреть заказы
             </Button>
 
-            <CreateType show={typeVisable} onHide={() => settypeVisable(false)} />
-            <CreateProducts show={productsVisable} onHide={() => setproductsVisable(false)} />
-            <DeleteType show={dtypeVisable} onHide={() => setdtypeVisable(false)} />
-            <ChangeType show={chntypeVisable} onHide={() => setchntypeVisable(false)} />
+            <CreateType show={typeVisible} onHide={() => setTypeVisible(false)} />
+            <CreateProducts show={productsVisible} onHide={() => setProductsVisible(false)} />
+            <DeleteType show={deleteTypeVisible} onHide={() => setDeleteTypeVisible(false)} />
+            <ChangeType show={changeTypeVisible} onHide={() => setChangeTypeVisible(false)} />
             <OrdersListModal show={showOrdersModal} onHide={handleToggleOrdersModal} orders={orders} onUpdateStatus={handleUpdateOrderStatus} />
         </Container>
     );

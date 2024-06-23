@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { createType } from "../http/products";
 
 const CreateType = ({ show, onHide}) => { 
     const [value, setValue] = useState('');
+    const [notification, setNotification] = useState(null);
+    
 
     const addType = () => {
         createType({ name: value }).then(data => {
             setValue('');
-            onHide();
-            alert("Успешно добавлено");
+            setNotification("Успешно добавлено");
+            setTimeout(() => {
+                setNotification(null);
+                onHide(); 
+            }, 2000); 
+           
         });
     };
 
@@ -43,6 +49,13 @@ const CreateType = ({ show, onHide}) => {
                 <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
                 <Button variant="outline-success" onClick={addType}>Добавить</Button>
             </Modal.Footer>
+            {notification &&
+        <div style={{ position: 'fixed', top: 50, right: 10, zIndex: 9999 }}>
+          <Alert variant="success">
+            {notification}
+          </Alert>
+        </div>
+      }
         </Modal>
     );
 };

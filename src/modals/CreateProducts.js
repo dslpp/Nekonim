@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Form, Modal, Button, Dropdown, Row, Col} from 'react-bootstrap';
+import { Form, Modal, Button, Dropdown, Row, Col, Alert } from 'react-bootstrap';
 import { Context } from "../index";
 import { observer } from 'mobx-react-lite';
 import { createProducts } from '../http/products';
 
-const CreateProducts = observer( ({show, onHide}) => {
+const CreateProducts = observer(({ show, onHide }) => {
   const { type } = useContext(Context);
   const [selectedType, setSelectedType] = useState(null);
   const [info, setInfo] = useState([]);
@@ -12,9 +12,12 @@ const CreateProducts = observer( ({show, onHide}) => {
   const [shortdescription, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [file, setFile] = useState(null);
-  
+  const [errorNotification, setErrorNotification] = useState(null);
+  const [notification, setNotification] = useState(null);
+  const [hideErrorTimeout, setHideErrorTimeout] = useState(null); // Состояние для таймаута скрытия ошибки
+
   const changeInfo = (key, value, number) => {
-    setInfo(info.map(index=> index.number===number ? {...index, [key]:value} : index))
+    setInfo(info.map(index => index.number === number ? { ...index, [key]: value } : index))
   };
 
   const addInfo = () => {
@@ -22,7 +25,7 @@ const CreateProducts = observer( ({show, onHide}) => {
   };
 
   const removeInfo = (numberToRemove) => {
-    setInfo(info.filter(index=> index.number !== numberToRemove));
+    setInfo(info.filter(index => index.number !== numberToRemove));
   };
 
   const selectFile = e => {
@@ -45,6 +48,7 @@ const CreateProducts = observer( ({show, onHide}) => {
     const formattedPrice = inputPrice.startsWith('-') ? '' : inputPrice;
     setPrice(formattedPrice);
   };
+
   const handleClose = () => {
     setName('');
     setDescription('');
@@ -52,11 +56,30 @@ const CreateProducts = observer( ({show, onHide}) => {
     setFile(null);
     setSelectedType(null);
     setInfo([]);
+    setErrorNotification(null);
+    clearTimeout(hideErrorTimeout); // Очищаем таймаут перед закрытием модального окна
+  };
+
+  const validateForm = () => {
+    if (!selectedType || !name || !price || !file) {
+      setErrorNotification("Пожалуйста, заполните все обязательные поля.");
+      const timeout = setTimeout(() => {
+        setErrorNotification(null);
+      }, 3000);
+
+      setHideErrorTimeout(timeout); // Сохраняем ID таймаута в состоянии
+      return false;
+    }
+    return true;
   };
 
   const addProducts = () => {
+    if (!validateForm()) {
+      return;
+    }
+
     const formattedPrice = parseFloat(price).toFixed(2);
-    
+
     const formData = new FormData();
     formData.append('name', name);
     formData.append('shortdescription', shortdescription);
@@ -64,7 +87,7 @@ const CreateProducts = observer( ({show, onHide}) => {
     formData.append('img', file);
     formData.append('typeId', selectedType.id);
     formData.append('info', JSON.stringify(info));
-    
+
     createProducts(formData)
       .then(data => {
         onHide();
@@ -74,11 +97,18 @@ const CreateProducts = observer( ({show, onHide}) => {
         setFile(null);
         setSelectedType(null);
         setInfo([]);
-        alert("Товар успешно добавлен");
+        setNotification("Товар успешно добавлен");
+        setErrorNotification(null);
+        clearTimeout(hideErrorTimeout); 
+        
       })
       .catch(error => {
-        alert("Ошибка при добавлении товара:", error);
-       
+        setErrorNotification("Ошибка при добавлении товара: " + error.message);
+        const timeout = setTimeout(() => {
+          setErrorNotification(null);
+        }, 3000);
+
+        setHideErrorTimeout(timeout); // Сохраняем ID таймаута в состоянии
       });
   };
 
@@ -86,7 +116,6 @@ const CreateProducts = observer( ({show, onHide}) => {
     <Modal
       show={show}
       onHide={onHide}
-      
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -112,29 +141,29 @@ const CreateProducts = observer( ({show, onHide}) => {
           </Dropdown>
           <Form.Control
             value={name}
-            onChange={e=> setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
             className='mt-3'
             placeholder='Введите название товара'
           />
           <Form.Control
             value={shortdescription}
-            onChange={e=> setDescription(e.target.value)}
+            onChange={e => setDescription(e.target.value)}
             className='mt-3'
             placeholder='Введите краткое описание товара (опционально)'
           />
           <Form.Control
             value={price}
-            onChange={handlePriceChange} 
+            onChange={handlePriceChange}
             className='mt-3'
             placeholder='Введите стоимость товара'
-            type='text' 
+            type='text'
           />
           <Form.Control
             className='mt-3'
             type='file'
             onChange={selectFile}
           />
-          <hr/>
+          <hr />
           <Button variant='outline-dark' onClick={addInfo}>
             Добавить новое свойство характеристики
           </Button>
@@ -143,20 +172,20 @@ const CreateProducts = observer( ({show, onHide}) => {
               <Col md={4}>
                 <Form.Control
                   value={index.title}
-                  onChange={(e)=>changeInfo('title', e.target.value, index.number)}
+                  onChange={(e) => changeInfo('title', e.target.value, index.number)}
                   placeholder="Введите название свойства"
                 />
               </Col>
               <Col md={4}>
                 <Form.Control
                   value={index.description}
-                  onChange={(e)=>changeInfo('description', e.target.value, index.number)}              
+                  onChange={(e) => changeInfo('description', e.target.value, index.number)}
                   placeholder="Введите описание свойства"
                 />
               </Col>
               <Col md={4}>
                 <Button
-                  onClick={()=> removeInfo(index.number)}
+                  onClick={() => removeInfo(index.number)}
                   variant={"outline-danger"}
                 >
                   Удалить
@@ -170,6 +199,20 @@ const CreateProducts = observer( ({show, onHide}) => {
         <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
         <Button variant="outline-success" onClick={addProducts}>Добавить</Button>
       </Modal.Footer>
+      {notification &&
+        <div style={{ position: 'fixed', top: 50, right: 10, zIndex: 9999 }}>
+          <Alert variant="success">
+            {notification}
+          </Alert>
+        </div>
+      }
+      {errorNotification &&
+        <div style={{ position: 'fixed', top: 10, right: 1, zIndex: 9999 }}>
+          <Alert variant="danger">
+            {errorNotification}
+          </Alert>
+        </div>
+      }
     </Modal>
   );
 });

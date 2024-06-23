@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Modal, Button, Dropdown, Form } from 'react-bootstrap';
+import { Modal, Button, Dropdown, Form, Alert } from 'react-bootstrap';
 import { Context } from '../index';
 import { changeType } from '../http/products';
 
@@ -7,12 +7,22 @@ const ChangeType = ({ show, onHide }) => {
     const { type } = useContext(Context);
     const [selectedType, setSelectedType] = useState(null);
     const [value, setValue] = useState('');
+    const [notification, setNotification] = useState(null);
 
     useEffect(() => {
         if (!show) {
             setSelectedType(null);
         }
     }, [show]);
+    useEffect(() => {
+        if (notification) {
+            const timer = setTimeout(() => {
+                setNotification(null);
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [notification]);
 
     const updateType = () => {
         if (!selectedType) {
@@ -22,8 +32,12 @@ const ChangeType = ({ show, onHide }) => {
         changeType(selectedType.id, value) // Передаем идентификатор типа и новое значение названия
             .then(data => {
                 setValue('');
-                onHide();
-                alert("Успешно изменено");
+                setNotification("Успешно изменено");
+                setTimeout(() => {
+                    setNotification(null);
+                    onHide(); 
+                }, 2000); 
+               
             })
             .catch(error => {
                 console.error("Ошибка при обновлении типа:", error);
@@ -68,6 +82,13 @@ const ChangeType = ({ show, onHide }) => {
                 <Button variant="outline-secondary" onClick={onHide}>Закрыть</Button>
                 <Button variant="outline-primary" onClick={updateType}>Изменить</Button>
             </Modal.Footer>
+            {notification &&
+        <div style={{ position: 'fixed', top: 50, right: 10, zIndex: 9999 }}>
+          <Alert variant="success">
+            {notification}
+          </Alert>
+        </div>
+      }
         </Modal>
     );
 };

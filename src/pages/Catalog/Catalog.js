@@ -44,7 +44,7 @@ const Catalog = observer(() => {
                 type.setProducts(data);
                 setSearchResultMessage(""); 
             }
-            setSearchQuery(""); // Очистка поля поиска после выполнения поиска
+            setSearchQuery(""); 
         }
     };
 

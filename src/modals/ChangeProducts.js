@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Form, Modal, Button, Dropdown, Row, Col } from 'react-bootstrap';
+import { Form, Modal, Button, Dropdown, Row, Col, Alert } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { fetchOneProducts, updateProducts, fetchInfo, fetchTypes, createInfo, updateInfo, deleteInfo } from '../http/products';
 import { Context } from "../index";
@@ -13,6 +13,7 @@ const ChangeProducts = ({ show, onHide }) => {
   const [price, setPrice] = useState('');
   const [file, setFile] = useState(null);
   const { type } = useContext(Context);
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     fetchTypes().then(data => type.setTypess(data));
@@ -61,8 +62,12 @@ const ChangeProducts = ({ show, onHide }) => {
 
       await updateProducts(id, formData);
 
-      alert("Данные обновлены!");
+      
+      setNotification("Данные обновлены!");
       onHide();
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     } catch (error) {
       console.error('Ошибка при обновлении товара:', error);
     }
@@ -121,100 +126,110 @@ const ChangeProducts = ({ show, onHide }) => {
   };
 
   return (
-    <Modal
-      show={show}
-      onHide={onHide}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Редактировать товар
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Dropdown>
-            <Dropdown.Toggle>
-              {selectedType ? selectedType.name : 'Выберите тип'}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {type.types.map(type => (
-                <Dropdown.Item key={type.id} onClick={() => setSelectedType(type)}>
-                  {type.name}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
+    <>
+      <Modal
+        show={show}
+        onHide={onHide}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Редактировать товар
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Dropdown>
+              <Dropdown.Toggle>
+                {selectedType ? selectedType.name : 'Выберите тип'}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                {type.types.map(type => (
+                  <Dropdown.Item key={type.id} onClick={() => setSelectedType(type)}>
+                    {type.name}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
 
-          <Form.Control
-            value={name}
-            onChange={e => setName(e.target.value)}
-            className='mt-3'
-            placeholder='Введите название товара'
-          />
+            <Form.Control
+              value={name}
+              onChange={e => setName(e.target.value)}
+              className='mt-3'
+              placeholder='Введите название товара'
+            />
 
-          <Form.Control
-            value={shortdescription}
-            onChange={e => setDescription(e.target.value)}
-            className='mt-3'
-            placeholder='Введите краткое описание товара (опционально)'
-          />
+            <Form.Control
+              value={shortdescription}
+              onChange={e => setDescription(e.target.value)}
+              className='mt-3'
+              placeholder='Введите краткое описание товара (опционально)'
+            />
 
-          <Form.Control
-            value={price}
-            onChange={handlePriceChange}
-            className='mt-3'
-            placeholder='Введите стоимость товара'
-            type='text'
-          />
+            <Form.Control
+              value={price}
+              onChange={handlePriceChange}
+              className='mt-3'
+              placeholder='Введите стоимость товара'
+              type='text'
+            />
 
-          <Form.Control
-            className='mt-3'
-            type='file'
-            onChange={selectFile}
-          />
+            <Form.Control
+              className='mt-3'
+              type='file'
+              onChange={selectFile}
+            />
 
-          <hr />
+            <hr />
 
-          <Button variant='outline-dark' onClick={addInfo}>
-            Добавить новое свойство характеристики
-          </Button>
+            <Button variant='outline-dark' onClick={addInfo}>
+              Добавить новое свойство характеристики
+            </Button>
 
-          {info.map((index) =>
-            <Row key={index.id} className="mt-4" >
-              <Col md={4}>
-                <Form.Control
-                  value={index.title}
-                  onChange={(e) => changeInfo('title', e.target.value, index.id)}
-                  placeholder="Введите название свойства"
-                />
-              </Col>
-              <Col md={4}>
-                <Form.Control
-                  value={index.description}
-                  onChange={(e) => changeInfo('description', e.target.value, index.id)}
-                  placeholder="Введите описание свойства"
-                />
-              </Col>
-              <Col md={4}>
-                <Button
-                  onClick={() => removeInfo(index.id)}
-                  variant={"outline-danger"}
-                >
-                  Удалить
-                </Button>
-              </Col>
-            </Row>
-          )}
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-        <Button variant="outline-success" onClick={updateProduct}>Сохранить изменения</Button>
-      </Modal.Footer>
-    </Modal>
+            {info.map((index) =>
+              <Row key={index.id} className="mt-4" >
+                <Col md={4}>
+                  <Form.Control
+                    value={index.title}
+                    onChange={(e) => changeInfo('title', e.target.value, index.id)}
+                    placeholder="Введите название свойства"
+                  />
+                </Col>
+                <Col md={4}>
+                  <Form.Control
+                    value={index.description}
+                    onChange={(e) => changeInfo('description', e.target.value, index.id)}
+                    placeholder="Введите описание свойства"
+                  />
+                </Col>
+                <Col md={4}>
+                  <Button
+                    onClick={() => removeInfo(index.id)}
+                    variant={"outline-danger"}
+                  >
+                    Удалить
+                  </Button>
+                </Col>
+              </Row>
+            )}
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
+          <Button variant="outline-success" onClick={updateProduct}>Сохранить изменения</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {notification &&
+        <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 9999 }}>
+          <Alert variant="success" onClose={() => setNotification(null)} dismissible>
+            {notification}
+          </Alert>
+        </div>
+      }
+    </>
   );
 };
 
