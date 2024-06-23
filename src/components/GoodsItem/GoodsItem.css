@@ -6,7 +6,7 @@
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s;
-    height: 93%; /* Задание одинаковой высоты */
+    height: 93%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15vw; /* Увеличиваем высоту изображения */
+    height: 15vw;
     overflow: hidden;
 }
 

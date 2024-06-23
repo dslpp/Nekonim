@@ -1,0 +1,54 @@
+.delivery-page {
+    width: 90%;
+    max-width: 1200px; /* Максимальная ширина контейнера для предотвращения растяжения на больших экранах */
+    margin: 20px auto; /* Центрирование контейнера и добавление отступов снизу и сверху */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: "Ossem";
+    
+}
+
+.delivery-page h2 {
+    font-size: 2em; /* Пример размера шрифта для заголовков */
+    margin-bottom: 1em;
+    font-weight:580; /* Отступ снизу заголовка */
+}
+
+.delivery-page h3 {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    font-weight: 500;
+}
+
+.delivery-page p,
+.delivery-page ul {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 1em;
+    color: #585858; /* Отступ снизу абзацев и списков */
+}
+
+.delivery-page ul {
+    margin-top: 0.5em; /* Отступ сверху для списка */
+}
+
+.delivery-page li {
+    margin-bottom: 0.5em; /* Отступ между элементами списка */
+}
+@media (max-width: 768px) {
+    .delivery-page {
+        padding: 15px; /* Уменьшаем внутренние отступы для мобильных устройств */
+    }
+
+    .delivery-page h2 {
+        font-size: 1.5em; /* Уменьшаем размер шрифта заголовков для мобильных устройств */
+    }
+
+    .delivery-page h3 {
+        font-size: 1.3em;
+    }
+}

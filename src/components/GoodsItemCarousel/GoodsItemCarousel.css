@@ -1,4 +1,4 @@
-.Cardsss {
+.Cardss {
     margin: 1rem;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -25,18 +25,17 @@
     transform: scale(1.05);
 }
 
-.image-wrapperr {
+.image-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vw;
+    height: 20vw; /* Увеличиваем высоту изображения */
     overflow: hidden;
 }
 
-.center-imagee {
+.center-image {
     width: 85%;
     height: 90%;
-  
 }
 
 .label {
@@ -94,11 +93,11 @@
         width: 80%;
         height: 110%; /* Занимает всю доступную ширину на мобильных устройствах */
     }
-    
+
     .image-wrapper {
         height: 35vh; /* Немного больше высота изображения на мобильных */
     }
-    
+
     .label {
         padding: 0.5rem;
     }

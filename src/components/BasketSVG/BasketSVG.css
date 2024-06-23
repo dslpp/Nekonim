@@ -1,0 +1,49 @@
+
+.basket-container {
+    position: relative;
+    display: inline-block;
+    padding-left: 0.8vmax; 
+  }
+  .basket-icon-negative{
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+  }
+  .basket-icon {
+    width: 1.5vmax;
+  }
+  
+  .item-count-container {
+    position: absolute;
+    top: 0.9vmax; 
+    right: -0.6vmax;
+    width: 1.3vmax; 
+    height: 1.3vmax;
+    border-radius: 50%; 
+    background-color:#CA354F; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .item-count {
+    font-family: "Ossem";
+    color: white;
+    font-size: 0.8vmax;
+    padding-top:0.13vmax;
+  }
+  @media screen and (orientation: portrait) {
+
+    .item-count {
+  
+      font-size: 1vh;
+    }
+    .item-count-container {
+      
+      margin-top: 1vh; 
+      margin-right: 0.3vh;;
+      
+    }
+    .basket-icon {
+      width: 2.5vh;
+    }
+  }

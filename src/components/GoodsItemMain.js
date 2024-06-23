@@ -1,6 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import GoodsItem from './GoodsItem/GoodsItem'; 
 import { Context } from '../index';
+import './../App.css';
 import { observer } from 'mobx-react-lite';
 import { fetchProducts, fetchTypes } from "../http/products";
 import GoodsItemCarousel from './GoodsItemCarousel/GoodsItemCarousel';
@@ -23,7 +25,7 @@ const GoodsItemMain = observer(() => {
 
     fetchData();
 
-    // Добавляем слушатель для изменения размера окна
+    // Установка количества элементов в строке в зависимости от ширины окна
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setItemsPerRow(1);
@@ -32,15 +34,18 @@ const GoodsItemMain = observer(() => {
       }
     };
 
+    // Вызов handleResize сразу и добавление слушателя на изменение размера окна
+    handleResize();
     window.addEventListener('resize', handleResize);
-    
+
+    // Удаление слушателя при размонтировании компонента
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [type]); // Зависимость от type, чтобы перезагружать данные при изменении типа товаров
+  }, [type]);
 
-  // Оптимизированный массив товаров
   const limitedProducts = type.products.slice(0, 4);
+
   const chunkedProducts = [];
   for (let i = 0; i < limitedProducts.length; i += itemsPerRow) {
     chunkedProducts.push(limitedProducts.slice(i, i + itemsPerRow));
