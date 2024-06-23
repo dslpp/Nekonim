@@ -29,13 +29,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 20vw;
     overflow: hidden;
 }
 
 .center-image {
-    width: 100%;
-    height: auto;
+    width: 80%;
+    height: 80%;
+  
 }
 
 .label {
