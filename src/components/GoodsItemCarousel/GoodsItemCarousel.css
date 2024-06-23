@@ -88,12 +88,14 @@
 @media screen and (orientation: portrait){
     .Cardss {
         margin: 0.5rem;
+        margin-left: 5vh;
         padding: 0.5rem;
-        width: 100%; /* Занимает всю доступную ширину на мобильных устройствах */
+        width: 80%;
+        height: 110%; /* Занимает всю доступную ширину на мобильных устройствах */
     }
     
     .image-wrapper {
-        height: 15vh; /* Немного больше высота изображения на мобильных */
+        height: 35vh; /* Немного больше высота изображения на мобильных */
     }
     
     .label {
