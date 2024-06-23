@@ -11,9 +11,9 @@ const GoodsItemCarousel = ({ products }) => {
 
     return (
         <Col xs={12} md={3} onClick={() => history(GOODS_Route + '/' + products.id)}>
-            <Card className={`Cardss ${isDarkMode ? 'Cardss-dark' : ''}`}>
-                <div className='image-wrapper'>
-                    <Image className='center-image' src={products.img ? `${process.env.REACT_APP_API_URL}/statics/${products.img}` : ''} />
+            <Card className={`Cardsss ${isDarkMode ? 'Cardss-dark' : ''}`}>
+                <div className='image-wrapperr'>
+                    <Image className='center-imagee' src={products.img ? `${process.env.REACT_APP_API_URL}/statics/${products.img}` : ''} />
                 </div>
                 <div className='label'>
                     <div className={`product-name ${isDarkMode ? 'product-name-dark' : ''}`}>

@@ -1,4 +1,4 @@
-.Cardss {
+.Cardsss {
     margin: 1rem;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -25,7 +25,7 @@
     transform: scale(1.05);
 }
 
-.image-wrapper {
+.image-wrapperr {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-.center-image {
+.center-imagee {
     width: 85%;
     height: 90%;
   
