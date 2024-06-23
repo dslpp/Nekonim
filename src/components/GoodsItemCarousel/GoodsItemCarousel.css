@@ -88,7 +88,7 @@
 @media screen and (orientation: portrait){
     .Cardss {
         margin: 0.5rem;
-        margin-left: 5vh;
+        margin-left: 5.5vh;
         padding: 0.5rem;
         width: 80%;
         height: 110%; /* Занимает всю доступную ширину на мобильных устройствах */
