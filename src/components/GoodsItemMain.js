@@ -1,14 +1,13 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import GoodsItem from './GoodsItem/GoodsItem'; 
 import { Context } from '../index';
-import './../App.css';
 import { observer } from 'mobx-react-lite';
 import { fetchProducts, fetchTypes } from "../http/products";
 import GoodsItemCarousel from './GoodsItemCarousel/GoodsItemCarousel';
 
 const GoodsItemMain = observer(() => {
   const { type } = useContext(Context);
+  const [itemsPerRow, setItemsPerRow] = useState(4);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,19 +20,27 @@ const GoodsItemMain = observer(() => {
         console.error('Error fetching data:', error);
       }
     };
+
     fetchData();
-    return () => {
- 
+
+    // Добавляем слушатель для изменения размера окна
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setItemsPerRow(1);
+      } else {
+        setItemsPerRow(4);
+      }
     };
-  }, []); 
 
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [type]); // Зависимость от type, чтобы перезагружать данные при изменении типа товаров
+
+  // Оптимизированный массив товаров
   const limitedProducts = type.products.slice(0, 4);
-  let itemsPerRow = 4;
-
-  if (window.innerWidth <= 768) {
-    itemsPerRow = 1;
-  }
-
   const chunkedProducts = [];
   for (let i = 0; i < limitedProducts.length; i += itemsPerRow) {
     chunkedProducts.push(limitedProducts.slice(i, i + itemsPerRow));
