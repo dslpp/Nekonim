@@ -6,7 +6,7 @@
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s;
-    height: 90%; /* Задание одинаковой высоты */
+    height: 93%; /* Задание одинаковой высоты */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -35,8 +35,8 @@
 }
 
 .center-image {
-    width: 100%;
-    height: auto;
+    width: 92%;
+    height: 98%;
 }
 
 .label {

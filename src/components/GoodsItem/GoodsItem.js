@@ -41,7 +41,7 @@ const GoodsItem = ({ products }) => {
         <Col md={3}>
             <Card className={`Cards ${isDarkMode ? 'Cards-dark' : ''}`}>
                 <div className='image-wrapper' onClick={() => history(GOODS_Route + '/' + products.id)}>
-                    <Image className='center-image' src={products.img ? `${process.env.REACT_APP_API_URL}statics/${products.img}` : ''} />
+                    <Image className='center-image' src={products.img ? `${process.env.REACT_APP_API_URL}/statics/${products.img}` : ''} />
                 </div>
                 <div className='label'>
                     <div className={`product-name ${isDarkMode ? 'product-name-dark' : ''}`}>
